@@ -1,0 +1,83 @@
+<user-profiles-user-profile-details-modal
+        [userAccount]="user_account"
+        #userProfilesUserProfileDetailsModalComponent></user-profiles-user-profile-details-modal>
+
+<user-profiles-get-user-account-no-template
+        (userAccountReceived)="authService.loggedAccount = $event;print()"
+        [userAccount]="user_account"
+        #getUserAccountNoTemplateComponent></user-profiles-get-user-account-no-template>
+
+<div class="row justify-content-center">
+    <div class="col-9 brt-5px border-bottom border-grey-2 bg-white mt-56px py-56px">
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-8 d-flex justify-content-end"
+                 (click)="userProfilesUserProfileDetailsModalComponent.openModal()">
+                <button class="bg-primary text-white border-none br-5px py-8px px-12px font-weight-700 font-size-18">
+                    See profile
+                </button>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-8 d-flex align-items-center px-0">
+
+                <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+                        [entityId]="user_account.user_account_id"
+                        [entityType]="'USER_PROFILE_PIC'"
+                        [alt]="loggedAccount.display_name" [size]="200"
+                        #imageComponent></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+
+                <div class="text-align-center bg-white border border-2 border-primary rounded-2 mt-20px ml-20px">
+                    <images-upload-file
+                            (imageAttached)="imageComponent.getImagesByEntityIdAndImageType(imageComponent.createRequestData())"
+                            [entityId]="user_account.user_account_id"
+                            [type]="imageType" [autoUploadFile]="false" [autoAttachFile]="true"
+                            [entityType]="'USER_PROFILE_PIC'"
+                    ></images-upload-file>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-8 px-0">
+                <users-update-user-account-form
+                        [userAccount]="user_account"
+                        (userAccountUpdated)="notificationsService.success('User account updated');getUserAccountNoTemplateComponent.getUserAccount(getUserAccountNoTemplateComponent.createRequestData()); "
+                        #updateUserAccountForm></users-update-user-account-form>
+
+                <!--        <div class="row b-1px-light-grey mx-0">-->
+                <!--          -->
+                <!--        </div>-->
+            </div>
+        </div>
+    </div>
+  <div class="col-9 bg-white brb-5px px-0">
+    <div class="row justify-content-center">
+      <div class="col-8 px-0">
+        <div class="row mx-0 mb-56px mt-32px">
+          <div class="d-flex justify-content-between px-0">
+            <div class="px-0">
+              <button class="btn btn-sm btn-outline-primary py-20px px-80px font-weight-700 font-size-18">
+                Cancel
+              </button>
+            </div>
+            <div class="px-0 text-align-end">
+              <button class="btn btn-sm btn-color-primary py-20px px-80px font-weight-700 font-size-18"
+                      [promiseBtn]="updateUserAccountForm.update_user_account_subscription$"
+                      (click)="updateUserAccountForm.updateUserAccount(updateUserAccountForm.createRequestData(displayCountry))"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

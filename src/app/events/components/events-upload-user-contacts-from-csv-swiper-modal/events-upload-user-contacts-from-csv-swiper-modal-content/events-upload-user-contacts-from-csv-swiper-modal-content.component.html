@@ -1,0 +1,7 @@
+<div class="overflow-y-scroll">
+  <events-upload-user-contacts-from-csv-swiper
+    [contactCreationType]="contactCreationType"
+    (closeClicked)="closeModal({data:'', status:'SUCCESS'})"
+    (userContactsCreated)="closeModal(); notificationsService.success('User contacts created')"
+  ></events-upload-user-contacts-from-csv-swiper>
+</div>

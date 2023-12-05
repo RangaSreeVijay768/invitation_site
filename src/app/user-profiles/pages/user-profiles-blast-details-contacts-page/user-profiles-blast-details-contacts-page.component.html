@@ -1,0 +1,53 @@
+<blasts-get-blast-list-items-by-blast-list-no-template
+  [blastList]="blastList"
+  (blastListsItemsReceived)="blastListItems = items.blastListItems"
+  #items></blasts-get-blast-list-items-by-blast-list-no-template>
+
+<div class="row border-bottom border-grey-1 py-24px mx-0">
+  <div class="profile-form-placeholder box-shadow d-flex align-items-center border border-grey-1 rounded-2">
+    <i-feather name="search" class="text-primary font-poppins"></i-feather>
+    <input class="w-100 py-16px ph-16px font-poppins font-weight-500" placeholder="Search contacts">
+  </div>
+</div>
+
+
+<div class="row border border-grey-3 mt-24px bg-white mx-0 pt-16px ph-8px rounded-3 scrollY">
+  <div class="col-6 ph-8px mb-16px"
+       *ngFor="let blastListItem of items.blastListItems; let i = index">
+    <div class="border border-grey-1 rounded-2 py-16px">
+      <div class="d-flex ph-16px justify-content-between align-items-center">
+        <label class="font-weight-500 font-size-18">
+          {{blastListItem.display_name}}
+        </label>
+        <i-feather name="more-horizontal" class="text-primary"></i-feather>
+      </div>
+
+<!--      <ng-container-->
+<!--        *ngIf="blastListItem.blast_list_item_type === 'SMS'; then phone; else email"-->
+<!--      ></ng-container>-->
+      <div *ngIf="blastListItem.phone_number; else email">
+        <label class="font-size-14 text-grey-1 ph-16px">
+          <i-feather name="smartphone"></i-feather>
+          {{blastListItem.phone_number}}
+        </label>
+      </div>
+      <ng-template #email>
+
+        <label class="font-size-14 text-grey-1 ph-16px">
+          <i-feather name="mail"></i-feather>
+          {{blastListItem.email_id}}
+        </label>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="row mx-0" *ngIf="!items.blastListItems">
+    <div class="col-12 text-align-center px-0">
+      <img src="assets/images/no-promocodes.png" width="202">
+      <br>
+      <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+        No members in this list
+      </label>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<images-attach-image-no-template [entityId]="entityId" [entityType]="entityType"
+                                 (imageAttached)="imageAttached.emit($event)"
+></images-attach-image-no-template>
+
+<images-get-image-by-entity-id-and-image-type-no-template
+        [entityId]="entityId" [entityType]="entityType"
+        (imagesReceived)="uploaded_file=($event&&$event.length)?$event[0].uploaded_file:undefined"
+></images-get-image-by-entity-id-and-image-type-no-template>
+<div class="row overflow-hidden">
+    <div class="col-12 file-image overflow-hidden">
+        <div class="spinner-border" role="status" *ngIf="image_upload_in_progress">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <label for="file-upload-{{current_time_stamp}}"
+               class="img-upload-text m-0 overflow-hidden border-radius-5px d-flex justify-content-center align-items-center"><img
+                src="/assets/images/image-upload-icon.svg" alt="click here" class="" *ngIf="!uploaded_file">
+            <img
+                    src="{{uploaded_file.file_link}}" alt="click here" class="img-fluid" *ngIf="uploaded_file"></label>
+        <input class="ml-16px custom-file-input image-upload" type="file" ng2FileSelect [uploader]="uploader"
+               id="file-upload-{{current_time_stamp}}">
+    </div>
+</div>

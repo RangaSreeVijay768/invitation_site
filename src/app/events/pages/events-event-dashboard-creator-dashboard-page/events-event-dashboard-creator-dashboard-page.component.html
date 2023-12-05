@@ -1,0 +1,366 @@
+<events-get-order-items-count-by-event-ticket-no-template
+
+        (orderItemsCountByEventTicketReceived)="orderItemCount = getOrderItemsCountByEventTicketNoTemplateComponent.orderItems"
+        #getOrderItemsCountByEventTicketNoTemplateComponent>
+</events-get-order-items-count-by-event-ticket-no-template>
+
+<events-get-user-event-tickets-count-by-event-no-template
+        (userEventTicketsCountByEventReceived)="userEventTicketCount = getUserEventTicketsCountByEventComponent.userEventTickets"
+        #getUserEventTicketsCountByEventComponent></events-get-user-event-tickets-count-by-event-no-template>
+
+<events-get-user-event-tickets-by-event-no-template
+        [event]="eventInfo.event"
+        (userEventTicketsReceived)="user_event_tickets = getUserEventTicketsByEventNoTemplateComponent.user_event_tickets"
+        #getUserEventTicketsByEventNoTemplateComponent></events-get-user-event-tickets-by-event-no-template>
+
+<events-get-event-tickets-sale-sum-by-event
+        [event]="eventInfo.event"
+        (saleSumReceived)="sale_sum = getEventTicketsSaleSumByEventComponent.sale_sum"
+        #getEventTicketsSaleSumByEventComponent></events-get-event-tickets-sale-sum-by-event>
+
+<div class="row justify-content-center mt-50px mx-0 mb-32px">
+    <div class="col-9 px-0">
+        <div class="row justify-content-between">
+            <div class="col-8 px-0">
+                <div class=" bg-white box-shadow-purple">
+                    <div class="row ml-24px">
+                        <div class="col-2 mt-24px py-4px d-flex justify-content-center align-items-center bg-background-purple">
+                            <img src="../../../../assets/images/payout.png" width="24" height="24">
+                            <label class="ml-8px text-grey-2 font-size-16 font-poppins">Payout</label>
+                        </div>
+                    </div>
+
+                    <div class="row ml-24px mr-24px row-align-center mt-20px border-bottom border-grey-1 pb-24px">
+                        <div class="col-6 px-0">
+                            <label class="font-weight-500 font-size-32 font-poppins">$28,360.05</label><br>
+                            <label class="text-grey-2 font-size-16 font-poppins">paid</label>
+                        </div>
+                        <div class="col-6 px-0">
+                            <label class="font-weight-500 font-size-32 text-grey-2 font-poppins">$0.00</label><br>
+                            <label class="text-grey-2 font-size-16 font-poppins">Remaining</label>
+                        </div>
+                    </div>
+
+                    <div class="row mt-24px ml-24px pb-24px mb-32px">
+                        <div class="col-4 py-10px ph-24px border border-1.5 border-primary rounded-2">
+                            <label class="font-weight-500 font-size-16 font-poppins text-primary mr-16px">Go to
+                                Payout</label>
+                            <i-feather name="arrow-right" class="font-weight-500 text-primary w-27 h-27"></i-feather>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="bg-white box-shadow-purple mb-32px">
+                    <div class="row ml-24px">
+                        <div class="col-3 mt-24px py-4px d-flex align-items-center bg-background-purple">
+                            <img src="../../../../assets/images/invite.png" width="24" height="24">
+                            <label class="ml-8px text-grey-2 font-size-16 font-poppins">Invite On</label>
+                        </div>
+                    </div>
+<!--                    <div-->
+<!--                            class="row ml-24px mr-24px row-align-center mt-20px border-bottom border-grey-1 pb-24px text-align-start">-->
+<!--                        <div class="col-8 d-flex justify-content-between ">-->
+<!--                            <div class="d-flex flex-column align-items-center gap-12px">-->
+<!--                                <img src="../../../../assets/images/whatsapp.png" height="70" width="70">-->
+<!--                                <label class="font-size-16px font-weight-500 text-grey-2 letter-spacing&#45;&#45;0352">-->
+<!--                                    Whatsapp-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                            <div class="d-flex flex-column align-items-center  gap-12px">-->
+<!--                                <img src="../../../../assets/images/mail.png" height="70" width="70">-->
+<!--                                <label class="font-size-16px font-weight-500 text-grey-2 letter-spacing&#45;&#45;0352">-->
+<!--                                    Email-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                            <div class="d-flex flex-column align-items-center gap-12px">-->
+<!--                                <img src="../../../../assets/images/messages.png" height="70" width="70">-->
+<!--                                <label class="font-size-16px font-weight-500 text-grey-2 letter-spacing&#45;&#45;0352">-->
+<!--                                    Text message-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="row mt-24px ml-24px pb-24px mr-24px">
+                        <div class="py-10px ph-24px border border-1.5 border-primary rounded-2">
+                            <div class="row row-align-center justify-content-between">
+                                <div class="col-9">
+                                    <i-feather name="link" class="font-weight-500 w-27 h-27 mr-12px"></i-feather>
+                                    <label class="font-weight-500 font-size-18 mb-20px">Copy link</label><br>
+                                    <label
+                                            class="font-weight-500 font-size-18 font-poppins text-grey-1 w-100">
+                                        {{truncate('https://dev.eventreply.com/signedin/events/' + eventInfo.event.event_id, {
+                                        'length': 40,
+                                        'omission': '...'
+                                    })}}
+                                    </label>
+                                </div>
+                                <div class="col-2 px-0 bg-background-purple">
+                                    <i-feather name="copy" class="text-primary"></i-feather>
+                                    <label class="font-weight-700 font-size-18 text-primary ml-8px font-poppins"
+                                           ngxClipboard
+                                           [cbContent]="'https://dev.eventreply.com/signedin/events/'+eventInfo.event.event_id"
+                                           (click)="notificationsService.success('Copied')"
+                                    >Copy</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white box-shadow-purple">
+                    <div class="row ml-24px">
+                        <div class="col-4 mt-24px py-4px d-flex align-items-center bg-background-purple">
+                            <img src="../../../../assets/images/sales.png" width="24" height="24">
+                            <label class="ml-8px text-grey-2 font-size-16 font-poppins">Sales by ticket type</label>
+                        </div>
+                    </div>
+
+                    <div
+                            class="row ml-24px mr-24px row-align-center mt-20px border-bottom border-grey-1 pb-24px text-align-start">
+                        <div class="d-flex justify-content-between py-20px ph-16px bg-grey-3">
+                            <div>
+                                <i-feather name="tag" class="text-primary mr-8px"></i-feather>
+                                <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Ticket type</label>
+                            </div>
+                            <div class="col-6 d-flex justify-content-between">
+                                <div>
+                                    <i-feather name="dollar-sign" class="text-primary mr-8px"></i-feather>
+                                    <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Ticket
+                                        price</label>
+                                </div>
+                                <div>
+                                    <i-feather name="pie-chart" class="text-primary mr-8px"></i-feather>
+                                    <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Ticket
+                                        sold</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row ml-24px mr-24px row-align-center border-bottom border-grey-1 text-align-start">
+                        <div class="d-flex justify-content-between py-20px ph-16px">
+                            <div>
+                                <label class="font-size-18 font-weight-500 font-poppins">Ticket type 1</label>
+                            </div>
+                            <div class="col-6 d-flex justify-content-between">
+                                <div>
+                                    <label class="font-size-18 font-weight-500 font-poppins">$34</label>
+                                </div>
+                                <div>
+                                    <label class="font-size-18 font-weight-500 font-poppins">21/45</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ml-24px mr-24px row-align-center border-bottom border-grey-1 text-align-start">
+                        <div class="d-flex justify-content-between py-20px ph-16px">
+                            <div>
+                                <label class="font-size-18 font-weight-500 font-poppins">Ticket type 1</label>
+                            </div>
+                            <div class="col-6 d-flex justify-content-between">
+                                <div>
+                                    <label class="font-size-18 font-weight-500 font-poppins">$34</label>
+                                </div>
+                                <div>
+                                    <label class="font-size-18 font-weight-500 font-poppins">21/45</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-24px ml-24px pb-24px mr-24px"
+                         (click)="navigateToTicketSales()">
+                        <div class="col-5 py-10px ph-24px border border-1.5 border-primary rounded-2">
+                            <label class="font-weight-500 font-size-16 font-poppins text-primary mr-16px">See all ticket
+                                sales</label>
+                            <i-feather name="arrow-right" class="font-weight-500 text-primary w-27 h-27"></i-feather>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-4 pr-0 pl-32px">
+                <div class=" bg-white box-shadow-purple">
+                    <div class="row ml-24px">
+                        <div class="col-5 mt-24px d-flex justify-content-center align-items-center bg-background-purple">
+                            <i-feather name="dollar-sign" class="text-primary"></i-feather>
+                            <label class="ml-8px text-grey-2 font-size-16 font-poppins py-4px">Net Sales</label>
+                        </div>
+                    </div>
+                    <div class="row ml-24px mr-24px row-align-center mt-16px">
+                        <div class="px-0">
+                            <label class="font-weight-500 font-size-32 font-poppins">${{orderItemCount}}</label><br>
+                            <label class="text-grey-2 font-size-16 font-poppins">$13,607.00 gross sales</label>
+                        </div>
+                    </div>
+                    <div class="row mt-24px ml-24px mr-24px pb-24px">
+                        <div class="py-10px ph-12px border border-1.5 border-primary rounded-2">
+                            <label class="font-weight-500 font-size-16 font-poppins text-primary mr-16px">See detailed
+                                breakdown</label>
+                            <i-feather name="arrow-right" class="font-weight-500 text-primary w-27 h-27"></i-feather>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pr-0 mt-24px">
+                    <div class=" bg-white box-shadow-purple mb-24px">
+                        <div class="row ml-24px">
+                            <div class="col-8 mt-24px d-flex align-items-center bg-background-purple">
+                                <i-feather name="tag" class="text-primary"></i-feather>
+                                <label class="ml-8px text-grey-2 font-size-16 font-poppins py-4px">Total tickets
+                                    sold</label>
+                            </div>
+                        </div>
+                        <div class="row ml-24px mr-24px row-align-center mt-16px">
+                            <div class="px-0 mb-24px">
+                                <label class="font-weight-500 font-size-32 font-poppins">
+                                    {{userEventTicketCount}}<span class="font-size-18 font-poppins">/{{sale_sum}}</span></label><br>
+                                <label class="text-grey-2 font-size-16 font-poppins">100 paid</label>
+                                <img src="../../../../assets/images/img.png" height="5" width="5" class="mh-8px">
+                                <label class="text-grey-2 font-size-16 font-poppins"> 02 free</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" bg-white box-shadow-purple">
+                        <div class="row ml-24px">
+                            <div class="col-8 mt-24px d-flex align-items-center bg-background-purple">
+                                <i-feather name="users" class="text-primary"></i-feather>
+                                <label class="ml-8px text-grey-2 font-size-16 font-poppins py-4px">Page views</label>
+                            </div>
+                        </div>
+                        <div class="row ml-24px mr-24px row-align-center mt-16px">
+                            <div class="px-0 mb-24px">
+                                <label class="font-weight-500 font-size-32 font-poppins">353</label><br>
+                                <label class="text-grey-2 font-size-16 font-poppins">20 from the website</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-32px">
+            <div class="col-11 bg-white pv-24px">
+                <div class="row ml-24px">
+                    <div class="col-3 mb-24px py-4px d-flex justify-content-center align-items-center bg-background-purple">
+                        <img src="../../../../assets/images/payout.png" width="24" height="24">
+                        <label class="ml-8px text-grey-2 font-size-16 font-poppins">Recent purchases</label>
+                    </div>
+                </div>
+
+                <div class="row mx-0" *ngIf="!user_event_tickets">
+                    <div class="col-12 text-align-center px-0">
+                        <img src="assets/images/no-promocodes.png" width="202">
+                        <br>
+                        <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+                            No recent purchases for this event
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row row-align-center border-bottom border-grey-1 pb-24px ml-24px mr-24px"
+                     *ngIf="user_event_tickets">
+                    <div class="d-flex justify-content-between bg-grey-3 py-20px ph-16px">
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col-6">
+                                    <i-feather name="hash" class="text-primary mr-8px"></i-feather>
+                                    <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Purchase
+                                        ID</label>
+                                </div>
+                                <div class="col-6 px-0">
+                                    <i-feather name="user" class="text-primary mr-8px"></i-feather>
+                                    <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Buyer
+                                        name</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4 px-0">
+                                    <i-feather name="pie-chart" class="text-primary mr-8px"></i-feather>
+                                    <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Quantity</label>
+                                </div>
+                                <div class="col-3 px-0">
+                                    <i-feather name="dollar-sign" class="text-primary mr-8px"></i-feather>
+                                    <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Price</label>
+                                </div>
+                                <div class="col-5 px-0">
+                                    <i-feather name="calendar" class="text-primary mr-8px"></i-feather>
+                                    <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Purchase
+                                        date</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mr-24px row-align-center border-bottom border-grey-1 ml-24px mr-24px "
+                     *ngFor="let user_event_ticket of user_event_tickets">
+                    <div class="d-flex justify-content-between py-20px ph-16px">
+                        <div class="col-5">
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <label class="font-size-18 font-weight-500 font-poppins text-primary">{{user_event_ticket.user_event_ticket_id}}</label>
+                                </div>
+                                <div class="col-6">
+                                    <label class="font-size-18 font-weight-500 font-poppins">{{user_event_ticket.user_account.display_name}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-4 text-align-center">
+                                    <label class="font-size-18 font-weight-500 font-poppins">{{user_event_ticket.ticket_quantity}}</label>
+                                </div>
+                                <div class="col-3 text-align-center">
+                                    <label class="font-size-18 font-weight-500 font-poppins">{{user_event_ticket.event_ticket.ticket_type}}</label>
+                                </div>
+                                <div class="col-5 text-align-center">
+                                    <label class="font-size-18 font-weight-500 font-poppins">{{user_event_ticket.event_ticket.created_time}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row mt-24px ml-24px pb-24px mr-24px" *ngIf="user_event_tickets?.length>5"
+                     (click)="navigateToTicketSales()">
+                    <div class="col-3 py-10px ph-24px border border-1.5 border-primary rounded-2">
+                        <label class="font-weight-500 font-size-16 font-poppins text-primary mr-16px">See all
+                            purchase</label>
+                        <i-feather name="arrow-right" class="font-weight-500 text-primary w-27 h-27"></i-feather>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--<events-upload-csv-preview-summary-modal-->
+<!--    #uploadCsvPreviewSummaryModalComponent></events-upload-csv-preview-summary-modal>-->
+
+<!--<events-create-multiple-user-contacts-csv [hasHeaders]="true"-->
+<!--                                          (createMultipleUserContactRequestItemsReceived)="uploadCsvPreviewSummaryModalComponent.openModal($event)"-->
+<!--&gt;</events-create-multiple-user-contacts-csv>-->
+
+
+<events-upload-user-contacts-from-csv-swiper-modal></events-upload-user-contacts-from-csv-swiper-modal>
+
+<div class="row align-items-end mb-40px">
+  <div class="col-11 d-flex justify-content-end">
+    <button
+      class="btn btn-sm btn-outline-primary d-flex align-items-center py-20px ph-40px font-weight-700 font-size-18"
+      (click)="navigateToShareEventPage()">
+      <i-feather name="Share2" class="mr-12px"></i-feather>
+      Share Event
+    </button>
+  </div>
+</div>
+

@@ -1,0 +1,19 @@
+<core-modal-header [title]="'Create'" (closeClicked)="closeModal($event)"></core-modal-header>
+
+<!--<perfect-scrollbar class="modal-height-with-header-footer-image">-->
+    <div class="m-30 mb-10 pt-30 pb-4 mt-5">
+        <div class="row">
+            <div class="col-md-6 pr-4">
+<!--                <contests-create-contest (contestCreated)="closeModal({data:$event,status:'SUCCESS'})"-->
+<!--                                         #createContest></contests-create-contest>-->
+            </div>
+
+        </div>
+
+    </div>
+<!--</perfect-scrollbar>-->
+<core-modal-footer
+        (actionClicked)="component.createContest(component.createRequestData())"
+        [buttonText]="'CREATE'"
+        [actionPromise]="component.create_contest_subscription$"
+        [buttonDisabled]="!component.formGroup.valid"></core-modal-footer>

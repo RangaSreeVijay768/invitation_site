@@ -1,0 +1,876 @@
+@import "core-variables";
+
+
+.events-all-invited-people-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-50;
+    @extend .modal-dialog-centered;
+  }
+
+}
+
+
+.modal-header--sticky {
+  top: 0;
+  @extend .position-sticky;
+  z-index: 1055;
+  @extend .p-0;
+  @extend .rounded-4;
+  @extend .bg-primary;
+  @extend .w-100;
+}
+
+.events-attended-header {
+  top: 0;
+  @extend .position-sticky;
+  z-index: 1055;
+  @extend .p-0;
+  @extend .rounded-4;
+  //@extend .bg-primary;
+  @extend .w-100;
+}
+
+
+.events-edit-ticket-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.events-edit-ticket-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    padding: 8px;
+  }
+}
+
+
+.events-all-invited-people-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.events-all-invited-people-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    padding: 8px;
+  }
+}
+
+
+.what-are-fees {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    height: 30%;
+    --bs-modal-width: 25%;
+    @extend .modal-dialog-centered;
+  }
+}
+
+.user-profiles-user-attended-events-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-50;
+    @extend .modal-dialog-centered;
+  }
+}
+
+.user-profiles-user-attended-events-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.user-profiles-user-attended-events-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    padding: 8px;
+  }
+}
+
+
+.events-create-paid-tickets-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-41;
+    @extend .modal-dialog-centered;
+  }
+}
+
+.events-create-paid-tickets-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.events-create-paid-tickets-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    padding: 8px;
+  }
+}
+
+
+.events-rsvp-free-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+}
+
+.events-rsvp-free-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-50;
+  @extend .modal-dialog-centered;
+}
+
+.events-rsvp-free-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.user-profiles-blasts-filter-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+}
+
+.user-profiles-blasts-filter-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-50;
+  @extend .modal-dialog-centered;
+}
+
+.user-profiles-blasts-filter-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.user-profiles-blasts-create-new-group-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+}
+
+.user-profiles-blasts-create-new-group-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-41;
+  @extend .modal-dialog-centered;
+}
+
+.user-profiles-blasts-create-new-group-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.user-profiles-blasts-add-upload-contact-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+  @extend .rounded-4;
+}
+
+.user-profiles-blasts-add-upload-contact-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-41;
+  @extend .modal-dialog-centered;
+}
+
+.user-profiles-blasts-add-upload-contact-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.user-profiles-blasts-add-upload-contact-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+//.user-profiles-mass-messaging-invite-event-modal{
+//  background: transparent !important;
+//  width: 100%;
+//}
+//.user-profiles-mass-messaging-invite-event-modal > .modal-dialog{
+//  height: 50%;
+//  --bs-modal-width: 100% !important;
+//  @extend .modal-dialog-centered;
+//}
+
+.user-profiles-blasts-invite-to-event-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-50;
+    @extend .modal-dialog-centered;
+  }
+
+}
+
+.user-profiles-blasts-invite-to-event-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+.user-profiles-blasts-invite-to-event-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.events-invite-to-event-in-share-event-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-50;
+    @extend .modal-dialog-centered;
+  }
+
+}
+
+.events-invite-to-event-in-share-event-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+.events-invite-to-event-in-share-event-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.events-rsvp-paid-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+}
+
+.events-rsvp-paid-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-100;
+  @extend .modal-dialog-centered;
+}
+
+
+.user-profiles-user-profile-details-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+  @extend .text-align-center;
+}
+
+.user-profiles-user-profile-details-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-41;
+  @extend .modal-dialog-centered;
+}
+
+
+.user-profiles-user-upcoming-events-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+  @extend .text-align-center;
+}
+
+.user-profiles-user-upcoming-events-modal > .modal-dialog {
+  //height: 50%;
+  @extend .bs-modal-width-50;
+  @extend .modal-dialog-centered;
+  //@extend .modal-dialog-scrollable;
+}
+
+.events-share-event-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+  @extend .rounded-4;
+}
+
+.events-share-event-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-50;
+  @extend .modal-dialog-centered;
+}
+
+.events-share-event-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+
+.events-event-dashboard-promocodes-create-code-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+  @extend .rounded-4;
+}
+
+.events-event-dashboard-promocodes-create-code-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-41;
+  @extend .modal-dialog-centered;
+}
+
+.events-event-dashboard-promocodes-create-code-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.events-event-dashboard-promocodes-create-code-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+.user-profiles-blasts-create-new-group-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+  @extend .rounded-4;
+}
+
+.user-profiles-blasts-create-new-group-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-41;
+  @extend .modal-dialog-centered;
+}
+
+.user-profiles-blasts-create-new-group-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.user-profiles-blasts-create-new-group-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+
+.user-profiles-blasts-invite-contacts-to-event-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+  @extend .rounded-4;
+}
+
+.user-profiles-blasts-invite-contacts-to-event-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-41;
+  @extend .modal-dialog-centered;
+}
+
+.user-profiles-blasts-invite-contacts-to-event-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.events-stripe-payment-form-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+  @extend .rounded-4;
+}
+
+.events-stripe-payment-form-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-41;
+  @extend .modal-dialog-centered;
+}
+
+.events-stripe-payment-form-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+
+.events-event-details-ticket-type-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-41;
+    @extend .modal-dialog-centered;
+  }
+
+}
+
+.events-event-details-ticket-type-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+.events-event-details-ticket-type-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.basic-events-event-details-ticket-type-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-41;
+    @extend .modal-dialog-centered;
+  }
+
+}
+
+.basic-events-event-details-ticket-type-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+.basic-events-event-details-ticket-type-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+
+.basic-verify-user-when-user-comes-from-link-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-41;
+    @extend .modal-dialog-centered;
+  }
+
+}
+
+.basic-verify-user-when-user-comes-from-link-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+.basic-verify-user-when-user-comes-from-link-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+
+.basic-verify-user-with-verification-code-before-login-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-41;
+    @extend .modal-dialog-centered;
+  }
+
+}
+
+.basic-verify-user-with-verification-code-before-login-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+.basic-verify-user-with-verification-code-before-login-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+
+.basic-user-info-before-login-for-payment-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-41;
+    @extend .modal-dialog-centered;
+  }
+
+}
+
+.basic-user-info-before-login-for-payment-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+.basic-user-info-before-login-for-payment-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+
+.user-profiles-users-logout-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-50;
+    @extend .modal-dialog-centered;
+  }
+
+}
+
+.user-profiles-users-logout-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+.user-profiles-users-logout-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+
+//.events-invite-to-event-in-share-event-modal {
+//  @extend .bg-transparent;
+//  @extend .w-100;
+//
+//  .modal-dialog {
+//    @extend .h-50;
+//    @extend .bs-modal-width-50;
+//    @extend .modal-dialog-centered;
+//  }
+//
+//}
+//
+//.events-invite-to-event-in-share-event-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+//  & ::-webkit-scrollbar {
+//    @extend .bg-primary;
+//    @extend .rounded-2;
+//    @extend .w-10px;
+//  }
+//
+//  & ::-webkit-scrollbar-thumb {
+//    background: lighten($primary, 20%);
+//    @extend .rounded-2;
+//    @extend .pr-8px;
+//  }
+//}
+//.events-invite-to-event-in-share-event-modal > .modal-dialog > .modal-content {
+//  @extend .rounded-4;
+//}
+
+.events-invite-past-attendees-in-share-event-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-41;
+    @extend .modal-dialog-centered;
+  }
+
+}
+
+.events-invite-past-attendees-in-share-event-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+.events-invite-past-attendees-in-share-event-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.events-upload-csv-preview-summary-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-50;
+    @extend .modal-dialog-centered;
+  }
+
+}
+
+.events-upload-csv-preview-summary-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+.events-upload-csv-preview-summary-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.events-upload-user-contacts-from-csv-swiper-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-50;
+    @extend .modal-dialog-centered;
+  }
+
+}
+
+.events-upload-user-contacts-from-csv-swiper-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    @extend .pr-8px;
+  }
+}
+
+.events-upload-user-contacts-from-csv-swiper-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+
+.events-share-event-mass-messaging-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+  @extend .rounded-4;
+}
+
+.user-profiles-create-user-contact-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+  @extend .rounded-4;
+}
+
+.user-profiles-create-user-contact-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-41;
+  @extend .modal-dialog-centered;
+}
+
+.user-profiles-create-user-contact-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.user-profiles-create-user-contact-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+}
+
+.events-share-event-mass-messaging-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-50;
+  @extend .modal-dialog-centered;
+}
+
+.events-share-event-mass-messaging-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+  @extend .bg-white;
+}
+
+//.events-share-event-mass-messaging-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+//  & ::-webkit-scrollbar {
+//    @extend .bg-primary;
+//    @extend .rounded-2;
+//    @extend .w-10px;
+//  }
+//
+//  & ::-webkit-scrollbar-thumb {
+//    background: lighten($primary, 20%);
+//    @extend .rounded-2;
+//    @extend .pr-8px;
+//  }
+//}
+
+.user-profiles-update-user-contact-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+  @extend .rounded-4;
+}
+
+.user-profiles-update-user-contact-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-41;
+  @extend .modal-dialog-centered;
+}
+
+.user-profiles-update-user-contact-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.user-profiles-update-user-contact-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+}
+
+
+.user-profiles-create-user-contact-select-contact-type-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+  @extend .rounded-4;
+}
+
+.user-profiles-create-user-contact-select-contact-type-modal > .modal-dialog {
+  @extend .h-50;
+  @extend .bs-modal-width-41;
+  @extend .modal-dialog-centered;
+}
+
+.user-profiles-create-user-contact-select-contact-type-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+
+.user-profiles-create-user-contact-select-contact-type-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+}
+
+user-profiles-attendees-list-by-event-blast-modal {
+  @extend .bg-transparent;
+  @extend .w-100;
+
+  .modal-dialog {
+    @extend .h-50;
+    @extend .bs-modal-width-50;
+    @extend .modal-dialog-centered;
+  }
+
+}
+.user-profiles-attendees-list-by-event-blast-modal > .modal-dialog > .modal-content {
+  @extend .rounded-4;
+}
+.user-profiles-attendees-list-by-event-blast-modal > .modal-dialog > .modal-content > .component-host-scrollable {
+  & ::-webkit-scrollbar {
+    @extend .bg-primary;
+    @extend .rounded-2;
+    @extend .w-10px;
+  }
+
+  & ::-webkit-scrollbar-thumb {
+    background: lighten($primary, 20%);
+    @extend .rounded-2;
+    padding: 8px;
+  }
+}

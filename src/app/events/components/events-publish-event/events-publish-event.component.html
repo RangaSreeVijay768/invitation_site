@@ -1,0 +1,8 @@
+<button class="btn-event-rsvp d-flex justify-content-center font-weight-800 font-size-18 ph-24px"
+        [class.btn-disable]="!eventInfo.event_tickets.length"
+        (click)="publishEvent(createRequestData())" [promiseBtn]="publish_event_subscription$"
+>
+  Publish event
+</button>
+
+

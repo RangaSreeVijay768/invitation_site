@@ -1,0 +1,44 @@
+<events-create-event-create-paid-ticket-modal
+  [event]="event"
+  (closeResult)="$event.status==='SUCCESS'?getEventTicketsByEventNoTemplateComponent.getEventTicketsByEvent(getEventTicketsByEventNoTemplateComponent.createRequestData()):''"
+  #paidticket></events-create-event-create-paid-ticket-modal>
+
+<events-get-event-tickets-by-event-no-template
+  #getEventTicketsByEventNoTemplateComponent
+></events-get-event-tickets-by-event-no-template>
+
+<events-create-event-free-ticket-modal
+  [event]="event"
+  (closeResult)="$event.status==='SUCCESS'?getEventTicketsByEventNoTemplateComponent.getEventTicketsByEvent(getEventTicketsByEventNoTemplateComponent.createRequestData()):''"
+  #freeticket></events-create-event-free-ticket-modal>
+
+<div class="row mt-56px justify-content-center mb-56px mx-0">
+  <div class="col-9">
+    <div class=" d-flex align-items-center">
+      <i-feather name="arrow-left" class="font-poppins wh-48px stroke-primary-1px mr-12px"></i-feather>
+      <label class="font-poppins font-weight-700 font-size-32">Create event</label>
+    </div>
+    <div class="row justify-content-center mt-80px">
+      <div class="col-9 d-flex justify-content-between">
+        <div class="pr-20px btn-long d-flex align-items-center" (click)="freeticket.openModal()">
+          <button class="btn btn-long bg-primary text-white py-20px font-poppins font-size-18 font-weight-700">
+            <i-feather name="tag" class="mr-12px"></i-feather>
+            Free ticket
+          </button>
+        </div>
+        <div class="btn-long pl-20px" (click)="paidticket.openModal()">
+          <button class="btn btn-long bg-primary py-20px text-white font-weight-700 font-size-18 font-poppins">
+            <i-feather name="dollar-sign" class="mr-12px"></i-feather>
+            Paid tickets
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row py-16px justify-content-center box-shadow position-fixed bottom-0">
+    <div class="col-9 d-flex justify-content-end align-items-center">
+      <button class="btn btn-primary ml-40px py-20px px-40px font-weight-700 font-size-18">Share Event</button>
+    </div>
+  </div>
+
+</div>

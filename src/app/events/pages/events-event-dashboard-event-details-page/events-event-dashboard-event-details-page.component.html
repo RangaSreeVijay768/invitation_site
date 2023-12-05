@@ -1,0 +1,148 @@
+<events-set-event-meta-data-no-template
+        [eventInfo]="eventInfo"
+></events-set-event-meta-data-no-template>
+<div class="row justify-content-center mt-40px mb-168px">
+    <div class="col-9 bg-white pl-24px pt-40px rounded-2 box-shadow-purple">
+        <div class="row mb-40px" *ngIf="eventInfo.event.status==='CREATED'">
+            <div class="col-12 d-flex align-items-center ">
+                <label class="font-size-32 font-weight-500 font-poppins text-red">Draft event</label>
+                <img src="assets/images/Ellipse.svg" class="ml-12px mr-12px">
+                <label class="text-grey-2 font-size-18 font-weight-400 font-poppins">Last edited 5 days ago</label>
+                <!--                <label>Created: {{eventInfo.event.created_time|appDateFormat:'DDD MMMM'}}</label>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7 mb-40px">
+
+                <images-get-image-by-entity-id-and-image-type
+                        [entityId]="eventInfo.event.event_id"
+                        [entityType]="'EVENT_PROFILE_PIC'"
+                        #imageComponent
+                >
+                </images-get-image-by-entity-id-and-image-type>
+                <div *ngIf="imageComponent.image">
+                    <img class="border-radius-10px" height="346px" width="436px"
+                         src="{{imageComponent.image.uploaded_file.file_link}}">
+                </div>
+                <div *ngIf="!imageComponent.image">
+                    <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+                            class="cursor-pointer"
+                            [alt]="eventInfo.event.event_title"
+                            [entityId]="eventInfo.event.event_id"
+                            [entityType]="'EVENT_PROFILE_PIC'"
+                            [size]="150"
+                            [round]="false"
+                    ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+                </div>
+                <label class="font-poppins font-weight-700 font-size-18 mt-40px">Event title</label>
+                <div class="row">
+                    <div class="col-9">
+                        <label class="font-weight-700 font-size-32 font-poppins mt-20px">{{eventInfo.event.event_title}}</label>
+                    </div>
+                </div>
+                <div class="" *ngIf="eventInfo.event_location">
+                    <div class="d-flex d-inline-block mt-32px">
+                        <i-feather name="map-pin" class="mr-12px text-primary"></i-feather>
+                        <label class="font-size-18 font-weight-700 font-poppins">Location</label>
+                    </div>
+                    <br>
+                    <label
+                            class="pr-12px mb-32px text-font-color-1 font-size-18 font-poppins">{{eventInfo.event_location|eventsEventLocationToHumanReadable:eventInfo.event.location_available_status}}</label><br>
+                </div>
+                <div class="d-flex d-inline-block">
+                    <i-feather name="calendar" class="mr-12px text-primary"></i-feather>
+                    <label class="font-weight-700 font-size-18 font-poppins">Date and Time</label>
+                </div>
+                <br>
+                <label class="text-font-color-1 font-size-18 font-poppins">{{eventInfo.event.start_time|appDateTimeToDefaultDateTimeFormat:'MM/dd/yyyy HH:mm a'}}
+                    To {{eventInfo.event.end_time|appDateTimeToDefaultDateTimeFormat:'MM/dd/yyyy HH:mm a'}}</label>
+            </div>
+            <label class="font-size-18 font-weight-700 mb-15px font-poppins">Description/details about event</label><br>
+            <label
+                    class="mb-32px text-font-color-1 font-size-18 font-poppins">{{eventInfo.event.event_description}}</label>
+
+            <div class="row mt-24px pl-24px">
+                <div class="d-flex align-items-center px-0">
+                    <input type="checkbox" class="w-27 h-27">
+                    <label class="ml-12px font-weight-500 font-size-18">Hide guest list</label>
+                </div>
+            </div>
+            <div class="row pl-24px mb-24px">
+                <div class="mt-48px px-0">
+                    <label class="font-weight-700 font-size-18 font-poppins">Visibility</label><br>
+                    <label class="font-poppins font-weight-500 font-size-18 mt-20px">{{eventInfo.event.invitation_policy}}</label><br>
+                    <label class="font-poppins font-size-16 text-grey-1 pt-5"
+                           *ngIf="eventInfo.event.invitation_policy==='EVERYONE'">Invitees can invite guests</label>
+                </div>
+            </div>
+          <events-location-availability-status-form
+            [event]="eventInfo.event"></events-location-availability-status-form>
+            <div class="row pl-24px mt-40px mb-40px">
+                <div class="col-4 d-flex align-items-center bg-background-green border-radius-5px p-8px w-auto">
+                    <i-feather name="info" class="text-primary"></i-feather>
+                    <label class="ml-8px text-green font-size-16 font-poppins font-weight-500 py-4px">Includes free
+                        tickets</label>
+                </div>
+            </div>
+
+
+            <!--      <div class="col-5 mx-0 mb-24px">-->
+            <!--        <i-feather name="users" class="text-primary"></i-feather>-->
+            <!--        <label class="font-size-18 font-weight-700 ml-12px mb-15px font-poppins">Invited</label>-->
+
+            <!--        <div class="bg-white py-15px ph-30px box-shadow br-5px">-->
+            <!--          <div class="row justify-content-between align-items-center mb-15px"-->
+            <!--               *ngFor="let eventInvite of eventInvites">-->
+            <!--            <div class="col-10 d-flex align-items-center d-inline-block">-->
+            <!--              <images-get-image-by-entity-and-type-unique-image-ngx-avatar-->
+            <!--                (click)="userprofile.openModal()" class="cursor-pointer"-->
+            <!--                [alt]="eventInvite.display_name"-->
+            <!--                [entityId]=""-->
+            <!--                [entityType]="'USER_PROFILE_PIC'"-->
+            <!--                [size]="60"-->
+            <!--                [round]="false"-->
+            <!--              ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>-->
+            <!--              <div class="font-size-18 font-weight-500 ml-13px">-->
+            <!--                {{eventInvite.display_name}}-->
+            <!--                <div>-->
+            <!--                  <img src="assets/images/indian%20flag.png" height="20" class="mr-12px">-->
+            <!--                  <img src="assets/images/img.png" height="5" width="5" class="mr-12px">-->
+            <!--                  <label class="font-size-14 text-grey-1 mb-0">Invited-->
+            <!--                    by {{event_info.created_by.display_name}} </label>-->
+            <!--                </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
+            <!--            <div class="col-2">-->
+            <!--              <i-feather name="instagram" class="d-flex align-items-center w-40 "></i-feather>-->
+            <!--            </div>-->
+            <!--          </div>-->
+
+            <!--        </div>-->
+            <!--      </div>-->
+        </div>
+    </div>
+</div>
+
+<div class="row bg-white py-16px justify-content-center box-shadow position-fixed bottom-0 w-100 m-0"
+     *ngIf="eventInfo.event.status==='CREATED'">
+    <div class="col-9 px-0 d-flex justify-content-end">
+
+
+        <button class="btn btn-sm bg-white border border-primary text-primary ml-24px py-12px px-24px font-weight-700 font-size-18"
+                (click)="navigateToEditEvent()"
+        >
+            <div class="justify-content-between">
+                <i-feather name="edit-2" class="mr-12px text-primary"></i-feather>
+                Edit event
+            </div>
+        </button>
+        <div class="ml-32px">
+            <events-publish-event [event]="eventInfo.event" [eventInfo]="eventInfo"
+                                  (eventPublished)="notificationsService.success('Success','Published event');
+             navigateToEventInvitationPage(eventInfo.event.event_id)"></events-publish-event>
+        </div>
+    </div>
+</div>
+
+
+

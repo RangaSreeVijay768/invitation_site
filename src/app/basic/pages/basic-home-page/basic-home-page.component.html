@@ -1,0 +1,105 @@
+<!--&lt;!&ndash;<events-get-all-events-no-template&ndash;&gt;-->
+<!--&lt;!&ndash;  #getAllEventsNoTemplateComponent></events-get-all-events-no-template>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<events-get-all-event-infos-no-template&ndash;&gt;-->
+<!--&lt;!&ndash;  #getAllEventInfosNoTemplateComponent></events-get-all-event-infos-no-template>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<signedin-top-nav></signedin-top-nav>&ndash;&gt;-->
+
+<!--<div class="row pt-56px pb-100px justify-content-center">-->
+<!--  <div class="col-9">-->
+<!--    <img src="/assets/images/home-page-welcome.gif" class="d-inline-block vertical-align-middle" style="height: 80px">-->
+<!--    <label class="d-inline-block vertical-align-middle mb-0 pl-16px font-inter font-weight-700 font-size-46">-->
+<!--      Welcome, {{loggedAccount.display_name}}-->
+<!--    </label>-->
+<!--    <br>-->
+<!--    <label class="mt-80px mb-0 font-inter text-font-color-1 font-weight-700 font-size-24">-->
+<!--      Best events in Seattle, US-->
+<!--    </label>-->
+
+<!--    &lt;!&ndash;  events filters&ndash;&gt;-->
+<!--    <div class="mt-40px mx-0">-->
+<!--      <div class="d-inline-block mr-54px text-align-center">-->
+<!--        <label-->
+<!--          class="ph-10px pb-12px mb-0 font-size-16 border-bottom border-2 border-primary font-weight-500 text-primary">All</label>-->
+<!--      </div>-->
+<!--      <div class="d-inline-block mr-54px text-align-center">-->
+<!--        <label class="ph-10px pb-12px mb-0 font-size-16 font-weight-500 text-font-color-1">For you</label>-->
+<!--      </div>-->
+<!--      <div class="d-inline-block mr-54px text-align-center">-->
+<!--        <label class="ph-10px pb-12px mb-0 font-size-16 font-weight-500 text-font-color-1">Online</label>-->
+<!--      </div>-->
+<!--      <div class="d-inline-block mr-54px text-align-center">-->
+<!--        <label class="ph-10px pb-12px mb-0 font-size-16 font-weight-500 text-font-color-1">In person</label>-->
+<!--      </div>-->
+<!--      <div class="d-inline-block mr-54px text-align-center">-->
+<!--        <label class="ph-10px pb-12px mb-0 font-size-16 font-weight-500 text-font-color-1">Indoor</label>-->
+<!--      </div>-->
+<!--      <div class="d-inline-block mr-54px text-align-center">-->
+<!--        <label class="ph-10px pb-12px mb-0 font-size-16 font-weight-500 text-font-color-1">Indoor</label>-->
+<!--      </div>-->
+<!--      <div class="d-inline-block mr-54px text-align-center">-->
+<!--        <label class="ph-10px pb-12px mb-0 font-size-16 font-weight-500 text-font-color-1">Free</label>-->
+<!--      </div>-->
+<!--      <div class="d-inline-block mr-54px text-align-center">-->
+<!--        <label class="ph-10px pb-12px mb-0 font-size-16 font-weight-500 text-font-color-1">Paid</label>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash;  events&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="row mt-32px mx-0">&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="col-6 mt-24px cursor-pointer" [class.pr-10px]="i%2===0"&ndash;&gt;-->
+<!--&lt;!&ndash;           [class.pl-0]="i%2===0" [class.pl-10px]="i%2!=0" [class.pr-0]="i%2!=0"&ndash;&gt;-->
+<!--&lt;!&ndash;           *ngFor="let eventInfo of getAllEventInfosNoTemplateComponent.eventInfos; let i = index">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="row br-10px bg-white p-16px mx-0"&ndash;&gt;-->
+<!--&lt;!&ndash;             routerLink="/signedin/events/eventdetails/{{eventInfo.event.event_id}}">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-5 pl-0 pr-24px">&ndash;&gt;-->
+<!--&lt;!&ndash;            <images-get-image-by-entity-id-and-image-type&ndash;&gt;-->
+<!--&lt;!&ndash;              [entityId]="eventInfo.event.event_id"&ndash;&gt;-->
+<!--&lt;!&ndash;              [entityType]="'EVENT_PROFILE_PIC'"&ndash;&gt;-->
+<!--&lt;!&ndash;              #imageComponent&ndash;&gt;-->
+<!--&lt;!&ndash;            >&ndash;&gt;-->
+<!--&lt;!&ndash;            </images-get-image-by-entity-id-and-image-type>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div *ngIf="imageComponent.image">&ndash;&gt;-->
+<!--&lt;!&ndash;              <img style="width: 100%; object-fit: cover; height: 150px;"&ndash;&gt;-->
+<!--&lt;!&ndash;                   src="{{imageComponent.image.uploaded_file.file_link}}">&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-7 px-0">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="mb-0 font-weight-700 font-size-18 text-font-color-1 font-poppins">{{eventInfo.event.event_title}}</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="d-inline-block mb-0 mt-16px pr-12px mr-12px border-end border-grey-2 font-size-16 text-grey-2 font-poppins">25th&ndash;&gt;-->
+<!--&lt;!&ndash;              Dec</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="d-inline-block mb-0 font-size-16 text-grey-2 font-poppins">07:30 PM - 11:30PM</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="d-inline-block mb-0 mt-16px font-size-16 text-grey-2 font-poppins">112, bulved&ndash;&gt;-->
+<!--&lt;!&ndash;              street</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="d-inline-block mb-0 mt-16px font-weight-500 font-size-16 text-green font-poppins">Free</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="btn p-0 d-inline-block mb-0 ml-32px font-poppins font-weight-500 font-size-16 text-primary">&ndash;&gt;-->
+<!--&lt;!&ndash;              <i-feather name="Share2" class="d-inline-block text-primary" style="width: 20px"></i-feather>&ndash;&gt;-->
+<!--&lt;!&ndash;              Share&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="row mx-0 mt-56px">&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="col-12 px-0 text-center">&ndash;&gt;-->
+<!--&lt;!&ndash;        <button class="btn btn-color-primary font-poppins font-weight-700 font-size-24 pv-24px ph-138px"&ndash;&gt;-->
+<!--&lt;!&ndash;                [routerLink]="'/signedin/events/allevents'">&ndash;&gt;-->
+<!--&lt;!&ndash;          See more events&ndash;&gt;-->
+<!--&lt;!&ndash;        </button>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--    <events-get-all-event-infos-scrolling [numberOfItems]="5">-->
+
+<!--    </events-get-all-event-infos-scrolling>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<events-bottom-nav-footer></events-bottom-nav-footer>-->

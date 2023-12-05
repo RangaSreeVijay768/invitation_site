@@ -1,0 +1,50 @@
+<!--<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder">-->
+<!--  <div class="row mt-32px mx-0 ml-16px">-->
+<!--    <div class="d-flex align-items-center px-0">-->
+<!--      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">Contact type</label>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"-->
+<!--                                     [model]="formModelMap['contact_type']"></dynamic-ng-bootstrap-form-control>-->
+<!--</form>-->
+
+<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder">
+  <div class="row mt-32px mx-0 ml-16px">
+    <div class="d-flex align-items-center px-0">
+      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">Display name</label>
+    </div>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['display_name']"></dynamic-ng-bootstrap-form-control>
+</form>
+
+<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder" *ngIf="contactCreationType==='PHONE_NUMBER'">
+  <div class="row mt-32px mx-0">
+    <div class="d-flex align-items-center px-0">
+      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">Enter Phone number</label>
+    </div>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['phone_number']"></dynamic-ng-bootstrap-form-control>
+</form>
+
+<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder" *ngIf="contactCreationType==='EMAIL'">
+  <div class="row mt-32px mx-0">
+    <div class="d-flex align-items-center px-0">
+      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">Enter email</label>
+    </div>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['email_id']"></dynamic-ng-bootstrap-form-control>
+</form>
+
+<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder" *ngIf="contactCreationType==='WHATSAPP_NUMBER'">
+  <div class="row mt-32px mx-0">
+    <div class="d-flex align-items-center px-0">
+      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">Enter Whatsapp number</label>
+    </div>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['whatsapp_number']"></dynamic-ng-bootstrap-form-control>
+</form>
+

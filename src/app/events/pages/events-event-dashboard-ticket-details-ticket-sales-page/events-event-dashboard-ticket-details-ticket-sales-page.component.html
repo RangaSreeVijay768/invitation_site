@@ -1,0 +1,162 @@
+<events-get-order-items-count-by-event-ticket-no-template
+  (orderItemsCountByEventTicketReceived)="orderItemCount = getOrderItemsCountByEventTicketNoTemplateComponent.orderItems"
+  #getOrderItemsCountByEventTicketNoTemplateComponent>
+</events-get-order-items-count-by-event-ticket-no-template>
+
+<events-get-user-event-tickets-count-by-event-no-template
+  (userEventTicketsCountByEventReceived)="userEventTicketCount = getUserEventTicketsCountByEventComponent.userEventTickets"
+  #getUserEventTicketsCountByEventComponent></events-get-user-event-tickets-count-by-event-no-template>
+
+<events-get-user-event-tickets-by-event-no-template
+  [event]="eventInfo.event"
+  (userEventTicketsReceived)="user_event_tickets = getUserEventTicketsByEventNoTemplateComponent.user_event_tickets"
+  #getUserEventTicketsByEventNoTemplateComponent></events-get-user-event-tickets-by-event-no-template>
+
+<div class="row justify-content-between">
+  <div class="px-20px">
+
+    <div class="bg-white box-shadow-purple">
+      <div class="row ml-24px">
+        <div class="col-4 mt-24px py-4px d-flex align-items-center bg-background-purple">
+          <img src="../../../../assets/images/sales.png" width="24" height="24">
+          <label class="ml-8px text-grey-2 font-size-16 font-poppins">Sales by ticket type</label>
+        </div>
+      </div>
+
+      <div class="row ml-24px mr-24px row-align-center mt-20px border-bottom border-grey-1 pb-24px text-align-start">
+        <div class="d-flex justify-content-between py-20px ph-16px bg-grey-3">
+          <div>
+            <i-feather name="tag" class="text-primary mr-8px"></i-feather>
+            <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Ticket type</label>
+          </div>
+          <div class="col-6 d-flex justify-content-between">
+            <div>
+              <i-feather name="dollar-sign" class="text-primary mr-8px"></i-feather>
+              <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Ticket price</label>
+            </div>
+            <div>
+              <i-feather name="pie-chart" class="text-primary mr-8px"></i-feather>
+              <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Ticket sold</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row ml-24px mr-24px row-align-center border-bottom border-grey-1 text-align-start">
+        <div class="d-flex justify-content-between py-20px ph-16px">
+          <div>
+            <label class="font-size-18 font-weight-500 font-poppins">Ticket type 1</label>
+          </div>
+          <div class="col-6 d-flex justify-content-between">
+            <div>
+              <label class="font-size-18 font-weight-500 font-poppins">$34</label>
+            </div>
+            <div>
+              <label class="font-size-18 font-weight-500 font-poppins">21/45</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row ml-24px mr-24px row-align-center border-bottom border-grey-1 text-align-start">
+        <div class="d-flex justify-content-between py-20px ph-16px">
+          <div>
+            <label class="font-size-18 font-weight-500 font-poppins">Ticket type 1</label>
+          </div>
+          <div class="col-6 d-flex justify-content-between">
+            <div>
+              <label class="font-size-18 font-weight-500 font-poppins">$34</label>
+            </div>
+            <div>
+              <label class="font-size-18 font-weight-500 font-poppins">21/45</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row mt-32px">
+  <div class="col-12 bg-white pv-24px px-20px">
+    <div class="row ml-24px">
+      <div class="col-3 mb-24px py-4px d-flex justify-content-center align-items-center bg-background-purple">
+        <img src="../../../../assets/images/payout.png" width="24" height="24">
+        <label class="ml-8px text-grey-2 font-size-16 font-poppins">Recent purchases</label>
+      </div>
+    </div>
+
+    <div class="row mx-0" *ngIf="!user_event_tickets">
+      <div class="col-12 text-align-center px-0">
+        <img src="assets/images/no-promocodes.png" width="202">
+        <br>
+        <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+          No guests for this event
+        </label>
+      </div>
+    </div>
+
+    <div class="row row-align-center border-bottom border-grey-1 pb-24px ml-24px mr-24px" *ngIf="user_event_tickets">
+      <div class="d-flex justify-content-between bg-grey-3 py-20px ph-16px">
+        <div class="col-5">
+          <div class="row">
+            <div class="col-6">
+              <i-feather name="hash" class="text-primary mr-8px"></i-feather>
+              <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Purchase ID</label>
+            </div>
+            <div class="col-6 px-0">
+              <i-feather name="user" class="text-primary mr-8px"></i-feather>
+              <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Buyer name</label>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-4 px-0">
+              <i-feather name="pie-chart" class="text-primary mr-8px"></i-feather>
+              <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Quantity</label>
+            </div>
+            <div class="col-3 px-0">
+              <i-feather name="dollar-sign" class="text-primary mr-8px"></i-feather>
+              <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Price</label>
+            </div>
+            <div class="col-5 px-0">
+              <i-feather name="calendar" class="text-primary mr-8px"></i-feather>
+              <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Purchase date</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mr-24px row-align-center border-bottom border-grey-1 ml-24px mr-24px " *ngFor="let user_event_ticket of user_event_tickets">
+      <div class="d-flex justify-content-between py-20px ph-16px">
+        <div class="col-5">
+
+          <div class="row">
+            <div class="col-6">
+              <label class="font-size-18 font-weight-500 font-poppins text-primary">{{user_event_ticket.user_event_ticket_id}}</label>
+            </div>
+            <div class="col-6">
+              <label class="font-size-18 font-weight-500 font-poppins">{{user_event_ticket.user_account.display_name}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-4 text-align-center">
+              <label class="font-size-18 font-weight-500 font-poppins">{{user_event_ticket.ticket_quantity}}</label>
+            </div>
+            <div class="col-3 text-align-center">
+              <label class="font-size-18 font-weight-500 font-poppins">{{user_event_ticket.event_ticket.ticket_type}}</label>
+            </div>
+            <div class="col-5 text-align-center">
+              <label class="font-size-18 font-weight-500 font-poppins">{{user_event_ticket.event_ticket.created_time}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+<swiper-container #swiper pagination="true" pagination-clickable="true" >
+  <swiper-slide>
+<!--      <div class="row ">-->
+<!--        <div class="px-0">-->
+<!--          <label class="font-size-32 font-weight-700 font-poppins">Sign up to start</label><br>-->
+<!--          <label class="mt-8px font-poppins text-grey-2 font-weight-400">Already have account?<span-->
+<!--            class="text-primary font-weight-400 cursor-pointer" routerLink="/basic/login"> Login </span></label>-->
+
+<!--          <users-sign-up-form-->
+
+<!--            (userAuthTokenReceived) = "verifyUserAccountFormComponent.email_id = signUpFormComponent.email_id;-->
+<!--            slideNext()"-->
+<!--            (messageDeliveryReceived)="verifyUserAccountFormComponent.messageDelivery = signUpFormComponent.messageDelivery"-->
+<!--            #signUpFormComponent></users-sign-up-form>-->
+<!--          <div class="mt-40px">-->
+<!--            <button-->
+<!--              class="btn bg-no-change font-poppins text-white font-weight-700 font-size-18 btn-long btn-color-primary py-24px br-10px"-->
+<!--              [promiseBtn]="signUpFormComponent.sign_up_subscription$"-->
+<!--              (click)="signUpFormComponent.signUp(signUpFormComponent.createRequestData())"-->
+<!--            >-->
+<!--              Sign up-->
+<!--            </button>-->
+<!--          </div>-->
+
+<!--          <div class="mt-40px">-->
+<!--            <button class="btn border-0 btn-long box-shadow-purple py-16px">-->
+<!--              <img src="assets/images/google-logo.png" height="24px">-->
+<!--              <label class="mb-0 font-weight-500 font-poppins font-size-18 d-inline-block ml-24px">Sign up-->
+<!--                with Google</label>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--          <div class="mt-20px">-->
+<!--            <button class="btn border-0 btn-long box-shadow-purple py-16px"-->
+<!--            >-->
+<!--              <img src="assets/images/facebook-logo.png" height="24px">-->
+<!--              <label class="mb-0 font-weight-500 font-poppins font-size-18 d-inline-block ml-24px">Sign up-->
+<!--                with Facebook</label>-->
+<!--            </button>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+
+    <div class="row justify-content-center">
+      <div class="col-9 px-0 d-flex justify-content-start">
+        <label class="font-size-32 font-weight-700 font-poppins text-align-start">Sign up to start</label><br>
+      </div>
+      <div class="col-9 d-flex justify-content-start px-0">
+        <label class="mt-8px font-poppins text-grey-2 font-weight-400 text-align-start">Already have account?<span
+          class="text-primary font-weight-400 cursor-pointer" routerLink="/basic/login"> Login </span></label>
+      </div>
+      <div class="col-9 px-0">
+        <!--        <users-start-login-form-->
+        <!--          (userSignInStarted)="verifyUserAccountFormComponent.email_id = signInFormComponent.email_id; slideNext()"-->
+        <!--          (messageDeliveryReceived)="verifyUserAccountFormComponent.messageDelivery = signInFormComponent.messageDelivery"-->
+        <!--          #signInFormComponent></users-start-login-form>-->
+
+        <users-sign-up-form
+
+          (userAuthTokenReceived) = "verifyUserAccountFormComponent.email_id = signUpFormComponent.email_id;
+            slideNext()"
+          (messageDeliveryReceived)="verifyUserAccountFormComponent.messageDelivery = signUpFormComponent.messageDelivery"
+          #signUpFormComponent></users-sign-up-form>
+
+
+        <div class="mt-40px">
+          <button
+            class="btn bg-no-change font-poppins text-white font-weight-700 font-size-18 btn-long btn-color-primary py-24px br-10px"
+            [promiseBtn]="signUpFormComponent.sign_up_subscription$"
+            (click)="signUpFormComponent.signUp(signUpFormComponent.createRequestData())"
+          >
+            Sign up
+          </button>
+        </div>
+
+        <div class="mt-40px">
+          <button class="btn btn-long box-shadow-purple border-0 py-16px">
+            <img src="assets/images/google-logo.png" height="24px">
+            <label class="mb-0 font-weight-500 font-poppins font-size-18 d-inline-block ml-24px">Sign up with
+              Google</label>
+          </button>
+        </div>
+        <div class="mt-20px">
+          <button class="btn btn-long box-shadow-purple border-0 py-16px">
+            <img src="assets/images/facebook-logo.png" height="24px">
+            <label class="mb-0 font-weight-500 font-poppins font-size-18 d-inline-block ml-24px">Sign up with
+              Facebook</label>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </swiper-slide>
+
+  <swiper-slide>
+      <div class="row justify-content-center">
+        <div class="col-12 px-0">
+          <label class="font-size-32 font-weight-700 font-poppins pr-180px w-100 text-align-start">Verification</label><br>
+          <label class="mt-8px font-poppins text-grey-2 font-weight-400 pr-180px w-100 text-align-start">We have sent code to your Email</label>
+
+          <users-verify-user-account-form
+            (userAuthTokenReceived)="navigateTo()"
+            #verifyUserAccountFormComponent></users-verify-user-account-form>
+
+          <div class="mt-40px">
+            <button
+              [promiseBtn]="verifyUserAccountFormComponent.sign_up_verification_subscription$"
+              (click)="verifyUserAccountFormComponent.verifyUserAccountVerfication(verifyUserAccountFormComponent.createRequestData())"
+              class="btn bg-no-change font-poppins text-white font-weight-700 font-size-18 btn-long btn-color-primary py-24px br-10px"
+            >
+              Verify
+            </button>
+          </div>
+          <label class="mt-40px font-size-18 font-weight-500 font-poppins text-grey-2">Didn’t receive code? <span class="text-underline text-primary">Resend</span></label>
+        </div>
+      </div>
+
+  </swiper-slide>
+
+</swiper-container>
+

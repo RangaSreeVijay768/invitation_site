@@ -1,0 +1,16 @@
+<div class="row justify-content-center">
+  <div class="col-9 px-0">
+    <label class="mb-0 mt-56px font-weight-700 font-size-32">My Profile</label>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-9 mt-56px px-0">
+    <div class="d-inline-block" *ngFor="let option of options">
+      <label class="tab-button" routerLinkActive="active"
+             (click)="selected_option=option.value" [routerLink]="option.link">{{option.text}}</label>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

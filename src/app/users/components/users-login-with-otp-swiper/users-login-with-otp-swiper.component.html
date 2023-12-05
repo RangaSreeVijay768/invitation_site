@@ -1,0 +1,167 @@
+<swiper-container #swiper pagination="true" pagination-clickable="true">
+
+    <swiper-slide>
+        <users-login-with-facebook
+            #loginWithFacebookComponent></users-login-with-facebook>
+
+        <div class="row justify-content-center">
+          <div class="col-9">
+            <div class="row">
+              <div class="d-flex justify-content-start">
+                <label class="font-size-32 font-weight-700 font-poppins">Welcome back to Eventify</label>
+              </div>
+              <div class="d-flex justify-content-start">
+                <label class="mt-8px font-poppins text-grey-2 font-weight-400 mb-0">
+                  Don't have an account?
+                  <span class="text-primary font-weight-400 cursor-pointer" routerLink="/basic/signup">
+              Create a free account
+            </span>
+                </label>
+              </div>
+              <div class="">
+                <!--        <users-start-login-form-->
+                <!--          (userSignInStarted)="verifyUserAccountFormComponent.email_id = signInFormComponent.email_id; slideNext()"-->
+                <!--          (messageDeliveryReceived)="verifyUserAccountFormComponent.messageDelivery = signInFormComponent.messageDelivery"-->
+                <!--          #signInFormComponent></users-start-login-form>-->
+                <users-sign-in-form
+                  (userSignInCreated)="setUserAuthTokenAndNavigate($event)"
+                  #usersSignInFormComponent
+                ></users-sign-in-form>
+
+
+                <div class="mt-40px">
+                  <button
+                    class="btn bg-no-change font-poppins text-white font-weight-700 font-size-18 btn-long btn-color-primary py-24px br-10px"
+                    [promiseBtn]="usersSignInFormComponent.sign_in_subscription$"
+                    (click)="usersSignInFormComponent.signIn(usersSignInFormComponent.createRequestData())">
+                    Login
+                  </button>
+                </div>
+
+                <div class="w-100 d-flex justify-content-center mt-20px font-weight-500">OR</div>
+
+                <div class="mt-20px" (click)="slideNext()">
+                  <button
+                    class="font-poppins text-white font-weight-700 font-size-18 btn-long bg-white border-2px-7F56D9 font-color-7F56D9 py-24px br-10px">
+                    Login with OTP
+                  </button>
+                </div>
+
+                <div class="mt-40px">
+                  <asl-google-signin-button logo_alignment="left" type='standard' size='large' text="continue_with"
+                                            theme="outline" shape="rectangular"></asl-google-signin-button>
+                  <users-sign-in-user-from-google-no-template
+                    (userAuthTokenReceived)="setUserAuthTokenAndNavigate($event)"
+                  ></users-sign-in-user-from-google-no-template>
+                </div>
+
+                <div class="mt-20px">
+                  <button class="btn btn-long box-shadow-purple border-0 py-16px"
+                          (click)="loginWithFacebookComponent.signInWithFB()">
+                    <img src="assets/images/facebook-logo.png" height="24px">
+                    <label class="mb-0 font-weight-500 font-poppins font-size-18 d-inline-block ml-24px">Login with
+                      Facebook</label>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </swiper-slide>
+
+
+    <swiper-slide>
+
+        <div class="row justify-content-center">
+          <div class="col-9">
+              <label class="d-flex font-size-32 font-weight-700 font-poppins text-align-start">Login with OTP</label>
+              <label class="mt-8px font-poppins text-grey-2 font-weight-400 mb-0 text-align-start">
+                Enter your registered email address or mobile number to change your Eventreply account password
+              </label>
+            <div class="">
+              <users-start-login-form
+                (userSignInStarted)="verifyUserAccountFormComponent.email_id = signInFormComponent.email_id; slideNext()"
+                (messageDeliveryReceived)="verifyUserAccountFormComponent.messageDelivery = signInFormComponent.messageDelivery"
+                #signInFormComponent></users-start-login-form>
+
+
+              <div class="mt-40px">
+                <button
+                  class="btn bg-no-change font-poppins text-white font-weight-700 font-size-18 btn-long btn-color-primary py-24px br-10px"
+                  [promiseBtn]="signInFormComponent.start_login_subscription$"
+                  (click)="signInFormComponent.startLogin(signInFormComponent.createRequestData())">
+                  Send Verification Code
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+    </swiper-slide>
+
+
+  <swiper-slide>
+
+    <div class="row justify-content-center">
+      <div class="col-9">
+        <label class="d-flex font-size-32 font-weight-700 font-poppins text-align-start">Login with OTP</label>
+        <label class="mt-8px font-poppins text-grey-2 font-weight-400 mb-0 text-align-start">
+          Enter the code we have sent to your email or mobile number
+        </label>
+        <div class="">
+          <users-verify-user-account-verification-login-form
+            (userAuthTokenReceived)="setUserAuthTokenAndNavigate($event)"
+
+            #verifyUserAccountFormComponent></users-verify-user-account-verification-login-form>
+
+
+          <div class="mt-40px">
+            <button
+              class="btn bg-no-change font-poppins text-white font-weight-700 font-size-18 btn-long btn-color-primary py-24px br-10px"
+              [promiseBtn]="verifyUserAccountFormComponent.sign_in_verification_subscription$"
+              (click)="verifyUserAccountFormComponent.verifyUserAccountVerficationLogin(verifyUserAccountFormComponent.createRequestData())">
+              Verify
+            </button>
+          </div>
+          <label class="mt-40px font-size-18 font-weight-500 font-poppins">Didn’t receive code? <span
+            class="text-underline text-primary">Resend</span></label>
+        </div>
+
+      </div>
+    </div>
+  </swiper-slide>
+
+
+
+
+
+
+<!--    <swiper-slide>-->
+<!--        <div class="row justify-content-center">-->
+<!--            <div class="col-9">-->
+<!--                <label class="font-size-32 font-weight-700 font-poppins">Verification</label><br>-->
+<!--                <label class="mt-8px font-poppins text-grey-2 font-weight-400">We have sent code to your Email</label>-->
+
+<!--                <users-verify-user-account-verification-login-form-->
+<!--                        (userAuthTokenReceived)="setUserAuthTokenAndNavigate($event)"-->
+
+<!--                        #verifyUserAccountFormComponent></users-verify-user-account-verification-login-form>-->
+
+<!--                <div class="mt-40px">-->
+<!--                    <button-->
+<!--                            [promiseBtn]="verifyUserAccountFormComponent.sign_in_verification_subscription$"-->
+<!--                            (click)="verifyUserAccountFormComponent.verifyUserAccountVerficationLogin(verifyUserAccountFormComponent.createRequestData())"-->
+<!--                            class="btn bg-no-change font-poppins text-white font-weight-700 font-size-18 btn-long btn-color-primary py-24px br-10px"-->
+<!--                    >-->
+<!--                        Verify-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--                <label class="mt-40px font-size-18 font-weight-500 font-poppins">Didn’t receive code? <span-->
+<!--                        class="text-underline text-primary">Resend</span></label>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </swiper-slide>-->
+
+</swiper-container>
+

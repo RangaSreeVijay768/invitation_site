@@ -1,0 +1,28 @@
+<!--<images-get-image-by-entity-id-and-image-type-no-template-->
+<!--  [entityId]="event.event_id"-->
+
+<!--  [entityType]="'EVENT_PROFILE_PIC'"-->
+<!--  #imageComponent></images-get-image-by-entity-id-and-image-type-no-template>-->
+
+<events-create-event-form
+        (eventCreated)="navigateToDashboardPage($event)"
+        #createEventFormComponent></events-create-event-form>
+
+<div class="row py-16px justify-content-center box-shadow-purple mx-0 position-fixed bottom-0 bg-color-white z-index-2 w-100 bg-color-white">
+    <div class="col-9 d-flex justify-content-end align-items-center">
+        <button
+                class="btn btn-outline-primary border-2 d-flex align-items-center py-16px px-40px font-weight-700 font-size-18"
+                (click)="goBack()"
+        >
+            Cancel
+        </button>
+        <button class="btn btn-primary ml-40px py-16px px-40px font-weight-700 font-size-18 cursor-pointer"
+                [promiseBtn]="createEventFormComponent.create_event_subscription$"
+                [disabled]="!createEventFormComponent.formGroup.valid"
+                (click)="createEventFormComponent.createEvent(createEventFormComponent.createRequestData())"
+        >
+<!--            [disabled]="!createEventFormComponent.formGroup.valid"-->
+            Create event
+        </button>
+    </div>
+</div>

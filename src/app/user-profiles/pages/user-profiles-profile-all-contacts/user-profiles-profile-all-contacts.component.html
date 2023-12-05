@@ -1,0 +1,101 @@
+<user-profiles-user-contacts-from-csv-swiper-modal
+  #userProfilesUserContactsFromCsvSwiperModalComponent></user-profiles-user-contacts-from-csv-swiper-modal>
+
+<user-profiles-create-user-contact-modal
+  #createUserContactModalComponent></user-profiles-create-user-contact-modal>
+
+<user-profiles-delete-user-contact
+#deleteUserContactComponent></user-profiles-delete-user-contact>
+
+<user-profiles-create-user-contact-select-contact-type-modal
+  #createUserContactSelectContactTypeModalComponent></user-profiles-create-user-contact-select-contact-type-modal>
+
+<div class="row justify-content-center mt-40px mb-32px">
+  <div class="col-9 ph-16px bg-white rounded-4 box-shadow">
+    <div class="">
+      <div class="row mt-24px mb-24px">
+        <div class="col-12 d-flex justify-content-end">
+          <button class="btn bg-white text-primary border-primary py-8px ph-16px mr-12px"
+                  (click)="createUserContactSelectContactTypeModalComponent.openModal()">
+            <label class="font-poppins font-weight-500 mr-12px cursor-pointer py-8px">
+              <i-feather name="user-plus" class="mr-12px"></i-feather>Create contact</label>
+          </button>
+
+<!--          <button class="btn bg-white text-primary border-primary py-8px ph-16px mr-12px"-->
+<!--                  (click)="deleteUserContactComponent.deleteUserContact(deleteUserContactComponent.createRequestData('c35afcf5-03cf-40fa-86f1-e5649d7d6146'))">-->
+<!--            <label class="font-poppins font-weight-500 mr-12px cursor-pointer">Delete contact</label>-->
+<!--          </button>-->
+
+          <button class="btn bg-white text-primary border-primary py-8px ph-16px"
+          (click)="userProfilesUserContactsFromCsvSwiperModalComponent.openModal()">
+            <label class="font-poppins font-weight-500 mr-12px cursor-pointer">Upload CSV</label>
+            <i-feather name="upload" class="font-poppins font-weight-500 cursor-pointer"></i-feather>
+          </button>
+        </div>
+      </div>
+      <div class="row border-bottom border-grey-1 mx-0 pb-32px">
+        <div class="col-7">
+          <div class="row row-align-center mt-32px">
+            <div class="col-3">
+              <label class="font-weight-500 font-poppins font-size-18">Sort by:</label>
+            </div>
+            <!--            <div class="col-8 ml-20px d-flex justify-content-between py-8px ph-16px border border-grey-1">-->
+            <!--              <label class="font-weight-500 font-size-16 font-poppins text-primary">Upcoming birthdays</label>-->
+            <!--              <i-feather name="chevron-down"></i-feather>-->
+            <!--            </div>-->
+            <div class="col-8 pr-35px">
+              <div class="row row-align-center justify-content-between border border-grey-1 br-5px">
+                <div ngbDropdown class="pl-0">
+                  <div class="font-color-grey-2 d-flex align-items-center" id="dropdownBasic1"
+                       ngbDropdownToggle>
+                    <div class="col-11 cursor-pointer py-21px ph-16px font-color-9747FF">
+                      <label class="font-weight-500 font-size-18 mb-0 cursor-pointer">{{pastGuestSortFilter}}</label>
+                    </div>
+                    <div class="col-1 px-0">
+                      <i-feather name="chevron-down" class="cursor-pointer"></i-feather>
+                    </div>
+                  </div>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBas" class="w-100 border-1px-9747FF">
+                    <div *ngFor="let filter of pastGuestSortFilters" class="px-20px">
+                      <div ngbDropdownItem
+                           class="font-weight-500 border-radius-5px border-left-3px-9747FF w-100"
+                           (click)="changePastGuestSortFilter(filter)">
+                        <label class="font-color-grey-2 font-weight-500 font-poppins">{{filter}}</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="row mt-32px mb-32px">
+        <div class="col-12">
+          <div class="row justify-content-center">
+
+<!--            <user-profiles-get-event-attendess-of-user-account-scrolling-->
+<!--              [userAccount]="loggedAccount"-->
+<!--            ></user-profiles-get-event-attendess-of-user-account-scrolling>-->
+
+<!--            <user-profiles-profile-all-contacts-scrolling-->
+<!--              [numberOfItems]="20"-->
+<!--            ></user-profiles-profile-all-contacts-scrolling>-->
+
+            <user-profiles-get-all-user-contacts-by-user-account-scrolling
+              [numberOfItems]="10"
+              ></user-profiles-get-all-user-contacts-by-user-account-scrolling>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

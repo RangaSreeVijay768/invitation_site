@@ -1,0 +1,12 @@
+<!--&lt;!&ndash;<form [formGroup]="formGroup" #createForm="ngForm" >&ndash;&gt;-->
+<!--&lt;!&ndash;    <dynamic-ng-bootstrap-form [group]="formGroup"&ndash;&gt;-->
+<!--&lt;!&ndash;                               [model]="formModel"&ndash;&gt;-->
+<!--&lt;!&ndash;                               (ngbEvent)="emitCreatedOrRemovedEvent($event)"&ndash;&gt;-->
+<!--&lt;!&ndash;    ></dynamic-ng-bootstrap-form>&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
+
+
+<form [formGroup]="formGroup" class="events-search-event-infos-form">
+    <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                       [model]="formModelMap['query']"></dynamic-ng-bootstrap-form-control>
+</form>

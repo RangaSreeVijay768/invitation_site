@@ -1,0 +1,87 @@
+<events-get-user-event-tickets-by-user-account-scrolling-no-template
+  (userEventTicketsReceived)="addItems($event)"
+  [count]="numberOfItems" [columnName]="'createdTime'" [columnOrder]="'DESC'"
+  #component></events-get-user-event-tickets-by-user-account-scrolling-no-template>
+<div infiniteScroll [infiniteScrollDisabled]="disableScroll" [infiniteScrollDistance]="100"
+     [infiniteScrollThrottle]="scrollThrottle" (scrolled)="onScroll()">
+  <div class="row mt-8px justify-content-center">
+    <div class="col-9 px-0">
+      <div class="text-align-end mb-40px px-0">
+        <button
+          class="font-poppins font-weight-500 font-size-18 bg-white text-white bg-primary py-12px ph-24px border border-2 rounded-2 border-primary">
+          Download as CSV
+          <i-feather name="download" class="ml-16px"></i-feather>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-56px mb-56px " *ngIf="!items?.length">
+    <div class="d-flex align-items-center justify-content-center">
+      <img src="assets/images/no-promocodes.png" width="422" height="422">
+    </div>
+    <div class="text-align-center">
+      <label class="font-poppins font-weight-500 font-size-24">Click the item to view details</label>
+    </div>
+  </div>
+
+  <div class=""
+       *ngFor="let user_event_ticket of items">
+    <div class="row justify-content-center">
+      <div class="col-9 border-bottom border-grey-2 py-40px px-0 ">
+
+        <div class="row box-shadow-purple br-10px">
+          <div class="d-flex py-16px ph-24px align-items-center bg-grey-3 brt-10px">
+            <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+              [entityType]="'EVENT_PROFILE_PIC'"
+              [entityId]="user_event_ticket.event_ticket.event?.event_id"
+              [alt]="user_event_ticket.event_ticket.event?.event_title"
+              [size]="70"
+            ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+            <label
+              class="ml-20px font-poppins font-weight-500 font-size-18">{{user_event_ticket.event_ticket.event?.event_title}}</label>
+          </div>
+
+          <div class="bg-white brb-10px">
+            <div class="d-flex align-items-center justify-content-between border-bottom border-grey-3">
+              <div class="py-24px ph-24px">
+                <label class="font-poppins font-weight-400 font-size-24 ">Ticket price: <span
+                  class="text-primary">$5</span></label><br>
+                <label class="font-poppins font-weight-400 font-size-18 py-12px"><span
+                  class="text-grey-2">Purchase date: </span> {{user_event_ticket.created_time|appDateFormat:'DD/MM/YYYY'}}
+                </label><br>
+                <label class="font-poppins font-weight-400 font-size-18"><span
+                  class="text-grey-2">Ticket quantity: </span>
+                  {{user_event_ticket.ticket_quantity}}</label>
+              </div>
+                                          <div class="py-24px ph-24px text-align-end">
+                                              <button
+                                                      class="font-poppins font-weight-500 font-size-18 bg-white text-primary py-8px ph-8px border border-2 rounded-2 border-primary">
+                                                  <i-feather name="rotate-ccw" class="mr-16px"></i-feather>
+                                                  Request refund
+                                              </button>
+                                              <br>
+
+                                              <label class="font-poppins font-weight-400 font-size-16 mt-16px text-grey-2">
+                                                  <i-feather name="info" class="mr-16px"></i-feather>
+                                                  Refund request will be available till 30th may 2023</label>
+                                          </div>
+            </div>
+
+            <!--                        <div class="mt-24px ph-24px">-->
+            <!--                            <label class="font-poppins font-weight-400 font-size-24 ">Ticket price: <span-->
+            <!--                                    class="text-primary">Free</span></label><br>-->
+            <!--                            <label class="font-poppins font-weight-400 font-size-18 py-12px"><span class="text-grey-2">Purchase date: </span>-->
+            <!--                                5/21/23</label><br>-->
+            <!--                            <label class="font-poppins font-weight-400 font-size-18 "><span class="text-grey-2">Ticket quantity: </span>-->
+            <!--                                10</label>-->
+            <!--                        </div>-->
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

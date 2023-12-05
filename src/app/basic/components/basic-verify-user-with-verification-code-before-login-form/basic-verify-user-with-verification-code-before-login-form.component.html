@@ -1,0 +1,8 @@
+<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder">
+  <div class="row mx-0 align-items-start">
+    <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">Verification code
+      <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span></label>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['verification_code']"></dynamic-ng-bootstrap-form-control>
+</form>

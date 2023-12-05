@@ -1,0 +1,5 @@
+<events-show-guest-list-count-visibility [event]="event" (guestListCountVisibilityAdded)="status='ACTIVE'"
+                                         *ngIf="status!=='ACTIVE'"></events-show-guest-list-count-visibility>
+
+<events-remove-guest-list-count-visibility [event]="event" (guestListCountVisibilityRemoved)="status=undefined"
+                                           *ngIf="status==='ACTIVE'"></events-remove-guest-list-count-visibility>

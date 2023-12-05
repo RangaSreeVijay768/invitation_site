@@ -1,0 +1,108 @@
+<div class="row mb-32px">
+  <div class="">
+    <div class="row ph-24px justify-content-between row-align-center">
+      <div class="col-3 px-0">
+        <div class="border border-primary py-12px ph-16px rounded-2  bg-background-purple">
+          <i-feather name="share-2" class="font-weight-500 font-size-18 text-primary"></i-feather>
+          <label class="font-weight-500 font-size-18 text-primary ml-13px">Share check in link</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class=" d-flex justify-content-between align-items-center mt-32px px-24px pt-16px pb-16px border-top border-grey-1">
+  <div class="w-100 d-flex align-items-center">
+    <div class="col-2 p-0 ">
+      <label class="font-weight-500 font-poppins font-size-18">Sort by:</label>
+    </div>
+
+    <div class="col-4 pr-35px">
+      <div class="row row-align-center justify-content-between border border-grey-1 br-5px w-250px">
+        <div ngbDropdown class="pl-0">
+          <div class="font-color-grey-2 d-flex align-items-center" id="dropdownBasic1"
+               ngbDropdownToggle>
+            <div class="col-10 cursor-pointer py-21px ph-16px font-color-9747FF">
+              <label class="font-weight-500 font-size-18 mb-0 cursor-pointer">{{currentFilter}}</label>
+            </div>
+            <div class="col-1 px-0">
+              <i-feather name="chevron-down" class="cursor-pointer"></i-feather>
+            </div>
+          </div>
+          <div ngbDropdownMenu aria-labelledby="dropdownBas" class="w-100 border-1px-9747FF">
+            <div *ngFor="let filter of SortFilters" class="px-20px">
+              <div ngbDropdownItem class="font-weight-500 border-radius-5px border-left-3px-9747FF w-100"
+                   (click)="changeSortFilter(filter)">
+                <label class="font-color-grey-2 font-weight-500 font-poppins">{{filter}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-5 d-flex align-items-center justify-content-end">
+    <div class="col-8 px-0">
+      <div class="border border-primary py-12px ph-16px rounded-2 d-flex border-1px-grey-1">
+        <div class="w-60">
+          <i-feather name="download" class="font-weight-500 font-size-18 text-primary"></i-feather>
+          <label class="font-weight-500 font-size-18 text-primary ml-13px">Download</label>
+        </div>
+        <div class="divider border-1px-grey-1 mx-5px">
+
+        </div>
+        <div class="w-40">
+          <i-feather name="printer" class="font-weight-500 font-size-18 text-primary"></i-feather>
+          <label class="font-weight-500 font-size-18 text-primary ml-13px">Print</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<events-get-event-invites-by-event-no-template
+  [event]="event_info.event"
+  (eventInvitesReceived)="event_invites=$event"
+  #getEventInvitesByEventNoTemplateComponent></events-get-event-invites-by-event-no-template>
+
+<div class="row pt-32px border-top border-grey-1"></div>
+
+<div class="row ph-24px" *ngFor="let event_invite of event_invites">
+  <div class="row justify-content-between ali gn-items-center mb-15px ph-16px py-16px bg-grey-3 rounded-2">
+    <div class="d-flex justify-content-between">
+      <div class="d-flex align-items-center d-inline-block">
+        <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+          [size]="60"
+          [imageClasses]="['br-30']"
+          [alt]="event_invite.display_name"
+          [entityId]="event_invite.event_invite_id"
+          [entityType]="'USER_PROFILE_PIC'"
+          [round]="false"
+        ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+        <!--        <img src="assets/party.png" height="60" width="60" class="br-30">-->
+        <div class="font-size-18 font-weight-500 ml-13px">
+          {{event_invite.display_name}}
+          <div>
+            <img src="assets/images/indian%20flag.png" height="20" class="mr-12px">
+            <img src="assets/images/img.png" height="5" width="5" class="mr-12px">
+            <label class="font-size-14 text-grey-1 mb-0" *ngIf="event_invite.invited_by">Invited
+              by {{event_invite.invited_by.display_name}} </label>
+            <label class="font-size-14 text-grey-1 mb-0" *ngIf="!event_invite.invited_by">No
+              invites </label>
+          </div>
+          <div class="bg-white mt-24px ph-16px py-8px br-5px">
+            <i-feather name="calendar" class="font-poppins font-weight-400 text-grey-2 mr-16px"></i-feather>
+            <label class="font-poppins font-weight-400 text-grey-2">Invited yesterday{{event_invite.invited_by.last_updated_time}}</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="border-1px-grey-1 bg-white br-5px cursor-pointer">
+          <label class="font-weight-500 font-size-18px text-primary py-8px ph-16px">View profile</label>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

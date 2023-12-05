@@ -1,0 +1,86 @@
+<user-profiles-blasts-filter-modal
+        [filter_type]="filter_type"
+        (closeResult)="filter_type = $event.data;
+        blastListsGetByUserAccount.blastListType=filter_type;resetScrolling();onScroll()"
+        #massMessagingFilterModelComponent>
+</user-profiles-blasts-filter-modal>
+
+<blasts-get-blast-lists-by-user-account-no-template
+        (blastListsReceived)="addItems($event)"
+        [blastListType]="filter_type" [count]="numberOfItems" [filterBlastListName]="filterBlastListName"
+        [blastListCreationType]="['MANUAL','AUTO_PAST_ATTENDEE']"
+        [userAccount]="loggedAccount" [columnName]="'createdTime'" [columnOrder]="'DESC'"
+        #blastListsGetByUserAccount #component></blasts-get-blast-lists-by-user-account-no-template>
+
+<div class="row ph-10px mt-24px mx-0">
+    <div class="d-flex justify-content-between align-items-center">
+        <label class="font-poppins font-size-16 font-weight-500 text-grey-2">GROUPS</label>
+
+        <div class="ph-10px py-4px border border-grey-1 br-20px cursor-pointer"
+             (click)="massMessagingFilterModelComponent.openModal(filter_type)">
+            <i-feather name="filter" class="mr-12px text-grey-2 font-poppins"></i-feather>
+            <label class="font-weight-500 font-poppins font-size-16 text-grey-2 cursor-pointer">Contact
+                filter</label>
+        </div>
+    </div>
+    <div class="mt-24px mb-24px">
+      <div class="scrollY" infiniteScroll [infiniteScrollDisabled]="disableScroll" [infiniteScrollDistance]="100"
+           [infiniteScrollThrottle]="scrollThrottle" (scrolled)="onScroll()" [scrollWindow]="false"
+      >
+        <div class=""
+             *ngFor="let blastlist of items">
+
+          <div class="d-flex justify-content-between ph-16px rounded-2"
+               routerLink="/signedin/userprofiles/blasts/{{blastlist.blast_list_id}}/contacts"
+               routerLinkActive="bg-white">
+            <div class="d-flex align-items-center d-inline-block cursor-pointer py-16px">
+              <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+                class="mr-16px"
+                [alt]="blastlist.blast_list_name"
+                [entityId]="blastlist.blast_list_id"
+                [entityType]="'BLAST_PROFILE_PIC'"
+                [size]="40"
+                [round]="false"
+                #imageComponent></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+              <div *ngIf="imageComponent.image">
+                <img class="w-100 h-100"
+                     src="{{imageComponent.image.uploaded_file.file_link}}">
+              </div>
+              <div class="font-size-18 font-weight-500 font-poppins">
+                {{blastlist.blast_list_name}}
+                <div>
+                  <label
+                    class="font-poppins font-weight-400 font-size-14 text-grey-1">{{blastlist.blast_list_type}}
+                    contact
+                    type | {{blastlist.total_blast_list_items}} contacts</label>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center" ngxClipboard [cbContent]="">
+              <blasts-copy-blast-list-no-template
+                (blastListCopied)="notificationsService.success('Success','Blast list copied');
+                      blastListsGetByUserAccount.getBlastListsByUserAccount(blastListsGetByUserAccount.createRequestData())"
+                [blastList]="blastlist" [appendCopyTag]="true"
+                [copyBlastListItems]="true"
+                #copyBlastList></blasts-copy-blast-list-no-template>
+              <i-feather name="copy" class="text-primary"
+                         (click)="copyBlastList.copyBlastList(copyBlastList.createRequestData())"
+                         [promiseBtn]="copyBlastList.copy_blast_list_subscription$"></i-feather>
+            </div>
+          </div>
+
+        </div>
+        <div class="row mx-0" *ngIf="!items.length">
+          <div class="col-12 text-align-center px-0">
+            <img src="assets/images/no-promocodes.png" width="120">
+            <br>
+            <label class="font-size-18 text-grey font-weight-700 mb-56px">
+              No groups
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,16 @@
+<div class="row mx-0 modal-header modal-header--sticky">
+  <div class="d-flex bg-primary justify-content-between align-items-center brtl-20px px-24 py-20px">
+    <span class=" font-poppins font-size-18 font-weight-500 text-white">Invite contacts to event</span>
+    <i-feather name="x" class="rounded-5 p-1 text-white cursor-pointer vertical-align-unset"
+               (click)="closeModal()" style="background: rgba(255, 255, 255, 0.3)"></i-feather>
+  </div>
+</div>
+
+
+<div class="overflow-y-scroll">
+  <user-profiles-blasts-invite-to-event-swiper
+    [blastList]="blastList"
+    (eventBlastStarted)="closeModal({status:'SUCCESS',data:$event})"
+  ></user-profiles-blasts-invite-to-event-swiper>
+
+</div>

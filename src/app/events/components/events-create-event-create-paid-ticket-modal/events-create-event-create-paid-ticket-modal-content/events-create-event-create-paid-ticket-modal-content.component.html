@@ -1,0 +1,43 @@
+<div class="row mx-0 justify-content-center overflow-y-scroll">
+  <div class="px-0 border-bottom border-grey-2 pb-32px">
+    <div class="bg-white px-0 rounded-4">
+      <div class="row mx-0 modal-header modal-header--sticky">
+        <div class="d-flex bg-primary justify-content-between align-items-center brtl-20px px-24 py-20px">
+          <span class=" font-poppins font-size-18 font-weight-500 text-white">Create paid ticket</span>
+          <i-feather name="x" class="rounded-5 p-1 text-white cursor-pointer vertical-align-unset"
+                     (click)="closeModal()"
+                     style="background: rgba(255, 255, 255, 0.3)"></i-feather>
+        </div>
+      </div>
+      <!--      paid ticket creation form-->
+      <div class="row mx-0 ph-24px">
+        <div class="col-12 px-0 mt-32px">
+          <events-create-event-ticket-and-event-ticket-sale-item-form
+            [event]="event"
+            (eventTicketCreated)="closeModal({status:'SUCCESS', data:$event});"
+            #createEventTicketAndEventTicketSaleItemFormComponent></events-create-event-ticket-and-event-ticket-sale-item-form>
+        </div>
+      </div>
+    </div>
+
+    <!--    action buttons-->
+    <div class="row mx-0 mt-32px mb-32px ph-24px">
+      <div class="col-12 d-flex justify-content-between px-0">
+        <button
+          class="col-4 border border-primary rounded-2 py-16px bg-white font-weight-700 font-poppins font-size-18 text-primary"
+          (click)="closeModal()">
+          Cancel
+        </button>
+
+        <button class="col-6 btn btn-primary rounded-2 py-16px font-weight-700 font-poppins font-size-18"
+                [promiseBtn]="createEventTicketAndEventTicketSaleItemFormComponent.create_event_ticket_and_event_ticket_sale_item_subscription$"
+                [disabled]="!createEventTicketAndEventTicketSaleItemFormComponent.formGroup.valid"
+                (click)="createEventTicketAndEventTicketSaleItemFormComponent.createEventTicketAndEventTicketSaleItem(createEventTicketAndEventTicketSaleItemFormComponent.createRequestData())"
+        >
+          Save
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

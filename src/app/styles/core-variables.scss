@@ -1,0 +1,85 @@
+// invitation site colors
+
+
+$primary: #7F56D9;
+$background-purple:#FCF9FF;
+$grey-1:#C0C0C0;
+$grey-2:#8D8D8D;
+$grey-3:#F2F2F2;
+$font-color-1:#373737;
+$green:#198731;
+$green-accent:#CDFFD8;
+$red:#C11313;
+$orange:#FFA439;
+$white-80:#FFFFFFCC;
+
+
+
+
+$primary-ultra-dark: #03535d;
+$primary-dark: #0d6efd;
+$primary-blue: #0d6efd;
+$primary-intermediate: #629aab;
+$primary-blue: #e2eff2;
+
+$primary-light: #cdefef;
+$primary-super-light: #e3edef;
+$primary-ultra-light: #edf5f7;
+$primary-mega-light: #fafeff;
+
+//black
+
+$primary-black: #000;
+
+//white
+
+$primary-white: #fff;
+
+// Grey scale
+
+$primary-grey-1: #111;
+$primary-grey-2: #222;
+$primary-grey-3: #333;
+$primary-grey-4: #444;
+$primary-grey-5: #555;
+$primary-grey-6: #666;
+$primary-grey-7: #777;
+$primary-grey-8: #888; //medium black
+$primary-grey-9: #999;
+$primary-grey-a: #aaa;
+$primary-grey-b: #bbb;
+$primary-grey-c: #ccc;
+$primary-grey-d: #ddd;
+$primary-grey-e: #eee;
+
+// White-Light scale
+
+$primary-white-light-2: #f2f2f2;
+$primary-white-light-5: #f5f5f5;
+$primary-white-light-b: #fbfbfb;
+$primary-white-light-d: #fdfdfd;
+
+// transparent
+
+$primary-light-transparent: rgba(189, 189, 189, 0.95);
+$primary-light-transparent-f: rgba(245, 245, 245, 0.99);
+$primary-white-transparent: rgba(255, 255, 255, 0.5);
+$primary-white-transparent-8: rgba(255, 255, 255, 0.8);
+$primary-white-transparent-f: rgba(255, 255, 255, 0.95);
+$primary-black-transparent: rgba(0, 0, 0, 0.7);
+$primary-black-transparent-medium: rgba(0, 0, 0, 0.4);
+$primary-black-transparent-light: rgba(0, 0, 0, 0.1);
+$primary-grey-transparent-light: rgba(72, 72, 72, 0.8);
+
+$color-google: #c64136;
+$color-facebook: #3b5998;
+
+$color-blue: #b4dddd;
+
+//swiper
+:root{
+--swiper-pagination-bullet-width:32px;
+--swiper-pagination-bullet-height:8px;
+--swiper-pagination-bullet-border-radius:17px;
+--swiper-pagination-bottom:-17px;
+}

@@ -1,0 +1,55 @@
+<div class="row pt-56px pb-100px justify-content-center mx-0">
+    <div class="col-9 px-0">
+        <img src="/assets/images/home-page-welcome.gif" class="d-inline-block vertical-align-middle"
+             style="height: 80px">
+        <label class="d-inline-block vertical-align-middle mb-0 pl-16px font-inter font-weight-700 font-size-46">
+            Welcome, {{loggedAccount.display_name}}
+        </label>
+        <br>
+        <label class="mt-80px mb-0 font-inter text-font-color-1 font-weight-700 font-size-24">Best events near you
+        </label>
+
+        <!--  events filters-->
+        <div class="mt-40px mx-0">
+            <div class="d-inline-block mr-54px text-align-center">
+                <label
+                        class="ph-10px pb-12px mb-0 font-size-16 events-filter font-weight-500 cursor-pointer "
+                        (click)="setEventFilters(undefined,undefined);searchEventInfosScrollingComponent.updateFilters(location_type,ticket_type)"
+                        [class.active]="!location_type&& !ticket_type"
+                >All</label>
+            </div>
+            <div class="d-inline-block mr-54px text-align-center">
+                <label class="ph-10px pb-12px mb-0 font-size-16 font-weight-500 text-font-color-1 events-filter cursor-pointer"
+                       [class.active]="location_type==='ONLINE'"
+                       (click)="setEventFilters('ONLINE',undefined);searchEventInfosScrollingComponent.updateFilters(location_type,ticket_type)">Online</label>
+            </div>
+            <div class="d-inline-block mr-54px text-align-center">
+                <label class="ph-10px pb-12px mb-0 font-size-16 font-weight-500 text-font-color-1 events-filter cursor-pointer"
+                       [class.active]="location_type==='OFFLINE'"
+                       (click)="setEventFilters('OFFLINE',undefined);searchEventInfosScrollingComponent.updateFilters(location_type,ticket_type)">In
+                    person</label>
+            </div>
+            <div class="d-inline-block mr-54px text-align-center">
+                <label class="ph-10px pb-12px mb-0 font-size-16 font-weight-500 text-font-color-1 events-filter cursor-pointer"
+                       [class.active]="ticket_type==='FREE'"
+                       (click)="setEventFilters(undefined,'FREE');searchEventInfosScrollingComponent.updateFilters(location_type,ticket_type)"
+                >Free</label>
+            </div>
+            <div class="d-inline-block mr-54px text-align-center">
+                <label class="ph-10px pb-12px mb-0 font-size-16 font-weight-500 text-font-color-1 events-filter cursor-pointer"
+                       [class.active]="ticket_type==='PAID'"
+                       (click)="setEventFilters(undefined,'PAID');searchEventInfosScrollingComponent.updateFilters(location_type,ticket_type)"
+                >Paid</label>
+            </div>
+        </div>
+
+
+        <events-search-event-infos [count]="10" [eventStatus]="'ACTIVE'"
+                                   [columnName]="'event.created_time'"
+                                   [columnOrder]="'DESC'"
+                                   #searchEventInfosScrollingComponent>
+        </events-search-event-infos>
+    </div>
+</div>
+
+<events-bottom-nav-footer></events-bottom-nav-footer>

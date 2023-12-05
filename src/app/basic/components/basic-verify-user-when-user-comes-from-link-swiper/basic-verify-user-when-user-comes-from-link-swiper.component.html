@@ -1,0 +1,217 @@
+<swiper-container #swiper init="false" pagination="true" pagination-clickable="true">
+    <swiper-slide>
+
+        <events-stripe-payment-form-modal
+                (closeResult)="$event.status === 'SUCCESS'? userEventTicketCreated.emit($event.data):''"
+                [eventTicket]="selected_event_ticket?.event_ticket"
+                #paymentFormModalComponent
+        ></events-stripe-payment-form-modal>
+
+        <div class="row">
+            <div class="">
+                <div class="">
+                    <div class="row mx-0 justify-content-center ">
+                        <div class="px-0 border-bottom border-grey-2">
+                            <div class="bg-white px-0 rounded-4">
+                                <div class="row mx-0">
+                                    <div class="d-flex justify-content-between align-items-center brtl-20px px-24 py-20px">
+                                        <span class=" font-poppins font-size-32 font-weight-500">Ticket type</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--          <events-get-event-tickets-by-event-->
+                    <!--            ></events-get-event-tickets-by-event>-->
+
+                    <events-get-event-tickets-by-event-no-template
+                            [event]="event"
+                            (eventTicketsReceived)=" event_tickets = getEventTicketsByEventNoTemplateComponent.eventTickets"
+                            #getEventTicketsByEventNoTemplateComponent></events-get-event-tickets-by-event-no-template>
+
+                    <events-get-event-ticket-infos-by-event-no-template
+                            [event]="event" (eventTicketInfosReceived)="event_ticket_infos=$event;"
+                    ></events-get-event-ticket-infos-by-event-no-template>
+
+
+                    <div *ngFor="let event_ticket_info of event_ticket_infos">
+                        <div *ngIf="event_ticket_info.event_ticket.ticket_type==='FREE'">
+                            <div class="row pv-32px ph-32px mx-0">
+                                <div class="font-poppins border-bottom border-grey-1 px-0">
+                                    <label class="font-weight-700 font-size-18">Free tickets</label><br>
+                                    <label class="mt-24px">Are you attending this event?</label><br>
+                                    <button class="btn btn-lg border border-grey-1 rounded-5 pv-16px ph-40px mt-24px"
+
+                                            (click)="selected_event_ticket = event_ticket_info; slideNext()">
+                                        <!--                          [promiseBtn]="createEventAttendee.create_event_attendee_for_free_event_ticket_and_user_account_subscription$"-->
+                                        <!--                          (click)="createEventAttendee.createEventAttendeeForFreeEventTicketAndUserAccount(createEventAttendee.createRequestData())">-->
+                                        Yes
+                                    </button>
+                                    <button class="btn btn-lg border border-grey-1 rounded-5 pv-16px ph-40px ml-32px mt-24px">
+                                        No
+                                    </button>
+                                    <br>
+                                    <label class=" mt-24px text-red mb-24px">
+                                        <i-feather name="thumbs-up"></i-feather>
+                                        <span> {{event_ticket_info.event_ticket.available_quantity}}
+                                            RSVP's remaining</span></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="event_ticket_info.event_ticket.ticket_type==='PAID'">
+
+                            <div class="row pb-32px ph-32px mx-0">
+                                <div class="px-0">
+                                    <label class="font-poppins font-weight-700 font-size-18">Paid tickets</label><br>
+
+                                    <div class="row">
+                                        <div class="col-11 ml-12px border b-1px-dashed-grey-1 rounded-4 mt-24px mb-40px pv-24px ph-24px">
+                                            <div class="pb-24px border-bottom border-grey-1">
+                                                <label
+                                                        class="font-poppins font-weight-500 font-size-18 text-primary">{{event_ticket_info.event_ticket.event.event_title}}</label>
+                                            </div>
+                                            <div class="row pt-24px">
+                                                <div class="d-flex">
+                                                    <div class="">
+                                                        <label
+                                                                class="font-poppins font-weight-700 font-size-24">$ {{event_ticket_info.event_ticket_sale_item.item_actual_price}}</label><br>
+                                                        <label class="font-poppins font-weight-400 font-size-16 text-grey-1">Offer
+                                                            ends
+                                                            on {{event_ticket_info.event_ticket.sale_end_time}}</label>
+                                                        <label class="font-poppins font-weight-400 font-size-16 mt-16px text-red">
+                                                            <img
+                                                                    src="../../../../../assets/images/ticket%20icon.svg"><span> Only {{event_ticket_info.event_ticket.available_quantity}}
+                                                            tickets left</span></label>
+                                                    </div>
+                                                    <div class="">
+                                                        <div class=" row ph-16px pv-16px">
+                                                            <div class="d-flex border border-grey-1 rounded-3 ph-8px pv-8px">
+                                                                <div class="border border-grey-1 rounded-2 pv-8px ph-16px bg-grey-3 text-grey-1"
+                                                                     (click)="decreaseTickets()">
+                                                                    <i-feather name="minus"></i-feather>
+                                                                </div>
+                                                                <label
+                                                                        class="font-poppins font-size-24 font-weight-700 ml-16px">{{no_of_tickets}}</label>
+                                                                <div class="border border-grey-1 rounded-2 pv-8px ph-16px bg-primary text-white ml-16px"
+                                                                     (click)="selected_event_ticket = event_ticket_info;increaseTickets();
+                                        ">
+                                                                    <i-feather name="plus"></i-feather>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="row pb-100px">
+                </div>
+
+                <div class="row ph-32px py-32px d-flex fixed-bottom">
+                    <div class="col-6 font-poppins">
+                        <label class="font-size-18 font-weight-500">Total payable</label><br/>
+                        <label class="text-primary font-size-24 font-weight-700 mt-20px">{{amount}}.00</label>
+                    </div>
+                    <div class="col-6 d-flex align-items-end">
+                        <button
+                                class="font-size-18 font-weight-700 text-white bg-primary border-none py-20px pl ph-40px border-radius-5px"
+                                (click)="slideNext()">
+                            Proceed to pay
+                            <i-feather name="arrow-right" class="ml-12px"></i-feather>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </swiper-slide>
+
+    <swiper-slide>
+        <basic-verify-user-with-verification-code-before-login-modal
+                (closeResult)="$event.status==='SUCCESS'? verified = true: ''"
+                #verificationCodeBeforeLoginModalComponent></basic-verify-user-with-verification-code-before-login-modal>
+
+        <events-create-order-item-payment-for-event-no-template
+                [noOfTickets]="no_of_tickets"
+                [amount]="amount"
+                (orderCompleteInfoCreated)="redirectToCheckout($event)"
+                #orderItemPaymentForEventNoTemplateComponent></events-create-order-item-payment-for-event-no-template>
+
+        <events-create-event-attendee-for-free-event-ticket-and-user-account-no-template
+                [eventTicket]="selected_event_ticket?.event_ticket"
+                (eventAttendeesReceived)="eventAttendeeReceived.emit($event)"
+                #createEventAttendee></events-create-event-attendee-for-free-event-ticket-and-user-account-no-template>
+
+        <div class="row">
+            <div class="">
+                <div class="row mb-32px ph-16px">
+                    <div class="d-flex align-items-center below-info-lg">
+                        <i-feather name="check-circle" class="mr-12px text-green"></i-feather>
+                        <label class="font-poppins font-weight-400 font-size-18 py-8px text-primary">Below information
+                            will be
+                            shared with the creator.</label>
+                    </div>
+                </div>
+
+                <div class="row mx-0">
+                    <div class="px-0 border-bottom border-grey-2 pb-32px">
+                        <div class="bg-white px-0 rounded-4">
+                            <div class="row mx-0 mt-32px">
+                                <div class="row mx-0 ph-24px">
+                                    <basic-user-info-before-login-form
+                                            (messageDeliveryReceived)="verificationCodeBeforeLoginModalComponent.openModal($event);"
+                                            #userInfoBeforeLoginFormComponent></basic-user-info-before-login-form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center mx-0 mt-32px mb-32px">
+                        <div class="col-10">
+                            <div class="row justify-content-between">
+                                <button
+                                        class="col-4 border border-primary rounded-2 py-16px bg-white font-weight-700 font-poppins font-size-18 text-primary">
+                                    Cancel
+                                </button>
+                                <button class="col-6 btn-color-primary rounded-2 py-16px font-weight-700 font-poppins font-size-18"
+                                        *ngIf="!verified"
+                                        (click)="userInfoBeforeLoginFormComponent.startLogin(userInfoBeforeLoginFormComponent.createRequestData())"
+                                >
+                                    Send verification code
+                                </button>
+
+                                <button class="col-6 btn-color-primary rounded-2 py-16px font-weight-700 font-poppins font-size-18"
+                                        *ngIf="verified && selected_event_ticket.event_ticket.ticket_type === 'PAID'"
+                                        [promiseBtn]="orderItemPaymentForEventNoTemplateComponent.order_item_order_payment_subscription$"
+                                        (click)="orderItemPaymentForEventNoTemplateComponent.createOrderOrderItemOrderPaymentForEvent
+                      (orderItemPaymentForEventNoTemplateComponent.createRequestData(selected_event_ticket.event_ticket_sale_item.sale_item_id))"
+                                >
+                                    Proceed to payment
+                                </button>
+
+                                <button class="col-6 btn-color-primary rounded-2 py-16px font-weight-700 font-poppins font-size-18"
+                                        *ngIf="verified && selected_event_ticket.event_ticket.ticket_type === 'FREE'"
+                                        [promiseBtn]="createEventAttendee.create_event_attendee_for_free_event_ticket_and_user_account_subscription$"
+                                        (click)="createEventAttendee.createEventAttendeeForFreeEventTicketAndUserAccount(createEventAttendee.createRequestData())"
+                                >
+                                    Confirm RSVP
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </swiper-slide>
+</swiper-container>

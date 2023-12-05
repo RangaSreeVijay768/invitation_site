@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center px-24px mt-32px" *ngIf="event">
+  <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+    [entityId]="event.event_id" [entityType]="'EVENT_PROFILE_PIC'"
+    [alt]="event.event_title"
+    [size]="116"
+  ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+</div>
+<label class="font-poppins font-size-24 font-weight-500 mb-32px text-grey-2 mt-16px">{{event.event_title}}</label><br>
+
+<!--<events-create-event-invites-by-event-and-user-accounts-->
+<!--  [userAccountIdList]="userAccountList"-->
+<!--  [event]="event"-->
+<!--  #createEventInvitesByEventAndUserAccountsComponent></events-create-event-invites-by-event-and-user-accounts>-->
+
+<div class="row d-flex justify-content-center">
+  <div class="col-10">
+    <form [formGroup]="formGroup" #createForm="ngForm">
+      <dynamic-ng-bootstrap-form-control
+        [group]="formGroup"
+        [layout]="formLayout"
+        [model]="formModelMap['message']"
+      >
+      </dynamic-ng-bootstrap-form-control>
+    </form>
+  </div>
+</div>
+
+<div class="row ph-54px py-32px d-flex justify-content-between position-sticky bottom-0 bg-color-white">
+  <div class="col-6 d-flex">
+    <button
+      class="font-size-18 font-weight-700 text-primary border-primary bg-white py-16px pl ph-80 rounded-2 border-1px-7F56D9"
+    >
+      Cancel
+    </button>
+  </div>
+  <div class="col-6 d-flex align-items-end justify-content-end">
+    <button class="font-size-18 font-weight-700 text-white bg-primary border-none py-16px pl ph-60 rounded-2"
+            (click)="this.createEventInvitesByEventAndUserAccounts(this.createRequestData())">
+      Send invitation
+    </button>
+  </div>
+</div>

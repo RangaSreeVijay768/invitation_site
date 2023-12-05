@@ -1,0 +1,68 @@
+<user-profiles-get-event-blast-by-blast-list-no-template
+  (eventBlastReceived)="addItems($event)"
+  [blastList]="blastList" [count]="numberOfItems" [columnName]="'createdTime'" [columnOrder]="'DESC'"
+  #getEventBlastByBlastListNoTemplateComponent
+></user-profiles-get-event-blast-by-blast-list-no-template>
+<!--<events-all-invited-people-modal-->
+<!--&gt;</events-all-invited-people-modal>-->
+<div class="row border-bottom border-grey-1 py-24px mx-0">
+    <div class="profile-form-placeholder box-shadow d-flex align-items-center border border-grey-1 rounded-2">
+        <i-feather name="search" class="text-primary font-poppins"></i-feather>
+        <input class="w-100 py-16px ph-16px font-poppins font-weight-500" placeholder="Search events">
+    </div>
+</div>
+
+<div class="row" *ngFor="let event_blast of items">
+  <div class="">
+    <div class="row pt-24px border-bottom border-grey-1 pb-24px mx-0">
+      <div class="d-flex">
+        <div class="">
+          <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+            [size]="76" [entityType]="'EVENT_PROFILE_PIC'"
+            [entityId]="event_blast.event.event_id"
+            [alt]="event_blast.event.event_title"
+          ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+        </div>
+        <div class="pl-16px">
+          <div class="row justify-content-evenly">
+            <div class="col-6 pr-0">
+              <label class="font-poppins font-weight-700 font-size-18">{{event_blast.event.event_title}}</label>
+            </div>
+            <div class="col-6 text-align-end">
+              <label class="font-poppins text-grey-1 font-size-14">Invited
+                on {{event_blast.start_time|appDateFormat}}</label>
+
+            </div>
+            <div class="font-poppins font-weight-500 font-size-16 mt-8px">{{event_blast.sent_recipients}}
+              /{{event_blast.total_recipients}}
+              <span class="text-grey-2">messages sent</span></div>
+            <br>
+          </div>
+
+          <user-profiles-attendees-list-by-event-blast-modal
+            [eventBlast]="event_blast"
+            #attendeesListByEventBlastModalComponent></user-profiles-attendees-list-by-event-blast-modal>
+          <div class="px-0 mt-4">
+            <button class="btn btn-purple text-primary"
+            (click)="attendeesListByEventBlastModalComponent.openModal()">See list</button>
+          </div>
+          <div class="bg-background-purple ph-8px py-8px mt-16px">
+            <label class="font-poppins font-size-16">Message:</label><br>
+            <label class="font-size-16 font-poppins text-grey-2">{{event_blast.message}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row mx-0" *ngIf="!getEventBlastByBlastListNoTemplateComponent.eventBlast">
+  <div class="col-12 text-align-center px-0">
+    <img src="assets/images/no-promocodes.png" width="202">
+    <br>
+    <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+      No event blasts
+    </label>
+  </div>
+</div>

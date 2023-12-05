@@ -1,0 +1,9 @@
+<span>
+              <i-feather name="users" class="font-poppins text-grey-2 mr-8px"></i-feather>
+              <label class="d-inline-block mb-0 mt-16px font-weight-400 font-size-16 text-grey-2 font-poppins"
+              >{{event.event_attendees_count}}
+                  attendees</label>
+            </span>
+<button class="btn-event-count ml-12px" (click)="removeGuestListCountVisibility(createRequestData())"
+        [promiseBtn]="remove_guest_list_count_visibility_subscription$">Hide Count
+</button>

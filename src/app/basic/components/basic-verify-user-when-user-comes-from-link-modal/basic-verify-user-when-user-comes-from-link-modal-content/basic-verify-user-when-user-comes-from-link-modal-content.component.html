@@ -1,0 +1,8 @@
+<div class="overflow-y-scroll">
+  <div class="row mx-0 justify-content-center ">
+    <basic-verify-user-when-user-comes-from-link-swiper
+      [event]="event" (userEventTicketCreated)="closeModal({data:$event,status:'SUCCESS'}); window.location.reload()"
+      (eventAttendeeReceived)="closeModal({data:$event,status:'SUCCESS'}); window.location.reload()"
+    ></basic-verify-user-when-user-comes-from-link-swiper>
+  </div>
+</div>

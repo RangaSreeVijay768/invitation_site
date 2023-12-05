@@ -1,0 +1,123 @@
+<events-create-paid-user-event-ticket-from-order-payment-no-template
+
+        (paidUserEventTicketCreated)="confirmation_finished=true;user_event_ticket=$event"
+        #createPaidUserEventTicketFromOrderPaymentNoTemplateComponent
+></events-create-paid-user-event-ticket-from-order-payment-no-template>
+
+<div class="row mt-80px justify-content-center" *ngIf="user_event_ticket">
+    <div class="col-9 px-0">
+        <div class="row align-items-center">
+            <div class="col-8 bg-white">
+
+                <div class="row px-24px border-bottom pb-32px">
+                    <div class="">
+                        <div class="row pb-32px pt-24px px-0">
+                            <div class="">
+                                <i-feather name="check-circle" class="mr-12px text-green w-60px"></i-feather>
+                                <label class="text-green font-poppins font-weight-500 font-size-32">Payment
+                                    successful</label>
+                            </div>
+                        </div>
+
+                        <div class="row pb-32px border-bottom-dashed-1p">
+                            <div class="px-0">
+                                <label class="font-poppins font-weight-500 font-size-18px text-grey-2 pl-0">Thank you,
+                                    your payment has been
+                                    successful. Your RSVP has confirmed. We have sent you a confirmation email to <span
+                                            class="text-black">{{loggedAccount.email_id}}</span></label>
+                            </div>
+                        </div>
+
+                        <div class="row pt-32px">
+                            <div class="px-0">
+                                <label class="font-poppins font-weight-700 font-size-16px">order summary</label>
+                            </div>
+                        </div>
+
+                        <div class="row pt-32px pb-32px border-bottom-dashed-1p">
+                            <div class="px-0">
+                                <div class="row">
+                                    <div class="col d-flex justify-content-between">
+                                        <label class="font-poppins font-weight-400 font-size-18px text-grey-2">Ticket
+                                            type:</label>
+                                        <label class="font-poppins font-weight-400 font-size-18px">{{user_event_ticket.event_ticket.ticket_name}}</label>
+                                    </div>
+                                </div>
+                                <div class="row pt-16px">
+                                    <div class="col d-flex justify-content-between">
+                                        <label class="font-poppins font-weight-400 font-size-18px text-grey-2">Quantity:</label>
+                                        <label class="font-poppins font-weight-400 font-size-18px">{{user_event_ticket.ticket_quantity}}</label>
+                                    </div>
+                                </div>
+                                <div class="row pt-16px">
+                                    <div class="col d-flex justify-content-between">
+                                        <label class="font-poppins font-weight-400 font-size-18px text-grey-2">Purchase
+                                            ID</label>
+                                        <label class="font-poppins font-weight-400 font-size-18px">{{order_complete_info.order_payment.order_payment_id}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row pt-32px justify-content-center">
+                            <div class="col-11 d-flex justify-content-between px-0">
+                                <label class="font-poppins font-weight-700 font-size-18px text-grey-2">Amount
+                                    paid:</label>
+                                <label class="font-poppins font-weight-700 font-size-18px">${{order_complete_info.order.amount}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mt-32px mb-24px">
+                    <div class="col-9 d-flex justify-content-between">
+
+                        <button class="text-primary font-size-18px font-weight-700 bg-white border-primary font-poppins py-12px ph-24px br-5px">
+                            <i-feather name="arrow-left" class="text-primary"></i-feather>
+                            Back to home
+                        </button>
+
+                        <button class="text-primary font-size-18px font-weight-700 bg-white border-none font-poppins py-12px ph-24px"
+                                routerLink="/signedin/events/{{user_event_ticket.event_ticket.event.event_id}}/details">
+                            See event details
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-4">
+                <img src="assets/images/img_3.png" height="410" width="410" alt="app illustrations and gifts">
+            </div>
+        </div>
+        <div class="row pb-100px"></div>
+    </div>
+</div>
+
+<div class="row mt-80px justify-content-center" *ngIf="!confirmation_finished">
+    <div class="col-9 px-0">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-8 bg-white">
+
+                <div class="row px-24px border-bottom pb-32px">
+                    <div class="">
+                        <div class="row pb-32px pt-24px px-0">
+                            <div class="">
+                                <label class="text-red font-poppins font-weight-500 font-size-32">Loading...</label>
+                            </div>
+                        </div>
+
+                        <div class="row pb-32px border-bottom-dashed-1p">
+                            <div class="px-0">
+                                <label class="font-poppins font-weight-500 font-size-18px text-grey-2 pl-0">Confirming
+                                    your payment please wait...</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-100px"></div>
+    </div>
+</div>

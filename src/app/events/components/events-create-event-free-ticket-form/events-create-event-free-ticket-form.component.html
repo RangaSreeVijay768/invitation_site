@@ -1,0 +1,72 @@
+<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder">
+  <div class="row mx-0">
+    <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">TICKET NAME
+      <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span></label>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['ticket_name']"></dynamic-ng-bootstrap-form-control>
+</form>
+<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder mt-32px">
+  <div class="row mx-0">
+    <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">TICKET
+      QUANTITY
+      <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span></label>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['total_quantity']"></dynamic-ng-bootstrap-form-control>
+</form>
+
+<div class="d-flex align-items-center mt-32px">
+  <input type="checkbox" class="specifyColor w-27 h-27 font-poppins mr-16px">
+  <label class="font-poppins font-size-18 font-weight-500">Show available ticket quantity</label>
+</div>
+
+<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder mt-32px">
+  <div class="row mx-0">
+    <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">ADD
+      DESCRIPTION
+      <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span></label>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['ticket_description']"></dynamic-ng-bootstrap-form-control>
+</form>
+<div
+  class="px-0 d-flex align-items-center justify-content-between border-bottom border-grey-1 py-20px bg-white mt-12px"
+  (click)="setFreeWithRsvpUntil()">
+  <label class="font-poppins font-weight-500 font-size-18">FREE WITH RSVP UNTIL (optional)</label>
+  <i-feather name="chevron-down" class="font-poppins" *ngIf="!free_with_rsvp_until_clicked"></i-feather>
+  <i-feather name="chevron-up" class="font-poppins" *ngIf="free_with_rsvp_until_clicked"></i-feather>
+</div>
+
+<div *ngIf="free_with_rsvp_until_clicked">
+  <div class="row">
+    <div class="d-flex">
+      <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder pr-16px pt-24px">
+        <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                           [model]="formModelMap['sale_start_date']"></dynamic-ng-bootstrap-form-control>
+      </form>
+      <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder pl-16px mt-20px">
+        <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                           [model]="formModelMap['sale_start_time']"></dynamic-ng-bootstrap-form-control>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="d-flex justify-content-between">
+      <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder pr-16px pt-24px">
+        <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                           [model]="formModelMap['sale_end_date']"></dynamic-ng-bootstrap-form-control>
+      </form>
+      <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder pl-16px mt-20px">
+        <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                           [model]="formModelMap['sale_end_time']"></dynamic-ng-bootstrap-form-control>
+      </form>
+    </div>
+    <div class="d-flex align-items-center mt-32px">
+      <input type="checkbox" class="specifyColor w-27 h-27 font-poppins mr-16px">
+      <label class="font-poppins font-size-18 font-weight-500">Hide count</label>
+    </div>
+  </div>
+
+</div>

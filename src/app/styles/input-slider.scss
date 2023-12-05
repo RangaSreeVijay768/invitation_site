@@ -1,0 +1,25 @@
+@import "core-variables";
+
+// Slider input form
+
+.slider-bar {
+  width: 100%;
+  height: 5px;
+  background: lightgray;
+  border-radius: 5px;
+  margin-top: 1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.slider {
+  width: 0.8rem;
+  height: 0.8rem;
+  background: $primary-light;
+  border-radius: 50%;
+  border: 1px solid #aaaad6;
+  bottom: -72% !important;
+}
+
+.slider-highlight {
+  background: $primary-dark;
+}

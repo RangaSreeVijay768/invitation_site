@@ -1,0 +1,77 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "module": "es2020",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "target": "ES2022",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@global/*": [
+        "src/app/global/*"
+      ],
+      "@basic/*": [
+        "src/app/basic/*"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@campaigns/*": [
+        "src/campaigns/*"
+      ],
+      "@images/*": [
+        "src/app/images/*"
+      ],
+      "@user-payments/*": [
+        "src/app/user-payments/*"
+      ],
+      "@user-interests/*": [
+        "src/app/user-interests/*"
+      ],
+      "@admin/*": [
+        "src/app/admin/*"
+      ],
+      "@signedin/*": [
+        "src/app/signedin/*"
+      ],
+      "@user-profiles/*": [
+        "src/app/user-profiles/*"
+      ],
+      "@categories/*": [
+        "src/app/categories/*"
+      ],
+      "@users/*": [
+        "src/app/users/*"
+      ],
+      "@events/*": [
+        "src/app/events/*"
+      ],
+      "@environment/*": [
+        "src/environments/*",
+        "src/environments/"
+      ],
+      "@angular/*": [
+        "node_modules/@angular/*"
+      ],
+      "@ng-bootstrap/*": [
+        "node_modules/@ng-bootstrap/*"
+      ]
+    },
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "useDefineForClassFields": false
+  }
+}

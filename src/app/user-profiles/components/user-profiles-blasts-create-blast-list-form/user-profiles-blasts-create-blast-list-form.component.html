@@ -1,0 +1,52 @@
+<div class="d-flex gap-16px align-items-center">
+    <div class="text-align-center bg-white border border-grey-1 rounded-2 mt-20px">
+        <images-upload-file-create-blast-list
+                (fileUploaded)="uploaded_file=$event" [autoUploadFile]="false" [autoAttachFile]="false"
+                (imageAttached)="eventCreated.emit(event_id)"
+
+                [entityType]="'EVENT_PROFILE_PIC'"
+        ></images-upload-file-create-blast-list>
+        <!--            [entityId]="event.event_id"-->
+    </div>
+
+    <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder w-100">
+        <div class="row mt-32px mx-0 ml-16px">
+            <div class="d-flex align-items-center px-0">
+                <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">NAME YOUR GROUP <span
+                        class="text-red font-size-18px font-weight-600 transform-translateY-15px">*</span>
+                </label>
+            </div>
+        </div>
+        <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                           [model]="formModelMap['blast_list_name']"></dynamic-ng-bootstrap-form-control>
+        <div class="row mt-32px mx-0 ml-16px">
+            <div class="d-flex align-items-center px-0">
+                <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0 mt-20px">SELECT CONTACT
+                    TYPE</label>
+            </div>
+        </div>
+        <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                           [model]="formModelMap['blast_list_type']"></dynamic-ng-bootstrap-form-control>
+    </form>
+</div>
+
+
+<!--<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder">-->
+<!--  <div class="row mt-32px mx-0">-->
+<!--    <div class="d-flex align-items-center px-0">-->
+<!--      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">Blast list type</label>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"-->
+<!--                                     [model]="formModelMap['blast_list_type']"></dynamic-ng-bootstrap-form-control>-->
+<!--</form>-->
+
+<!--<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder">-->
+<!--  <div class="row mt-32px mx-0">-->
+<!--    <div class="d-flex align-items-center px-0">-->
+<!--      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">Blast list description</label>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"-->
+<!--                                     [model]="formModelMap['description']"></dynamic-ng-bootstrap-form-control>-->
+<!--</form>-->

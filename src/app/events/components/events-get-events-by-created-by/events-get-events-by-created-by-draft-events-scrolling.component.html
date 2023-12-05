@@ -1,0 +1,87 @@
+<events-get-events-by-created-by-no-template
+  [count]="numberOfItems" [status]="status"
+  (eventsReceived)="addItems($event)" [columnOrder]="'DESC'" [columnName]="'createdTime'"
+  #getAllEventsNoTemplateComponent #component>
+</events-get-events-by-created-by-no-template>
+
+<div infiniteScroll [infiniteScrollDisabled]="disableScroll" [infiniteScrollDistance]="100"
+     [infiniteScrollThrottle]="scrollThrottle" (scrolled)="onScroll()"
+     [alwaysCallback]="true">
+
+  <div class="row mx-0" *ngIf="!items?.length">
+    <div class="col-12 text-align-center px-0">
+      <img src="assets/images/no-promocodes.png" width="202">
+      <br>
+      <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+        You don't have draft events!
+      </label>
+    </div>
+  </div>
+
+  <div *ngFor="let event of items">
+    <div
+      class="row mt-32px d-flex justify-content-between align-items-center border-bottom border-grey-1 pb-32px mb-32px">
+      <div class="col-8">
+        <div class="row mx-0 justify-content-between">
+          <div class="col-4 pl-0 pr-24px">
+            <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+              class="cursor-pointer"
+              [alt]="event.event_title"
+              [entityId]="event.event_id"
+              [entityType]="'EVENT_PROFILE_PIC'"
+              [size]="200"
+              [round]="false"
+            ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+          </div>
+          <div class="col-7 px-0">
+            <label
+              class="mb-0 font-weight-500 font-size-24 text-font-color-1 font-poppins">{{event.event_title}}</label>
+            <br>
+            <label
+              class="d-inline-block mb-0 mt-16px pr-12px mr-12px border-end border-grey-2 font-size-16 text-grey-2 font-poppins">
+              <i-feather name="Calendar"></i-feather>
+              &nbsp;<span> {{event.start_time|appDateTimeToDefaultDateTimeFormat:'MM/dd/yyyy'}}</span>
+
+            </label>
+            <label class="d-inline-block mb-0 font-size-16 text-grey-2 font-poppins">
+                        <span><i-feather name="Clock"></i-feather> &nbsp;{{event.start_time|appDateTimeToTimeFormat}}
+                          - {{event.end_time|appDateTimeToTimeFormat}}</span>
+
+            </label>
+            <br>
+            <label class="d-inline-block mb-0 mt-16px font-size-16 text-grey-2 font-poppins" *ngIf="event.event_location">
+              <span><i-feather name="map-pin"></i-feather>&nbsp</span>{{event.event_location|eventsEventLocationToHumanReadable:event.location_visibility}}
+
+            </label>
+            <br>
+            <label class="d-inline-block mb-0 mt-16px font-size-16 text-grey-2 font-poppins">
+
+              {{event.event_description}}
+            </label>
+            <br>
+          </div>
+        </div>
+
+      </div>
+      <!--EVENT CALL-TO-ACTION-->
+      <div class="col-3 d-flex flex-column">
+        <!--                <events-publish-event [event]="event"-->
+        <!--                                      (eventPublished)="notificationsService.success('Success','Published event');navigateToEventDetailsPage(event.event_id)"></events-publish-event>-->
+        <button class="btn-event-rsvp d-flex justify-content-center font-weight-800 font-size-18"
+                routerLink="/signedin/events/eventdashboard/{{event.event_id}}/eventdetails"
+        >
+          Review and publish
+        </button>
+
+      </div>
+    </div>
+  </div>
+  <div class="mt-32px text-align-center" *ngIf="items?.length">
+    <button
+      class="font-poppins font-weight-800 font-size-18 rounded-1 py-12px ph-24px border-none text-white bg-background-purple font-color-9747FF"
+      (click)="onScroll()">
+      Load more events
+      <i-feather name="chevron-down" class="mr-12px font-color-9747FF vertical-align-middle"></i-feather>
+    </button>
+  </div>
+</div>

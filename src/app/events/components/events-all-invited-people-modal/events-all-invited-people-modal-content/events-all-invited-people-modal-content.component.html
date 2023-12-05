@@ -1,0 +1,106 @@
+<events-get-event-attendees-by-event-no-template
+  [event]="event"
+  (eventAttendeesReceived)="event_attendees = $event"
+  #getEventAttendeesByEventNoTemplateComponent></events-get-event-attendees-by-event-no-template>
+
+<div class="row container bg-white rounded-3 text-justify overflow-y-scroll p-0 mx-0">
+  <div class="col-12 px-24 pt-32px">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-between align-items-center">
+        <span class="font-poppins font-size-32 font-weight-500 text-justify">All invited people</span>
+        <button class="border-0 bg-white text-primary" (click)="closeModal()">
+          <i-feather name="X"></i-feather>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <hr class="border-top br-top-1px-grey-2">
+
+<!--  Search bar-->
+  <div class="row px-24 pb-32px">
+    <div class="col-12 w-100 text-grey-2 rounded-1 font-weight-500 font-size-16 position-relative">
+      <span class="position-absolute left-16px top-22px"><i-feather name="Search"></i-feather></span>
+      <events-search-event-member-infos-form></events-search-event-member-infos-form>
+    </div>
+
+<!--    Navigation in top-->
+    <div class="row mt-40px font-weight-500 font-size-16">
+      <div class="col-12 d-flex gap-40">
+        <button *ngIf="invited_by===false" class="btn-event-tab" (click)="isClicked()">Invited people</button>
+        <button *ngIf="invited_by===true" class="btn-event-tab btn-event-tab-active background-none">Invited people
+        </button>
+        <button *ngIf="invited_by===true" class="btn-event-tab" (click)="isClicked()">Going</button>
+        <button *ngIf="invited_by===false" class="btn-event-tab btn-event-tab-active background-none">Going</button>
+      </div>
+      <div class="border border-bottom"></div>
+    </div>
+
+<!--    Invited people-->
+    <div *ngIf="invited_by===true">
+      <div class="row justify-content-between align-items-center mb-15px mt-24px"
+           *ngFor="let eventInvite of eventInvites">
+        <div class="col-10 d-flex align-items-center d-inline-block">
+          <events-view-event-invitee-details-modal
+            [event]="event" [eventInvite]="eventInvite"
+
+            #getEventInvitesByEventNoTemplateComponent></events-view-event-invitee-details-modal>
+          <div class="font-size-18 font-weight-500 ml-13px">
+            {{eventInvite.display_name}}
+            <div>
+              <img src="assets/images/indian%20flag.png" height="20" class="mr-12px">
+            </div>
+          </div>
+        </div>
+        <div class="col-2 px-0">
+          <div class="bg-background-purple d-flex align-items-center justify-content-center wh-40px rounded-circle" *ngIf="eventInvite.user_account.instagram_profile_url">
+            <a href="{{eventInvite.user_account.instagram_profile_url}}" target="_blank">
+              <i-feather name="instagram" class="wh-30px text-primary"
+              ></i-feather>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--    Going people-->
+    <div *ngIf="invited_by===false">
+      <div class="row justify-content-between align-items-center mb-15px mt-24px"
+           *ngFor="let event_attendee of event_attendees">
+        <div class="col-10 d-flex align-items-center d-inline-block">
+          <events-view-event-attendee-details-modal
+            [event]="event" [eventAttendee]="event_attendee"
+          >
+
+          </events-view-event-attendee-details-modal>
+          <div class="font-size-18 font-weight-500 ml-13px">
+            {{event_attendee.user_account.display_name}}
+            <div>
+              <img src="assets/images/indian%20flag.png" height="20" class="mr-12px">
+            </div>
+          </div>
+        </div>
+        <div class="col-2 px-0" *ngIf="loggedAccount.instagram_profile_url">
+          <div class="bg-background-purple d-flex align-items-center justify-content-center wh-40px rounded-circle">
+            <a href="{{loggedAccount.instagram_profile_url.substring(1, loggedAccount.instagram_profile_url.length)}}">
+              <i-feather name="instagram" class="wh-30px text-primary"></i-feather>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row mx-0" *ngIf="!event_attendees">
+        <div class="col-12 text-align-center px-0">
+          <img src="assets/images/no-promocodes.png" width="202">
+          <br>
+          <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+            No people going for this event
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

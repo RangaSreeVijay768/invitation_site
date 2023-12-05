@@ -1,0 +1,155 @@
+<blasts-get-all-blast-packages-no-template
+  #component> </blasts-get-all-blast-packages-no-template>
+
+<div class="row justify-content-center">
+  <div class="col-9">
+    <div class="row mt-80px ">
+      <div class="">
+        <label class="font-poppins font-size-18 font-weight-500 text-primary">Pricing</label>
+      </div>
+    </div>
+
+    <div class="row mt-24px">
+      <div class="">
+        <label class="font-poppins font-size-48 font-weight-700">Simple, transparent pricing</label>
+      </div>
+    </div>
+
+    <div class="row mt-16px">
+      <div class="">
+        <label class="font-poppins font-size-18 font-weight-400 text-grey-2">We believe Eventreply should be accessible
+          to all, no matter the size.</label>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="row justify-content-center mt-80px">
+  <div class="col-8 ml-220px">
+    <div class="row mb-90px">
+      <div class="col-4" *ngFor="let blast_package of component.blast_packages">
+        <div class="row ">
+          <div class="col-11 bg-white gradient-border border rounded-4 px-0 mb-24px">
+            <label class="d-inline-block w-100 text-center font-poppins font-size-18 font-weight-700 mt-24px premium-plan-gradient-text">
+              {{blast_package.blast_package_name}}
+            </label>
+            <br>
+            <label class="mt-12px font-poppins font-size-32 font-weight-400 d-inline-block w-100 text-center ">
+              <span class="font-size-48">$10/ </span>
+              month</label><br>
+            <div class="row text-align-start pl-24px mt-32px">
+              <div class="col-12">
+                <i-feather name="check"
+                           class="w-30px h-30px bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>
+                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">{{blast_package.blast_text_messages}} Text messages</label><br>
+                <i-feather name="check"
+                           class="w-30px h-30px bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>
+                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">{{blast_package.blast_whatsapp_messages}} Whatsapp messages</label><br>
+                <i-feather name="check"
+                           class="w-30px h-30px bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>
+                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">{{blast_package.blast_emails}} Emails</label><br>
+                <i-feather name="check"
+                           class="w-30px h-30px bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>
+                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">{{blast_package.number_of_days}} Days</label><br>
+                <i-feather name="check"
+                           class="w-30px h-30px bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>
+                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">Feature 5</label><br>
+              </div>
+              <div class="col-12 mt-32px mb-16px">
+                <button
+                  class="font-poppins font-size-18 font-weight-500 text-white bg-primary pt-12px pb-12px ph-82px border-none border rounded-2 plans-btn-gradient">
+                  Get this
+                </button>
+                <br>
+                <label class="font-poppins font-size-14 text-grey-1 font-weight-400 mt-12px">14 days money back
+                  guarantee</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<!--      <div class="col-4">-->
+<!--        <div class="row justify-content-center">-->
+<!--          <div class="col-11 bg-white gradient-border border rounded-4 px-0">-->
+<!--            <label class="font-poppins font-size-18 font-weight-700 text-align-center d-inline-block w-100 text-center mt-24px premium-plan-gradient-text">-->
+<!--              Business plan-->
+<!--            </label><br>-->
+<!--            <label class="mt-12px font-poppins font-size-32 font-weight-400 d-inline-block w-100 text-center ">-->
+<!--              <span class="font-size-48">25$/ </span>-->
+<!--              month</label><br>-->
+<!--            <div class="row text-align-start pl-24px mt-32px">-->
+<!--              <div class="col-12">-->
+<!--                <i-feather name="check"-->
+<!--                           class="w-30px h-30 bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>-->
+<!--                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">Feature 1</label><br>-->
+<!--                <i-feather name="check"-->
+<!--                           class="w-30px h-30 bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>-->
+<!--                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">Feature 2</label><br>-->
+<!--                <i-feather name="check"-->
+<!--                           class="w-30px h-30 bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>-->
+<!--                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">Feature 3</label><br>-->
+<!--                <i-feather name="check"-->
+<!--                           class="w-30px h-30 bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>-->
+<!--                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">Feature 4</label><br>-->
+<!--                <i-feather name="check"-->
+<!--                           class="w-30px h-30 bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>-->
+<!--                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">Feature 5</label><br>-->
+<!--              </div>-->
+<!--              <div class="col-12 mt-32px mb-16px">-->
+<!--                <button-->
+<!--                  class="font-poppins font-size-18 font-weight-500 text-white bg-primary pt-12px pb-12px ph-82px border-none border rounded-2 plans-btn-gradient">-->
+<!--                  Get this-->
+<!--                </button>-->
+<!--                <br>-->
+<!--                <label class="font-poppins font-size-14 text-grey-1 font-weight-400 mt-12px">14 days money back-->
+<!--                  guarantee</label>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-4">-->
+<!--        <div class="row justify-content-center">-->
+<!--          <div class="col-11 bg-white gradient-border border rounded-4 px-0">-->
+<!--            <label class="font-poppins font-size-18 font-weight-700 text-align-center d-inline-block w-100 text-center mt-24px premium-plan-gradient-text">-->
+<!--              Star plan-->
+<!--            </label><br>-->
+<!--            <label class="mt-12px font-poppins font-size-32 font-weight-400 d-inline-block w-100 text-center ">-->
+<!--              <span class="font-size-48">$50/ </span>month</label><br>-->
+<!--            <div class="row text-align-start pl-24px mt-32px">-->
+<!--              <div class="col-12">-->
+<!--                <i-feather name="check"-->
+<!--                           class="w-30px h-30 bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>-->
+<!--                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">Feature 1</label><br>-->
+<!--                <i-feather name="check"-->
+<!--                           class="w-30px h-30 bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>-->
+<!--                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">Feature 2</label><br>-->
+<!--                <i-feather name="check"-->
+<!--                           class="w-30px h-30 bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>-->
+<!--                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">Feature 3</label><br>-->
+<!--                <i-feather name="check"-->
+<!--                           class="w-30px h-30 bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>-->
+<!--                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">Feature 4</label><br>-->
+<!--                <i-feather name="check"-->
+<!--                           class="w-30px h-30 bg-check-plans border rounded-5 mr-12px text-green mb-16px"></i-feather>-->
+<!--                <label class="font-poppins font-size-16 text-grey-2 font-weight-400">Feature 5</label><br>-->
+<!--              </div>-->
+<!--              <div class="col-12 mt-32px mb-16px">-->
+<!--                <button-->
+<!--                  class="font-poppins font-size-18 font-weight-500 text-white bg-primary pt-12px pb-12px ph-82px border-none border rounded-2 plans-btn-gradient">-->
+<!--                  Get this-->
+<!--                </button>-->
+<!--                <br>-->
+<!--                <label class="font-poppins font-size-14 text-grey-1 font-weight-400 mt-12px">14 days money back-->
+<!--                  guarantee</label>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+  </div>
+</div>
+
+

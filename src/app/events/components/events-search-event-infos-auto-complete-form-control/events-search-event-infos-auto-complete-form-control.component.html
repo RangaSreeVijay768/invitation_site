@@ -1,0 +1,28 @@
+<div class="ng-autocomplete">
+
+  <div class="w-220px">
+    <ng-autocomplete class="border-none"
+                     [data]="data"
+                     [searchKeyword]="'event.event_title'"
+                     [customFilter]="customFilter"
+                     [placeholder]='model.placeholder'
+                     [minQueryLength]="3"
+                     [debounceTime]="500"
+                     [selectedValueRender]="selectedValueRender"
+                     (selected)='selectEvent($event)'
+                     (inputChanged)='onChangeSearch($event)'
+                     [itemTemplate]="itemTemplate" [isLoading]="is_loading"
+                     [notFoundTemplate]="notFoundTemplate">
+    </ng-autocomplete>
+  </div>
+
+    <ng-template #itemTemplate let-item>
+      <div routerLink="/signedin/events/{{item['event.event_id']}}/details">
+        <a innerHTML="{{item['event.event_title']}}"></a>
+      </div>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+        <div [innerHTML]="notFound"></div>
+    </ng-template>
+</div>

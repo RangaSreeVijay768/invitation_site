@@ -1,0 +1,205 @@
+<events-get-event-attendees-by-event-no-template
+        [event]="eventInfo.event"
+        (eventAttendeesReceived)="event_attendees = getEventAttendeesByEventNoTemplateComponent.event_attendees"
+        #getEventAttendeesByEventNoTemplateComponent></events-get-event-attendees-by-event-no-template>
+
+<div class="row mb-32px">
+    <div class="">
+        <div class="row ph-24px justify-content-between row-align-center">
+            <form class="col-7 profile-form-placeholder">
+                <!--        <i-feather name="search" class="font-poppins text-grey-1"></i-feather>-->
+                <!--        <events-event-dashboard-guest-details-all-guests-search-form></events-event-dashboard-guest-details-all-guests-search-form>-->
+            </form>
+            <div class="col-3 px-0 d-flex align-items-center">
+                <button class="btn btn-color-primary py-8px ph-16px">
+                    <label class="font-poppins font-weight-500 mr-12px cursor-pointer">Download as CSV</label>
+                    <i-feather name="download" class="font-poppins font-weight-500 cursor-pointer"></i-feather>
+                </button>
+            </div>
+        </div>
+
+        <div class="row row-align-center mt-32px px-24px pt-16px border-top border-grey-1">
+            <div class="col-2 p-0 ">
+                <label class="font-weight-500 font-poppins font-size-18">Sort by:</label>
+            </div>
+            <!--            <div class="col-8 ml-20px d-flex justify-content-between py-8px ph-16px border border-grey-1">-->
+            <!--              <label class="font-weight-500 font-size-16 font-poppins text-primary">Upcoming birthdays</label>-->
+            <!--              <i-feather name="chevron-down"></i-feather>-->
+            <!--            </div>-->
+            <div class="col-4 pr-35px">
+                <div class="row row-align-center justify-content-between border border-grey-1 br-5px">
+                    <div ngbDropdown class="pl-0">
+                        <div class="font-color-grey-2 d-flex align-items-center" id="dropdownBasic1"
+                             ngbDropdownToggle>
+                            <div class="col-11 cursor-pointer py-21px ph-16px font-color-9747FF">
+                                <label class="font-weight-500 font-size-18 mb-0 cursor-pointer">{{currentFilter}}</label>
+                            </div>
+                            <div class="col-1 px-0">
+                                <i-feather name="chevron-down" class="cursor-pointer"></i-feather>
+                            </div>
+                        </div>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBas" class="w-100 border-1px-9747FF">
+                            <div *ngFor="let filter of SortFilters" class="px-20px">
+                                <div ngbDropdownItem
+                                     class="font-weight-500 border-radius-5px border-left-3px-9747FF w-100"
+                                     (click)="changeSortFilter(filter)">
+                                    <label class="font-color-grey-2 font-weight-500 font-poppins">{{filter}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row ph-24px" *ngFor="let event_attendee of getEventAttendeesByEventNoTemplateComponent.event_attendees">
+
+    <div class="pt-16px">
+        <div class="row justify-content-between align-items-center mb-15px ph-16px py-16px bg-grey-3 rounded-2">
+            <div class="d-flex justify-content-between">
+                <div class="col-9 d-flex align-items-center d-inline-block">
+                    <!--          <img src="assets/party.png" height="115" width="115" class="rounded-circle">-->
+                    <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+                            [size]="60"
+                            [imageClasses]="['br-30']" [alt]="event_attendee.user_account.display_name"
+                            [entityId]="event_attendee.user_account.user_account_id" [entityType]="'USER_PROFILE_PIC'"
+                            [round]="false"
+                    ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+                    <div class="font-size-18 font-weight-500 ml-13px">
+                        {{event_attendee.user_account.display_name}}
+                        <div>
+                            <img src="assets/images/indian%20flag.png" height="20" class="mr-12px">
+                            <img src="assets/images/img.png" height="5" width="5" class="mr-12px">
+                            <label class="font-size-14 text-grey-1 mb-0" *ngIf="event_attendee.invited_by">Invited
+                                by {{event_attendee.invited_by.display_name}}</label>
+                            <label class="font-size-14 text-grey-1 mb-0" *ngIf="!event_attendee.invited_by">No
+                                invites </label>
+                            <div class="d-flex align-items-center mt-24px">
+                                <events-co-host-status-form
+                                        [eventAttendee]="event_attendee"></events-co-host-status-form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="d-flex align-items-center justify-content-center py-12px border border-2 border-primary rounded-2"
+                         *ngIf="event_attendee.user_account.instagram_profile_url">
+                        <a href="{{event_attendee.user_account.instagram_profile_url}}" target="_blank">
+                            <i-feather name="instagram"
+                                       class="font-weight-500 text-primary h-27 w-27 mr-8px"></i-feather>
+                            <label class="font-weight-500 font-size-18 font-poppins text-primary">Instagram
+                                profile</label>
+                        </a>
+                    </div>
+                    <!--                    <div class="font-size-18 font-weight-500 font-poppins text-red text-align-end mt-32px">-->
+                    <!--                        <i-feather name="Trash-2" class="mr-16px"></i-feather>-->
+                    <!--                        <label>Remove</label>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+            <div class="row mt-24px border-top pt-24px border-grey-1 border-top-dashed">
+                <div class="font-weight-700 font-poppins font-size-18">
+                    <label class="mr-24px">Ticket Purchase details</label>
+                    <i-feather name="chevron-down"></i-feather>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<div class="row mx-0" *ngIf="!event_attendees">
+    <div class="col-12 text-align-center px-0">
+        <img src="assets/images/no-promocodes.png" width="202">
+        <br>
+        <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+            No guests for this event
+        </label>
+    </div>
+</div>
+
+
+<!--<div class="row ph-24px">-->
+<!--  <div class="pt-32px border-top border-grey-1">-->
+<!--    <div class="row justify-content-between align-items-center mb-15px ph-16px py-16px bg-grey-3 rounded-2">-->
+<!--      <div class="d-flex justify-content-between">-->
+<!--        <div class="col-9 d-flex align-items-center d-inline-block">-->
+<!--          <img src="assets/party.png" height="115" width="115" class="rounded-circle">-->
+<!--          <div class="font-size-18 font-weight-500 ml-13px">-->
+<!--            Scarlet-->
+<!--            <div>-->
+<!--              <img src="assets/images/indian%20flag.png" height="20" class="mr-12px">-->
+<!--              <img src="assets/images/img.png" height="5" width="5" class="mr-12px">-->
+<!--              <label class="font-size-14 text-grey-1 mb-0">Invited-->
+<!--                by Beau williams </label><br>-->
+<!--              <div class="d-flex align-items-center mt-24px">-->
+<!--                <input type="checkbox" class="w-27 h-27">-->
+<!--                <label class="ml-12px">Remove Co-host</label>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-3">-->
+<!--          <div class="font-size-18 font-weight-500 font-poppins text-red text-align-end mt-32px">-->
+<!--            <i-feather name="Trash-2" class="mr-16px"></i-feather>-->
+<!--            <label>Remove</label>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="row mt-24px border-top pt-24px border-grey-1">-->
+<!--        <div class="font-weight-700 font-poppins font-size-18">-->
+<!--          <label class="mr-24px">Ticket Purchase details</label>-->
+<!--          <i-feather name="chevron-up"></i-feather>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="row">-->
+<!--        <div class="d-flex justify-content-between border border-grey-1 rounded-2 py-16px ph-16px mt-24px">-->
+<!--          &lt;!&ndash;          <div class="row">&ndash;&gt;-->
+<!--          <div class="">-->
+<!--            <label class="font-size-24 font-weight-500 font-poppins">Paid</label><br>-->
+<!--            <label class="font-size-18 font-poppins text-grey-1 mt-20px">Purchased on:<span class="font-weight-500 font-size-18 text-black"> November 3rd 2022</span></label><br>-->
+<!--            <label class="font-size-18 font-poppins text-grey-1 mt-20px">Quantity<span class="font-weight-500 font-size-18 text-black"> 02</span></label>-->
+<!--          </div>-->
+<!--          <div class="bg-background-purple d-flex justify-content-center border border-primary align-items-center ph-16px rounded-2">-->
+<!--            <div>-->
+<!--              <div class="row">-->
+<!--                <div class="d-flex justify-content-center text-grey-2 font-weight-500 font-size-18 font-poppins">-->
+<!--                  <label>Requested refund on November 5th 2022</label>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="row mt-24px">-->
+<!--                <div class="d-flex justify-content-center">-->
+<!--                  <button class="btn btn-color-primary text-align-center">-->
+<!--                    Issue refund-->
+<!--                  </button>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          </div>-->
+
+<!--        </div>-->
+
+<!--      </div>-->
+
+<!--      <div class="row">-->
+<!--        <div class="border border-grey-1 rounded-2 py-16px ph-16px mt-24px">-->
+<!--          <label class="font-size-24 font-weight-500 font-poppins">Free</label><br>-->
+<!--          <label class="font-size-18 font-poppins text-grey-1 mt-20px">Purchased on:<span class="font-weight-500 font-size-18 text-black"> November 3rd 2022</span></label><br>-->
+<!--          <label class="font-size-18 font-poppins text-grey-1 mt-20px">Quantity<span class="font-weight-500 font-size-18 text-black"> 05</span></label>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--    </div>-->
+
+<!--  </div>-->
+<!--</div>-->
+

@@ -1,0 +1,13 @@
+<form [formGroup]="formGroup" #createForm="ngForm">
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['name']"></dynamic-ng-bootstrap-form-control>
+
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['email_id']" *ngIf="contactCreationType===undefined || contactCreationType==='EMAIL'"></dynamic-ng-bootstrap-form-control>
+
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['phone_number']" *ngIf="contactCreationType===undefined || contactCreationType==='PHONE_NUMBER'"></dynamic-ng-bootstrap-form-control>
+
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['whatsapp_number']" *ngIf="contactCreationType===undefined || contactCreationType==='WHATSAPP_NUMBER'"></dynamic-ng-bootstrap-form-control>
+</form>

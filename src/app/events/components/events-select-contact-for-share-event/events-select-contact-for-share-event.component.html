@@ -1,0 +1,93 @@
+<!--<div class="row rounded-4 mx-0 justify-content-between">-->
+<!--  <div class="bg-white px-0 rounded-4 ">-->
+
+<!--    <div class="row mx-0 modal-header modal-header&#45;&#45;sticky">-->
+<!--      <div class="d-flex bg-primary justify-content-between align-items-center brtl-20px px-24 py-20px">-->
+<!--        <span class=" font-poppins font-size-18 font-weight-500 text-white">Manage contact</span>-->
+<!--        <i-feather name="x" class="rounded-5 p-1 text-white cursor-pointer vertical-align-unset"-->
+<!--                   style="background: rgba(255, 255, 255, 0.3)"></i-feather>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="row ph-24px mx-0 border border-bottom grey-2 mb-32px pb-32px">-->
+<!--      <div class="px-0 border-bottom border-grey-1 py-32px">-->
+<!--        <div class="d-flex align-items-center border border-grey-1 rounded-2 ph-16px">-->
+<!--          <i-feather name="search"-->
+<!--                     class="mr-16px font-poppins font-weight-500 text-grey-1"></i-feather>-->
+<!--          <form class="profile-form-placeholder w-100">-->
+<!--            <user-profiles-blasts-invite-to-event-swiper-search-contact-form></user-profiles-blasts-invite-to-event-swiper-search-contact-form>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <label-->
+<!--        class="mt-32px px-0 font-poppins font-weight-500 font-size-18 text-align-start justify-content-between">-->
+<!--        <input type="checkbox" class="w-27 h-27 mt-20px mr-16px"-->
+<!--               (change)="selectAllItems(blastListItems)">-->
+<!--        Select all contacts-->
+<!--      </label>-->
+
+<!--      <div class="row mt-24px" *ngFor="let blast_item of blastListItems">-->
+<!--        <div class=" d-flex align-items-center justify-content-between px-0 ">-->
+<!--          <div class="col-8 d-flex align-items-start">-->
+<!--            <div>-->
+<!--              <images-get-image-by-entity-and-type-unique-image-ngx-avatar-->
+<!--                class="cursor-pointer d-flex justify-content-center mt-8px"-->
+<!--                [alt]="blast_item.blast_list.blast_list_name"-->
+<!--                [entityId]="blast_item.user_account?.user_account_id||'test'"-->
+<!--                [entityType]="'USER_PROFILE_PIC'"-->
+<!--                [size]="40"-->
+<!--                [round]="true"-->
+<!--              ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>-->
+<!--            </div>-->
+<!--            <div class="row justify-content-lg-start">-->
+<!--              <label class="text-align-start ml-16px"> {{blast_item.display_name}}</label>-->
+<!--              <div class="ml-16px text-align-start font-size-18 font-weight-500 font-poppins">-->
+<!--                <img src="assets/images/cake.png" height="20" width="20" class="mr-4px">-->
+<!--                <label class="font-poppins font-weight-400 font-size-16 text-grey-1 mr-8px"-->
+<!--                       *ngIf="blast_item.user_account.date_of_birth">{{blast_item.user_account?.date_of_birth|appDateFormat:'MMMM DD'}}</label>-->
+<!--                <img src="assets/images/Ellipse.svg">-->
+<!--                <label class="font-poppins font-weight-400 font-size-16 text-grey-1 ml-8px"-->
+<!--                       *ngIf="blast_item.user_account.city">Lives-->
+<!--                  in {{blast_item.user_account.city}}</label>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          <div>-->
+<!--            <input type="checkbox" class="w-27 h-27" (click)="blast_list_item.push(blast_item)">-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--    </div>-->
+<!--    <user-profiles-add-event-blast-recipient-no-template-->
+<!--      [blast_list_items]="blast_list_item" [event_blast_id]="event_blast_id"-->
+<!--      (eventBlastAdded)="slideNext()"-->
+<!--      #addEventBlastRecipientNoTemplateComponent-->
+<!--    ></user-profiles-add-event-blast-recipient-no-template>-->
+
+<!--    <div class="row ph-54px py-32px d-flex justify-content-between position-sticky bottom-0 bg-color-white">-->
+<!--      <div class="col-6 d-flex">-->
+<!--        <button-->
+<!--          class="font-size-18 font-weight-700 text-primary border-primary bg-white py-16px pl ph-80 rounded-2 border-1px-7F56D9"-->
+<!--        >-->
+<!--          Cancel-->
+<!--        </button>-->
+<!--      </div>-->
+
+<!--      <div class="col-6 d-flex align-items-end justify-content-end">-->
+<!--        <button class="font-size-18 font-weight-700 text-white bg-primary border-none py-16px pl ph-60 rounded-2"-->
+<!--                [promiseBtn]="addEventBlastRecipientNoTemplateComponent.add_event_blast_recipients_subscription$"-->
+<!--                (click)="addEventBlastRecipientNoTemplateComponent.addEventBlastRecipients(addEventBlastRecipientNoTemplateComponent.createRequestData())">-->
+<!--          Next-->
+<!--          <i-feather name="arrow-right"></i-feather>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+<!--</div>-->

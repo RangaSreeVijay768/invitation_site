@@ -1,0 +1,39 @@
+<form [formGroup]="formGroup" #createForm="ngForm">
+  <div class="row mt-32px mx-0">
+    <div class="d-flex align-items-center px-0">
+      <i-feather name="mail" class="text-primary"></i-feather>
+      <label class="ml-13px font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">Email address or phone
+        number</label>
+    </div>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['email']"></dynamic-ng-bootstrap-form-control>
+</form>
+
+
+<form [formGroup]="formGroup" #createForm="ngForm">
+  <div class="row justify-content-between mt-32px">
+    <div class="col-4 d-flex align-items-center">
+      <i-feather name="lock" class="text-primary"></i-feather>
+      <label class="ml-13px font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">Password</label>
+    </div>
+
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['password']"></dynamic-ng-bootstrap-form-control>
+    <div class="col-5 text-align-end text-align-start mt-12px"
+         routerLink="/basic/forgotpassword">
+      <label class="text-primary font-weight-400 cursor-pointer mb-0">Forgot Password?</label>
+    </div>
+  </div>
+</form>
+<!--<form [formGroup]="formGroup" #createForm="ngForm">-->
+<!--    <div>-->
+<!--      <i-feather name="lock" class="text-primary"></i-feather>-->
+<!--      <label class="ml-13px font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">Password</label>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"-->
+<!--                                     [model]="formModelMap['password']"></dynamic-ng-bootstrap-form-control>-->
+<!--</form>-->

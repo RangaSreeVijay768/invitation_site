@@ -1,0 +1,134 @@
+<events-get-event-invites-by-event-no-template
+  [event]="event_info"
+  (eventInvitesReceived)="eventInvites = getEventInvitesByEventNoTemplateComponent.eventInvites"
+  #getEventInvitesByEventNoTemplateComponent></events-get-event-invites-by-event-no-template>
+
+
+<div class="row bg-default justify-content-center">
+  <div class="col-9 br-5px bg-white py-12px mt-56px mb-40px">
+    <div class="row">
+      <div class="col-9">
+        <label class="font-weight-700 font-size-32 font-poppins">{{event_info.event_title}}</label>
+        <div class="row row-align-center">
+          <div>
+            <i-feather name="help-circle" class="mr-10px"></i-feather>
+            <label class="mr-20px">Only hosts can invite guests</label>
+            <img src="assets/images/img.png" width="8" height="8" class="mr-20px">
+            <i-feather name="dollar-sign" class="font-color-red mr-12px"></i-feather>
+            <label class="font-color-red mb-0">Paid</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--    <user-profiles-user-profile-details-modal-no-template-->
+<!--      #userprofile></user-profiles-user-profile-details-modal-no-template>-->
+
+    <events-view-user-profile-details-modal-no-template
+      #userprofile></events-view-user-profile-details-modal-no-template>
+
+    <div class="p-0">
+      <div class="mt-24px d-flex align-items-center d-inline-block">
+        <img src="assets/party.png" height="45" width="45" class="br-30 cursor-pointer" (click)="userprofile.openModal()">
+        <label class="ml-20px mb-0 mr-24px"><span class="font-color-grey-2"> Created/hosted by </span><br>
+          {{event_info.created_by.display_name}}
+        </label>
+        <button class="btn btn-color-primary mr-24px">Follow</button>
+        <div class="ml-20px b-1px-light-grey-left">
+          <img src="assets/party.png" height="45" width="45" class="br-30 ml-32px cursor-pointer" (click)="userprofile.openModal()">
+        </div>
+        <label class="ml-20px mb-0 mr-24px"><span class="font-color-grey-2"> Created/hosted by </span><br>
+          {{event_info.created_by.display_name}}
+        </label>
+        <button class="btn btn-color-primary mr-24px">Follow</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row bg-default justify-content-center">
+  <div class="col-9 px-0">
+    <div class="row">
+      <div class=" col-7 mb-40px">
+        <images-get-image-by-entity-id-and-image-type
+          [entityId]="event_info.event_id"
+          [entityType]="'EVENT_PROFILE_PIC'"
+          #imageComponent
+        >
+        </images-get-image-by-entity-id-and-image-type>
+        <div *ngIf="imageComponent.image">
+          <img class="w-100 h-100" src="{{imageComponent.image.uploaded_file.file_link}}">
+        </div>
+        <label class="font-size-18 font-weight-700 mt-32px mb-15px">Description/details about event</label>
+        <label class="mb-32px">{{event_info.event_description}}</label>
+        <div class="d-flex d-inline-block">
+          <i-feather name="map-pin" class="mr-12px"></i-feather>
+          <label class="font-size-18 font-weight-700">Location</label>
+        </div><br>
+        <label class="mb-32px">Lorem ipsum dolor sit amet consectetur. Orci diam sit nulla tincidunt.rcit</label><br>
+        <div class="d-flex d-inline-block">
+          <i-feather name="calendar" class="mr-12px"></i-feather>
+          <label class="font-weight-700 font-size-18">Date and Time</label>
+        </div><br>
+        <label>25th December 07:30 pm to 26th December 11:30 am</label>
+      </div>
+      <div class="col-5 mx-0">
+        <i-feather name="users"></i-feather>
+        <label class="font-size-18 font-weight-700 ml-12px mb-15px">Invited(126)</label>
+
+        <div class="bg-white py-15px ph-30px box-shadow br-5px">
+          <div class="row justify-content-between align-items-center mb-15px"
+               *ngFor="let eventInvite of eventInvites">
+            <div class="col-10 d-flex align-items-center d-inline-block ">
+              <img src="assets/party.png" height="50" width="50" class="br-30">
+              <div class="font-size-18 font-weight-500 ml-13px">
+                {{eventInvite.display_name}}
+                <div>
+                  <img src="assets/images/indian%20flag.png" height="20" class="mr-12px">
+                  <!--                  <fa-icon icon="circle" class="font-size-8 font-color-grey-1 mr-12px"></fa-icon>-->
+                  <label class="font-size-14 font-color-grey-1 mb-0">Invited by {{event_info.created_by.display_name}} </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <i-feather name="instagram" class="d-flex align-items-center w-40px "></i-feather>
+            </div>
+          </div>
+
+          <div class="row mx-0" *ngIf="!eventInvites">
+            <div class="col-12 text-align-center px-0">
+              <img src="assets/images/no-promocodes.png" width="202">
+              <br>
+              <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+                No invitees for this event
+              </label>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <events-all-invited-people-modal
+              *ngIf="eventInvites"
+              [eventInvites]="eventInvites"
+              [event]="event_info"
+            ></events-all-invited-people-modal>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row py-16px spread-shadow">
+  <div class="col-9 mx-auto d-flex justify-content-between align-items-center">
+    <div>
+      <span class="font-weight-400">Ticket price</span>
+      <p class="font-weight-700 font-size-24">$ 5-150</p>
+    </div>
+    <div class="d-flex">
+      <button class="btn btn-sm btn-outline-primary d-flex align-items-center py-20px px-40px"><i-feather name="Share2"></i-feather> &nbsp; Share Event</button>
+      <events-rsvp-paid-modal></events-rsvp-paid-modal>
+
+    </div>
+  </div>
+</div>
+
+

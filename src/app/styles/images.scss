@@ -1,0 +1,128 @@
+@import "core-variables";
+
+.img-xl {
+  height: 250px !important;
+  width: 250px !important;
+  width: 100% !important;
+  line-height: 200px !important;
+  margin: auto;
+}
+
+.img-lg {
+  height: 170px !important;
+  width: 170px !important;
+  line-height: 170px !important;
+  margin: auto;
+}
+
+.img-md {
+  height: 90px !important;
+  width: 90px !important;
+  line-height: 90px !important;
+  margin: auto;
+  border: 0.25rem solid var(--primary-white);
+}
+
+.img-sm {
+  height: 70px !important;
+  width: 70px !important;
+  line-height: 70px !important;
+  margin: auto;
+}
+
+.img-sm-circular {
+  height: 55px !important;
+  width: 55px !important;
+  line-height: 55px !important;
+  margin: auto;
+}
+
+.img-md-circular {
+  height: 90px !important;
+  width: 90px !important;
+  line-height: 90px !important;
+  margin: auto;
+}
+
+.img-xs {
+  height: 38px !important;
+  width: 38px !important;
+  line-height: 38px !important;
+  margin: auto;
+}
+
+.img-xxs {
+  height: 30px !important;
+  width: 30px !important;
+  line-height: 30px !important;
+  margin: auto;
+}
+
+.img-font {
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  //float: left;
+}
+
+.img-circular {
+  border-radius: 1000px !important
+}
+
+.img-fit-cover{
+  object-fit: cover;
+  object-position: center;
+}
+
+.img-upload, .img-uploading {
+  background-color: var(--primary-white-light-b) !important;
+}
+
+.img-shadow {
+  box-shadow: 0px 1px 1px 0px var(--primary-grey-d);
+}
+
+.img-border-light {
+  border: 3px solid #fff;
+  box-shadow: 0px 0px 2px 1px var(--primary-grey-e)
+}
+
+.img-progress {
+  border-radius: 0.5rem !important;
+  height: 0.5rem !important;
+}
+
+.img-logo {
+  float: left;
+  height: 3.5rem
+}
+
+.img-border-medium {
+  border: 1px solid var(--primary-grey-e) !important;
+}
+
+.youtube-video {
+  width: 100%;
+  height: 500px;
+}
+
+.vimeo-video {
+  width: 100%;
+  height: 220px;
+}
+
+.youtube-video-preview {
+  width: 100%
+}
+
+
+.fake-overlay-video {
+  height: 220px;
+  position: absolute;
+  width: 100%;
+}
+
+.menu-img {
+  height: 38px;
+  margin: 5px 0
+}

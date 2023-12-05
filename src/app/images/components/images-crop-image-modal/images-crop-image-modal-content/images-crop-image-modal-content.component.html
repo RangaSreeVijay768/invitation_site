@@ -1,0 +1,40 @@
+<div class="container-fluid">
+    <div class="row justify-content-center px-2 py-3">
+        <div class="col-10">
+            <label class="text-24px text-dark-text fw-bold">Crop Image</label>
+            <label class="mt-2 text-light-text">Drag image and use zoom controls to fill the box.</label>
+        </div>
+        <div class="col-2 text-end">
+            <!--            <fa-icon icon="close" (click)="closeModal({status:'CLOSE',data:undefined})"></fa-icon>-->
+        </div>
+    </div>
+    <div class="col-12 mt-4">
+        <image-cropper
+                [imageChangedEvent]="file_change_event"
+                [imageFile]="image_file"
+                (imageCropped)="cropImage($event)"
+                [resizeToWidth]="1368"
+                [onlyScaleDown]="true"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="aspect_ratio||3/2"
+                [format]="format"
+                [imageQuality]="90"
+
+        ></image-cropper>
+    </div>
+    <div class="col-12 mt-4">
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <button class="btn btn-outline-primary w-100" (click)="closeModal({status:'CLOSE',data:'undefined'})">
+                    Cancel
+                </button>
+            </div>
+            <div class="col-5">
+                <button class="btn btn-primary w-100" [disabled]="!cropped_image"
+                        (click)="closeModal({status:'SUCCESS',data:this.cropped_image})">Save
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="pb-3"></div>
+</div>

@@ -1,0 +1,7 @@
+<div class="px-0 overflow-y-scroll container-fluid">
+    <events-upload-csv-preview-summary-swiper
+            [userContactRequestItems]="items"
+            (closeClicked)="closeModal()"
+            (userContactsCreated)="closeModal({data:$event,status:'SUCCESS'});notificationsService.success('Success','Uploaded contacts')"
+    ></events-upload-csv-preview-summary-swiper>
+</div>

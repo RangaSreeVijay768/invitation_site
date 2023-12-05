@@ -1,0 +1,53 @@
+<blasts-get-blast-lists-by-user-account-no-template
+  [userAccount]="loggedAccount" [count]="10" [columnName]="'createdTime'" [columnOrder]="'DESC'"
+  [blastListCreationType]="['MANUAL','AUTO_PAST_ATTENDEE']"
+  (blastListsReceived)="blast_list = blastListsGetByUserAccount.blastLists"
+  #blastListsGetByUserAccount #component></blasts-get-blast-lists-by-user-account-no-template>
+
+<div class="row">
+  <div class=""
+       *ngFor="let blastlist of blast_list">
+
+    <div class="d-flex justify-content-between rounded-2 border-1px-white p-8px mt-20px py-"
+         (click)="blast_list_selected = blastlist; print(); blastListSelected.emit(blast_list_selected)"
+         [class.border-primary]="blast_list_selected?.blast_list_id=== blastlist.blast_list_id">
+      <div class="d-flex align-items-center d-inline-block cursor-pointer">
+        <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+          class="mr-16px"
+          [alt]="blastlist.blast_list_name"
+          [entityId]="blastlist.blast_list_id"
+          [entityType]="'BLAST_PROFILE_PIC'"
+          [size]="40"
+          [round]="false"
+          #imageComponent></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+        <div *ngIf="imageComponent.image">
+          <img class="w-100 h-100"
+               src="{{imageComponent.image.uploaded_file.file_link}}">
+        </div>
+        <div class="text-align-start font-size-18 font-weight-500 font-poppins">
+          {{blastlist.blast_list_name}}
+          <div>
+            <label
+              class="font-poppins font-weight-400 font-size-14 text-grey-1">{{blastlist.blast_list_type}}
+              contact
+              type | {{blastlist.total_blast_list_items}} contacts</label>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex align-items-center" ngxClipboard [cbContent]="">
+        <blasts-copy-blast-list-no-template
+          (blastListCopied)="notificationsService.success('Success','Blast list copied');
+                      blastListsGetByUserAccount.getBlastListsByUserAccount(blastListsGetByUserAccount.createRequestData())"
+          [blastList]="blastlist" [appendCopyTag]="true"
+          [copyBlastListItems]="true"
+          #copyBlastList></blasts-copy-blast-list-no-template>
+        <div class="wh-40px rounded-5 bg-background-purple">
+          <i-feather name="copy" class="text-primary w-24 h-24 vertical-align-middle"
+                     (click)="copyBlastList.copyBlastList(copyBlastList.createRequestData())"
+                     [promiseBtn]="copyBlastList.copy_blast_list_subscription$"></i-feather>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<user-profiles-blasts-create-new-group-modal
+  (closeResult)="$event.status==='SUCCESS'?blastsComponent.refreshScrolling():''"
+  #massMessagingCreateNewModalComponent>
+</user-profiles-blasts-create-new-group-modal>
+
+
+<div class="row justify-content-center mt-40px mb-40px">
+  <div class="col-9 br-20px box-shadow bg-white px-0">
+    <div class="row mx-0">
+      <div class="col-5 px-0 bg-background-purple brbl-20px">
+        <div class="ph-24px py-40px bg-primary brtl-20px">
+          <!--                    <div class="ph-16px py-20px bg-white rounded-2 border border-grey-1">-->
+          <div class="text-grey-2 rounded-1 font-weight-500 font-size-16 position-relative">
+            <div class="position-absolute left-16px top-24px w-10px"><i-feather name="Search"></i-feather></div>
+            <blasts-search-blast-lists-form
+              (searchTermCreated)="filter_blast_list_name=$event;blastsComponent.updateFilterBlastListName($event)"></blasts-search-blast-lists-form>
+          </div>
+
+
+          <!--                    </div>-->
+        </div>
+        <div class="row b-1px-linear-gradient mt-24px ml-24px mr-24px border-radius-5px">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <label class="font-poppins font-size-10 text-grey-1">Blast left</label><br>
+              <label class="font-weight-500 font-size-18 font-poppins">453/1000</label>
+            </div>
+            <button class="btn btn-premium font-color-white" routerLink="/signedin/events/plans">Get more
+              credits
+            </button>
+          </div>
+          <div class="py-12px">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 45.3%; background: #7F56D8"
+                   aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row row-align-center mx-0 border-bottom border-grey-1">
+          <div class="d-flex align-items-center justify-content-between py-24px ph-16px">
+            <div (click)="massMessagingCreateNewModalComponent.openModal()" class="cursor-pointer">
+              <i-feather name="plus-circle" class="w-27 h-27 text-primary font-poppins"></i-feather>
+              <label class="font-poppins font-size-18 font-weight-500 text-primary ml-12px cursor-pointer">Create
+                new
+                group</label>
+            </div>
+
+          </div>
+        </div>
+
+
+          <blasts-get-blast-lists-by-user-account-scrolling
+            [filterBlastListName]="filter_blast_list_name"
+            [numberOfItems]="15"
+
+            #blastsComponent></blasts-get-blast-lists-by-user-account-scrolling>
+      </div>
+
+
+      <div class="col-7">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<form [formGroup]="formGroup" #createForm="ngForm">
+  <div class="row mt-32px mx-0">
+    <div class="d-flex align-items-center px-0">
+      <i-feather name="check-circle" class="text-primary"></i-feather>
+      <label class="ml-13px font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">Verification code</label>
+    </div>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['verification_code']"></dynamic-ng-bootstrap-form-control>
+</form>

@@ -1,0 +1,109 @@
+<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder">
+  <div class="row mx-0 pl-24px pr-24px">
+    <label class="px-0 pt-20px font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">CODE
+      NAME
+      <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span></label>
+  </div>
+  <div class="pl-24px pr-24px ">
+    <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                       [model]="formModelMap['promo_code']"></dynamic-ng-bootstrap-form-control>
+  </div>
+</form>
+
+<div class="row mx-0 pl-24px pr-24px">
+  <label class="px-0 pt-20px font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">CODE
+    TYPE
+    <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span></label>
+</div>
+
+<div class="row mx-0 ph-24px">
+  <!--  <div class="d-flex border border-2 border-grey-1 rounded-2 justify-content-between align-items-center">-->
+  <!--    <label class="px-0 py-20px ph-16px font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">-->
+  <!--      Shows hidden tickets-->
+  <!--    </label>-->
+  <!--    <i-feather name="chevron-down"></i-feather>-->
+  <!--  </div>-->
+
+  <div ngbDropdown class="mt-20px">
+    <div class="row row-align-center justify-content-between border border-2 border-grey-1 br-5px">
+
+
+      <div class="font-color-grey-2 d-flex align-items-center" id="dropdownBasic1"
+           ngbDropdownToggle>
+        <div class="col-11 cursor-pointer py-21px ph-16px">
+          <label class="font-weight-500 font-size-18 mb-0 cursor-pointer">{{display_code_type}}</label>
+        </div>
+        <div class="col-1 px-0">
+          <i-feather name="chevron-down" class="cursor-pointer"></i-feather>
+        </div>
+      </div>
+      <div ngbDropdownMenu aria-labelledby="dropdownBas" class="w-100">
+        <div *ngFor="let code_type of code_types" class="px-26px">
+          <div ngbDropdownItem class="font-weight-500 border-radius-5px border-left-3px-9747FF w-100"
+               (click)="change_display_code_type(code_type)">
+            <label class="font-color-grey-2 font-weight-500 font-poppins ">{{code_type}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder">
+  <div class="row mt-32px mx-0 pl-24px pr-24px ">
+    <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">QUANTITY
+      <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span>
+    </label>
+  </div>
+  <div class="pl-24px pr-24px ">
+    <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                       [model]="formModelMap['total_quantity']"></dynamic-ng-bootstrap-form-control>
+  </div>
+</form>
+
+<div class="row mx-0 mt-32px pl-24px pr-24px ">
+  <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">DISCOUNT
+    AMOUNT
+    <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span></label>
+</div>
+<div class="d-flex justify-content-between align-items-center">
+  <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder resize-none">
+    <div class="pl-24px pr-24px ">
+      <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                         [model]="formModelMap['discount_amount_flat']"></dynamic-ng-bootstrap-form-control>
+    </div>
+  </form>
+  <span class="text-grey-2">Or</span>
+  <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder resize-none">
+    <div class="pl-24px pr-24px ">
+      <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                         [model]="formModelMap['discount_amount_percentage']"></dynamic-ng-bootstrap-form-control>
+    </div>
+  </form>
+</div>
+
+<div class="d-flex justify-content-between align-items-center">
+  <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder resize-none">
+    <div class="row mx-0 mt-32px pl-24px pr-24px ">
+      <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">CODE
+        STARTS
+        <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span></label>
+    </div>
+    <div class="pl-24px pr-24px ">
+      <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                         [model]="formModelMap['start_time']"></dynamic-ng-bootstrap-form-control>
+    </div>
+  </form>
+
+  <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder resize-none">
+    <div class="row mx-0 mt-32px pl-24px pr-24px ">
+      <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">CODE ENDS
+        <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span></label>
+    </div>
+    <div class="pl-24px pr-24px ">
+      <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                         [model]="formModelMap['end_time']"></dynamic-ng-bootstrap-form-control>
+    </div>
+  </form>
+</div>
+

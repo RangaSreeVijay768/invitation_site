@@ -1,0 +1,36 @@
+<div class="row rounded-4 mx-0 justify-content-center overflow-y-scroll">
+  <div class="bg-white px-0 rounded-4">
+    <div class="d-flex bg-primary justify-content-between align-items-center brt-16px px-24 py-20px">
+      <span class=" font-poppins font-size-18 font-weight-500 text-white">Add/upload contact</span>
+      <i-feather name="x" class="rounded-5 p-1 text-white cursor-pointer vertical-align-unset"
+                 (click)="closeModal({status:'CLOSE', data:undefined})"
+                 style="background: rgba(255, 255, 255, 0.3)"></i-feather>
+    </div>
+    <div class="row ph-24px mx-0">
+      <div class="px-0">
+        <user-profiles-creat-user-contact-form
+          [contactCreationType]="contactCreationType"
+          (userContactCreated)="closeModal()"
+          #creatUserContactFormComponent></user-profiles-creat-user-contact-form>
+      </div>
+      <div class="row justify-content-between mx-0 mb-40px mt-40px">
+
+        <button
+          class="col-5 border border-primary rounded-2 bg-white font-weight-700 font-poppins font-size-18 text-primary py-16px border-1px-7F56D9"
+          (click)="closeModal();"
+        >
+          Cancel
+        </button>
+        <button class="col-6 btn btn-primary rounded-2  font-weight-700 font-poppins font-size-18 py-16px"
+                [promiseBtn]="creatUserContactFormComponent.create_user_contact_subscription$"
+                [disabled]="!creatUserContactFormComponent.formGroup.valid"
+                (click)="creatUserContactFormComponent.createUserContact(creatUserContactFormComponent.createRequestData())"
+        >
+          Add
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>

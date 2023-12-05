@@ -1,0 +1,39 @@
+@import "core-variables";
+
+
+//.bg-background-purple {
+//  background: $background-purple !important;
+//}
+
+//.bg-font-color-1 {
+//  background: $font-color-1 !important;
+//}
+
+//.bg-grey-3{
+//  background: $grey-3;
+//}
+.bg-transparent{
+  background: transparent !important;
+}
+.bg-light-green{
+  background: rgba(25, 135, 49, 0.07);
+}
+.bg-orange5{
+  background: rgba(255, 164, 57, 0.05);
+}
+
+.bg-green5{
+  background: rgba(25, 135, 49, 0.05);
+}
+.background-image-lines{
+  background-image: url("/assets/images/image 40.png");
+  background-repeat: no-repeat;
+}
+
+.bg-check-plans{
+  background: rgba(205, 255, 216, 1);
+}
+
+.bg-color-white {
+  background-color: white;
+}

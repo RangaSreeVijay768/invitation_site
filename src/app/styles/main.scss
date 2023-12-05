@@ -1,0 +1,664 @@
+@import "core-variables";
+@import "bootstrap/custom-bootstrap";
+
+body {
+  @extend .bg-background-purple;
+}
+
+.bg-primary-gradient {
+  background: linear-gradient(141deg, $primary-ultra-dark 0%, $primary-dark 50%, $primary-intermediate 100%);
+  //linear-gradient(to right, $primary, $primary-dark);
+  //radial-gradient( $primary-intermediate 5%, $primary-dark 90%);
+}
+
+.bg-primary-dark {
+  background-color: $primary-dark !important;
+}
+
+.bg-primary-ultra-dark {
+  background-color: $primary-ultra-dark !important;
+}
+
+.bg-blue {
+  background-color: $color-blue !important;
+}
+
+.bg-info {
+  background-color: $info !important;
+}
+
+.bg-success {
+  background-color: $success !important;
+}
+
+.bg-primary-blue {
+  background-color: $primary-blue !important;
+}
+
+.bg-black-transparent {
+  background: $primary-black-transparent-light
+}
+
+.bg-black {
+  background: $primary-black
+}
+
+.bg-black-dark-transparent {
+  background: $primary-black-transparent
+}
+
+.bg-primary-mega-light {
+  background-color: $primary-mega-light !important;
+}
+
+.bg-primary-super-light {
+  background-color: $primary-super-light !important;
+}
+
+.bg-light-transparent {
+  background-color: $primary-light-transparent;
+}
+
+.bg-black-medium-transparent {
+  background-color: $primary-black-transparent-medium
+}
+
+.bg-white-transparent-8 {
+  background-color: $primary-white-transparent-8;
+}
+
+.bg-primary {
+  background-color: $primary !important;
+}
+
+.bg-primary-intermediate {
+  background-color: $primary-intermediate !important;
+}
+
+.bg-primary-light {
+  background: $primary-light !important;
+}
+
+.bg-primary-ultra-dark {
+  background: $primary-ultra-dark !important;
+}
+
+.bg-light-b {
+  background: $primary-white-light-b !important;
+}
+
+.bg-light-2 {
+  background: $primary-white-light-2 !important;
+}
+
+.bg-light-5 {
+  background: $primary-white-light-5 !important;
+}
+
+.bg-grey-e {
+  background: $primary-grey-e !important;
+}
+
+.bg-grey-c {
+  background: $primary-grey-c !important;
+}
+
+.bg-grey-4 {
+  background: $primary-grey-4 !important;
+}
+
+.bg-white-transparent {
+  background: $primary-white-transparent !important;
+}
+
+.bg-white-transparent-8 {
+  background: $primary-white-transparent-8 !important;
+}
+
+.bg-primary-ultra-light {
+  background: $primary-ultra-light !important;
+}
+
+.bg-grey-transparent-light {
+  background: $primary-grey-transparent-light !important;
+}
+
+.bg-lavenderblush {
+  background: lavenderblush;
+}
+
+.full-height {
+  height: 100vh
+}
+
+.pull-right {
+  float: right
+}
+
+.align-none {
+  text-align: unset !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.tmid {
+  margin: 0px auto;
+}
+
+// Cards
+
+.card {
+  text-align: left;
+  margin-top: 5px;
+  background-color: $primary-white-light-d;
+  border: 0px solid rgba(0, 0, 0, 0.025);
+}
+
+.card-view {
+  border: 1px solid $primary-white;
+}
+
+.card-view:hover {
+  box-shadow: 0 0 0 1px rgba(146, 146, 146, 0.15), 0 2px 5px 3px rgba(115, 115, 115, 0.2);
+  //border: 1px solid $primary-grey-d;
+  cursor: pointer
+}
+
+.card-view-shadow {
+  border: 1px solid $primary-white;
+  box-shadow: 0px 0px 10px 0px $primary-light;
+}
+
+.card-view-shadow:hover {
+  box-shadow: 0px 0px 20px 0px $primary-grey-d;
+}
+
+.card-header, .card-footer{
+  background-color: $primary-ultra-light;
+}
+
+.card-shadow {
+  //box-shadow: 0px 1px 1px 0px $primary-grey-d;
+  //box-shadow: 0 0 0 1px rgba(146, 146, 146, 0.15), 0 2px 3px rgba(115, 115, 115, 0.2);
+  box-shadow: 0 0 0 0.25px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+  transition: box-shadow 83ms;
+}
+
+.card-shadow-medium {
+  box-shadow: 0px 0px 10px 2px $primary-grey-d;
+}
+
+.card-shadow-primary {
+  box-shadow: 0px 0px 10px 0px #62afbb;
+}
+
+.card-hover:hover {
+  box-shadow: 0px 2px 4px 1px $primary-grey-d;
+  cursor: pointer
+}
+
+.card-hover-lg{
+  background: $primary-white-light-b;
+  cursor: pointer;
+}
+
+.card-hover-lg:hover {
+  background: $primary-white;
+  cursor: pointer;
+}
+
+.card-hover-lg-hover {
+  box-shadow: 0px 0px 10px 2px $primary-grey-d;
+  cursor: pointer;
+  z-index: 2;
+  background: $primary-white
+}
+
+.card-program-main {
+  min-height: 80vh
+}
+
+.card-calendar-main {
+  min-height: 90vh
+}
+
+.content-loading {
+  position: relative;
+}
+
+.card-vertical {
+  width: 190px;
+  margin: 10px;
+}
+
+.card-vertical-xl {
+  width: 228px;
+  margin: 0 0.5rem;
+}
+
+.card-horizontal {
+  margin: 10px;
+}
+
+/*.card:hover{
+  box-shadow: 0px 2px 4px 1px $primary-grey-d;
+  cursor: pointer
+}*/
+
+.card-underline:hover {
+  text-decoration: underline;
+}
+
+.card-list {
+  background: $primary-white;
+}
+
+.card-list:hover {
+  background: $primary-white-light-2;
+}
+
+.card-list-item-xs {
+  background: $primary-white-light-b;
+}
+
+.card-list-item-xs:hover {
+  background: $primary-white-light-5;
+}
+
+.card-list-sidebar {
+  padding: 0.6rem 1rem !important;
+}
+
+.card-shadow-light {
+  box-shadow: 0px 1px 4px 0px $primary-grey-d !important;
+}
+
+.card-shadow-medium {
+  box-shadow: 0px 0px 10px 0px $primary-grey-d !important;
+}
+
+.card-shadow-elevated {
+  box-shadow: 0px 0px 30px 0px $primary-super-light !important;
+}
+
+.d-inline-inside > div {
+  display: inline-block;
+}
+
+.d-webkit-box {
+  display: -webkit-box
+}
+
+// Opacity
+
+.o-7 {
+  opacity: 0.7
+}
+
+// Remove underline on anchor hover
+
+.no-underline {
+  text-decoration: none !important;
+}
+
+.hardcoded {
+  color: orangered;
+}
+
+// Labels
+
+.label-stat {
+  background: #f2f2f2;
+  border: 1px solid #48b1bf;
+  padding: 0rem 0.2rem;
+  border-radius: 2px;
+  width: fit-content;
+}
+
+.label-day {
+  background: #ecf5f7;
+  color: #48b1bf;
+  border: 1px solid #fff;
+  padding: 0.3rem 0.6rem;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+}
+
+.label-day.label-active {
+  background: #48b1bf !important;
+  color: #fff !important;
+}
+
+.label-day.label-inactive {
+  background: #fbfbfb;
+  color: #48b1bf;
+}
+
+/*Overwrite*/
+
+.pagination {
+  margin: 6px 0px !important;
+}
+
+.simple-notification-wrapper {
+  z-index: 1100 !important;
+}
+
+.invalid-feedback {
+  position: relative;
+  right: 0px;
+  top: 0px;
+  width: fit-content;
+  margin-top: -0.5px;
+  background: $primary-white-light-b;
+  border: 1px solid red;
+  font-size: 0.6rem;
+  padding: 0px 0.25rem;
+  float: right;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form-group {
+  text-align: left !important;
+}
+
+.form-group > label {
+  text-transform: uppercase;
+  color: $primary-grey-8;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+}
+
+.form-group > inline-editor-textarea {
+  width: 100%;
+  z-index: 1001
+}
+
+.form-inline .form-control {
+  width: 100%;
+  background: #fff;
+  border: none;
+}
+
+a.c-inline-editor {
+  white-space: pre-line;
+  text-align: left;
+  width: 100%;
+  float: left;
+  border-bottom: none;
+}
+
+span.c-inline-editor {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+span.c-inline-editor > button.c-inline-editor {
+  margin: 0 !important;
+  padding: 0.05rem 1rem !important;
+}
+
+inline-editor-textarea > textarea {
+  padding: 1rem !important;
+  text-align: justify !important;
+  margin: 0px;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.25px;
+  color: $primary-dark !important;
+  box-shadow: inset 0 0 0.5rem 0 $primary-grey-d;
+  background: $primary-white-light-b !important;
+}
+
+// Notifications
+
+.notification-dot {
+  top: 0.25rem;
+  color: #fff;
+  background: #ce5d5d;
+  padding: 2px 4px 1px 4px;
+  font-size: 0.5rem;
+  border-radius: 10px;
+}
+
+// Accordian
+
+.accordion-card > .card {
+  box-shadow: 0px 0px 1px 1px $primary-white-light-2 !important;
+}
+
+.accordion-card > .card > .card-header {
+  background: $primary-mega-light;
+  border-bottom: 0;
+  padding: 0
+}
+
+.fake-layer {
+  position: relative;
+  width: 100%;
+  top: 3.75rem;
+  height: 3.75rem;
+  z-index: 1;
+  background: linear-gradient($primary-white 70%, transparent);
+}
+
+.ps__rail-y {
+  z-index: 3;
+}
+
+// Homepage
+
+.listing-page-header {
+  width: 100%;
+  background-position-x: center;
+  background-position-y: top;
+}
+
+.new-feature-radio {
+  position: absolute;
+  margin: 0;
+  bottom: -1.35rem;
+  left: 0;
+  width: 100%;
+  background: darkred;
+  animation-name: new-feature-radio;
+  animation-duration: 2s;
+  border-radius: 0.25rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.5px;
+  padding: 0.1rem;
+  text-transform: uppercase;
+  color: $primary-white;
+  animation-iteration-count: infinite;
+}
+
+@keyframes new-feature-radio {
+  0% {
+    background-color: darkred;
+  }
+  50% {
+    background-color: red;
+  }
+  100% {
+    background-color: darkred;
+  }
+}
+
+// Story Chip tag
+
+.chip-image {
+  background: $warning !important;
+  color: $primary-white !important;
+}
+
+.chip-video {
+  background: $color-google !important;
+  color: $primary-white !important;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  top: 45% !important;
+  height: fit-content !important;
+  padding: 1rem !important;
+  width: fit-content !important;
+  border-radius: 1000rem;
+  background: #d6d6d6;
+  box-shadow: 0px 0px 5px 0px $primary-black;
+  cursor: pointer;
+}
+
+.profile-progress-bar > .progress {
+  height: unset !important;
+  font-size: 0.6rem;
+}
+
+.profile-progress-bar > .progress > .progress-bar {
+  background-image: none;
+}
+
+.backdrop {
+  z-index: 1999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+// Screen
+
+@media (min-width: 1200px){
+  .container {
+    max-width: 1240px;
+  }
+}
+
+a{
+  color: $primary-grey-1
+}
+
+.ng-sidebar > .transiton-opacity {
+  opacity : 0;
+  transition: opacity 0.5s cubic-bezier(0, 0, 0.3, 1), padding 0.3s cubic-bezier(0, 0, 0.3, 1) !important;
+}
+
+.ng-sidebar--opened > .transiton-opacity {
+  opacity : 1 !important;
+}
+
+// Calendar
+
+.cal-time-events, .cal-day-view{
+  display: none !important;
+}
+
+.cal-day-headers{
+  padding:0 !important;
+}
+
+.cal-month-view .cal-day-cell {
+  min-height: unset;
+  border-right: none !important;
+  background-color: transparent !important;
+}
+
+.cal-month-view .cal-days .cal-cell-row {
+  border-bottom: none !important;
+}
+
+.cal-month-view .cal-cell-top {
+  min-height: unset;
+}
+
+
+.cal-events, .cal-day-badge{
+  display: none !important;
+}
+
+.schedule-type > .active > div > label{
+  border-bottom: 1px solid $primary-white;
+  transition: 0.5s;
+}
+
+.cal-day-number{
+  margin: 0.5rem!important;
+  padding: 0.35rem 0.25rem;
+  width: 32px;
+  height: 32px;
+  font-size: 0.8rem !important;
+  border-radius: 9999rem;
+  text-align: center;
+}
+
+.cal-month-view .cal-day-number{
+  background-color: $primary-ultra-light;
+  opacity: 1;
+  color: $primary-grey-8 !important;
+}
+
+.cal-today{
+  background-color: transparent !important;
+}
+
+.cal-today > .cal-cell-top > .cal-day-number{
+  background-color: lightgreen !important;
+}
+
+.cal-day-cell:hover > .cal-cell-top > .cal-day-number{
+  background-color: $primary-light !important;
+  font-weight: 500 !important;
+  cursor: pointer;
+  color: $primary-black !important;
+}
+
+.cal-month-view .cal-days {
+  padding-top: 0.5rem;
+  border-top: 1px solid $primary-grey-e !important;
+  border-bottom: 0 !important;
+  border-right: 0 !important;
+  border-left: 0 !important;
+}
+
+.cal-month-view .cal-header {
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  font-weight: 400;
+  color: $primary;
+  font-size: 0.8rem
+}
+
+.cal-month-view .cal-header > .cal-cell:not(:last-child){
+  border-right : 1px solid $primary-grey-e
+}
+
+.cal-month-view .cal-header > .cal-cell{
+  background-color: transparent !important;
+}
+
+.cal-week-view {
+  padding-top: 1rem
+}
+
+.cal-week-view .cal-day-headers{
+  border: none !important;
+}
+
+.cal-week-view .cal-header > b {
+  font-weight: 400;
+  color: $primary;
+  font-size: 0.9rem
+}
+
+.cal-week-view .cal-day-headers .cal-header:first-child {
+  border-left: none !important;
+}
+
+.cal-week-view .cal-header:hover{
+  background-color: $primary-ultra-light !important;
+}
+

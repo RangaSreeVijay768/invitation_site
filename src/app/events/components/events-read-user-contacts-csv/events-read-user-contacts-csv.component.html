@@ -1,0 +1,9 @@
+<!--upload csv button-->
+<div class="csv-file-chooser-section border-primary py-0 px-0">
+    <label for="file-upload" class="custom-file-upload text-primary font-poppins font-weight-500 font-size-18px">
+        <i-feather name="upload" class="text-primary mr-20px"></i-feather>
+        Upload CSV
+    </label>
+    <input type="file" #fileReadInput name="File Upload" id="file-upload" (change)="onFileUploaded($event)"
+           class="border-primary" accept=".csv"/>
+</div>

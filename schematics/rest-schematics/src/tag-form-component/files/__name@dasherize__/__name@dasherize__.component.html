@@ -1,0 +1,6 @@
+<form [formGroup]="formGroup" #createForm="ngForm" >
+    <dynamic-ng-bootstrap-form [group]="formGroup"
+                               [model]="formModel"
+                               (ngbEvent)="emitCreatedOrRemovedEvent($event)"
+    ></dynamic-ng-bootstrap-form>
+</form>

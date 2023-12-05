@@ -1,0 +1,223 @@
+<div class="row justify-content-center mt-56px">
+  <div class="col-9 d-flex align-items-center gap-16px px-0">
+    <div class="row">
+      <div ngbDropdown class="">
+
+        <div class="selected-dropdown py-12px ph-10px border border-2 border-grey-1 rounded-2" id="dropdownBasic1"
+             ngbDropdownToggle
+        >
+          <label class="mr-10px font-weight-500 font-size-16 text-primary">{{event_time}}</label>
+          <i-feather name="chevron-down" class="text-primary"></i-feather>
+        </div>
+        <div ngbDropdownMenu aria-labelledby="dropdownBas">
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, CommonsService.getCurrentTimeAsDateTime(), undefined); event_time='Any Day'">
+            <label class="text-grey-2 font-poppins ml-13px">Any day</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, DateTime.now(), undefined); event_time='Starting Soon'">
+            <label class="text-grey-2 font-poppins ml-13px">Starting soon</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, DateTime.now(), CommonsService.getCurrentTimeAsDateTime()); event_time='Today'">
+            <label class="text-grey-2 font-poppins ml-13px">Today</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, DateTime.now(), CommonsService.getCurrentTimeAsDateTime().plus({days: 1})); event_time='Tomorrow'">
+            <label class="text-grey-2 font-poppins ml-13px">Tomorrow</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, DateTime.now(), CommonsService.getCurrentTimeAsDateTime().plus({days: 7})); event_time='This week'">
+            <label class="text-grey-2 font-poppins ml-13px">This week</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, CommonsService.getCurrentTimeAsDateTime().plus({days: 5}), CommonsService.getCurrentTimeAsDateTime().plus({days: 7})); event_time='This weekend'">
+            <label class="text-grey-2 font-poppins ml-13px">This weekend</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, CommonsService.getCurrentTimeAsDateTime().plus({days: 7}), CommonsService.getCurrentTimeAsDateTime().plus({days: 14})); event_time='Next week'">
+            <label class="text-grey-2 font-poppins ml-13px">Next week</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, DateTime.now(), undefined); event_time='Costume'">
+            <label class="text-grey-2 font-poppins ml-13px">Costume</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div ngbDropdown class="">
+        <div class="selected-dropdown py-12px ph-10px border border-2 border-grey-1 rounded-2" id="dropdownBasic2"
+             ngbDropdownToggle
+
+        >
+          <label class="mr-40px font-weight-500 font-size-16 text-grey-2">{{event_type}}</label>
+          <i-feather name="chevron-down" class="text-grey-2"></i-feather>
+        </div>
+
+        <div ngbDropdownMenu aria-labelledby="dropdownBas">
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData('ALL', undefined, undefined); event_type='All'">
+            <label class="text-grey-2 font-poppins ml-13px">All</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData('NIGHT_LIFE', undefined, undefined); event_type='Night life'">
+            <label class="text-grey-2 font-poppins ml-13px">Night life</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData('CONCERT_OR_FESTIVAL'); event_type = 'Concert or Festival'">
+            <label class="text-grey-2 font-poppins ml-13px">Concert/Festival</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData('CONFERENCE'); event_type = 'Conference'">
+            <label class="text-grey-2 font-poppins ml-13px">Conference</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData('SEMINAR_OR_WORKSHOP'); event_type='Seminar or Workshop'">
+            <label class="text-grey-2 font-poppins ml-13px">Seminar/Workshop</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData('EXHIBIT_OR_SHOW'); event_type='Exhibit or Show'">
+            <label class="text-grey-2 font-poppins ml-13px">Exhibit/Show</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData('NETWORKING'); event_type = 'Networking'">
+            <label class="text-grey-2 font-poppins ml-13px">Networking</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData('HAPPY_HOUR'); event_type = 'Happy hour'">
+            <label class="text-grey-2 font-poppins ml-13px">Happy hour</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData('HOUSE_PARTY'); event_type = 'House party'">
+            <label class="text-grey-2 font-poppins ml-13px">House party</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData('BIRTHDAY_PARTY'); event_type = 'Birthday party'">
+            <label class="text-grey-2 font-poppins ml-13px">Birthday party</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData('OTHERS'); event_type='Other'">
+            <label class="text-grey-2 font-poppins ml-13px">Other</label>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="row">
+      <div ngbDropdown class="">
+        <div class="py-12px ph-10px border border-2 border-grey-1 rounded-2" id="dropdownBasic1" ngbDropdownToggle>
+          <label class="mr-10px font-weight-500 font-size-16 text-grey-2">{{event_distance}}</label>
+          <i-feather name="chevron-down" class="text-grey-2"></i-feather>
+        </div>
+        <div ngbDropdownMenu aria-labelledby="dropdownBas">
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_distance = 'Any distance'">
+            <label class="text-grey-2 font-poppins ml-13px">Any distance</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_distance = '2 miles'">
+            <label class="text-grey-2 font-poppins ml-13px">2 miles</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_distance = '5 miles'">
+            <label class="text-grey-2 font-poppins ml-13px">5 miles</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_distance = '10 miles'">
+            <label class="text-grey-2 font-poppins ml-13px">10 miles</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_distance = '15 miles'">
+            <label class="text-grey-2 font-poppins ml-13px">15 miles</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_distance = '25 miles'">
+            <label class="text-grey-2 font-poppins ml-13px">25 miles</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_distance = '50 miles'">
+            <label class="text-grey-2 font-poppins ml-13px">50 miles</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div ngbDropdown class="">
+        <div class="py-12px ph-10px border border-2 border-grey-1 rounded-2" id="dropdownBasic1" ngbDropdownToggle>
+          <label class="mr-10px font-weight-500 font-size-16 text-grey-2">{{event_category}}</label>
+          <i-feather name="chevron-down" class="text-grey-2"></i-feather>
+        </div>
+        <div ngbDropdownMenu aria-labelledby="dropdownBas">
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_category = 'Any category'">
+            <label class="text-grey-2 font-poppins ml-13px">Any category</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_category = 'Arts and Culture'">
+            <label class="text-grey-2 font-poppins ml-13px">Art and Culture</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_category = 'Dancing'">
+            <label class="text-grey-2 font-poppins ml-13px">Dancing</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_category = 'Game'">
+            <label class="text-grey-2 font-poppins ml-13px">Game</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_category = 'Health'">
+            <label class="text-grey-2 font-poppins ml-13px">Health</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_category = 'Hobbies & passion'">
+            <label class="text-grey-2 font-poppins ml-13px">Hobbies & passion</label>
+          </div>
+          <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+               (click)="getAllEventsScrollingComponent.refreshData(undefined, undefined, undefined); event_category = 'Community & environment'">
+            <label class="text-grey-2 font-poppins ml-13px">Community & environment</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-flex pl-0">
+        <div class="cursor-pointer"
+             (click)="event_type = 'Event type';
+              event_time = 'This week';
+              event_distance = 'Any distance';
+              event_category = 'Any category';">
+          <label class="ml-4px font-weight-500 font-size-16 text-primary cursor-pointer">Reset all filters</label>
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <div class="row">
+        <div ngbDropdown class="d-flex py-12px ph-10px rounded-2 bg-primary ml-12px">
+          <div class="px-0" id="dropdownBasic1" ngbDropdownToggle>
+            <label class="mr-10px font-weight-500 font-size-16 text-white">{{event_sort_by}}</label>
+            <i-feather name="chevron-down" class="text-white"></i-feather>
+          </div>
+          <div ngbDropdownMenu aria-labelledby="dropdownBas" class="translate3D-0-50-0 px-10px w-100 border-1px-9747FF">
+            <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+                 (click)="event_sort_by='Sort by: Relevance'">
+              <label class="text-primary font-poppins ml-13px">Relevance</label>
+            </div>
+            <div ngbDropdownItem class="border-radius-5px border-left-3px-9747FF w-100"
+                 (click)="event_sort_by='Sort by: Date'">
+              <label class="text-grey-2 font-poppins ml-13px">Date</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<events-get-all-events-scrolling [numberOfItems]="3"
+                                 #getAllEventsScrollingComponent
+></events-get-all-events-scrolling>

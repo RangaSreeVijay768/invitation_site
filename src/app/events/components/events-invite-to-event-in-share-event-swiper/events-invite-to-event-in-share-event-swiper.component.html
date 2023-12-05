@@ -1,0 +1,632 @@
+<blasts-get-blast-list-items-by-blast-list-no-template
+  [blastList]="blast_list_selected" [columnName]="'createdTime'" [columnOrder]="'DESC'"
+  (blastListsItemsReceived)="blastListItems=$event"
+
+  *ngIf="blast_list_selected"
+  #getBlastListItemsByBlastListNoTemplateComponent></blasts-get-blast-list-items-by-blast-list-no-template>
+
+<user-profiles-blasts-filter-modal-no-template
+  [filter_type]="filter_type"
+  (closeResult)="filter_type = $event.data; blastListsGetByUserAccount.getBlastListsByUserAccount(blastListsGetByUserAccount.createRequestData(undefined,filter_type))"
+  #massMessagingFilterModelComponent>
+</user-profiles-blasts-filter-modal-no-template>
+
+<user-profiles-blasts-create-new-group-modal
+  (closeResult)="$event.status==='SUCCESS'?blastListsGetByUserAccount.initializeComponent():''"
+  #massMessagingCreateNewModalComponent
+></user-profiles-blasts-create-new-group-modal>
+
+
+<swiper-container #swiper init="false" pagination="true" pagination-clickable="true" initial-slide="1">
+
+  <swiper-slide>
+
+    <blasts-get-blast-lists-by-user-account-no-template
+      [userAccount]="loggedAccount" [count]="10" [blastListCreationType]="['MANUAL','AUTO_PAST_ATTENDEE']"
+      (blastListsReceived)="blast_list = $event"
+      #blastListsGetByUserAccount></blasts-get-blast-lists-by-user-account-no-template>
+
+    <user-profiles-create-event-blast-no-template
+      [event]="event" [blastList]="blast_list_selected"
+      (eventBlastCreated)="event_blast_id=$event;slideNext()"
+      #createEventBlastNoTemplateComponent></user-profiles-create-event-blast-no-template>
+
+    <div class="row w-100">
+      <div class="px-0">
+
+
+        <div class="row mx-0 modal-header modal-header--sticky">
+          <div class="d-flex bg-primary justify-content-between align-items-center brtl-20px px-24 py-20px">
+            <span class=" font-poppins font-size-18 font-weight-500 text-white">Select contacts</span>
+            <i-feather name="x" class="rounded-5 p-1 text-white cursor-pointer vertical-align-unset"
+                       style="background: rgba(255, 255, 255, 0.3)"
+                       (click)="closeModalSelected.emit(true)"></i-feather>
+          </div>
+        </div>
+
+        <div class="row mt-20px">
+          <div class="col-6" [class.btn-border-bottom-active]="selected_option=== 'USER_CONTACTS'"
+               (click)="selected_option='USER_CONTACTS'">
+            <label class="btn-border-bottom" routerLinkActive="active"
+            >All contacts</label>
+          </div>
+          <div class="col-6" [class.btn-border-bottom-active]="selected_option=== 'BLASTS'"
+               (click)="selected_option='BLASTS'">
+            <label class="btn-border-bottom" routerLinkActive="active"
+            >All groups</label>
+          </div>
+        </div>
+
+
+        <!--        User contacts section-->
+        <div *ngIf="selected_option === 'USER_CONTACTS'">
+          <user-profiles-get-user-contacts-by-user-account-no-template
+            (userContactsReceived)="user_contacts = $event"
+            #getAllUserContactsComponent></user-profiles-get-user-contacts-by-user-account-no-template>
+          <div class="row rounded-4 mx-0 justify-content-between">
+            <div class="bg-white px-0 rounded-4 ">
+
+              <!--              Existing contacts section-->
+              <div class="row" *ngIf="getAllUserContactsComponent.user_contacts">
+                <div class="col-12">
+
+                  <div class="row ph-24px mx-0 border border-bottom grey-2 mb-32px pb-32px">
+                    <!--                    <div class="px-0 border-bottom border-grey-1 py-32px">-->
+                    <!--                      <form class="profile-form-placeholder w-100">-->
+                    <!--                        <user-profiles-blasts-invite-to-event-swiper-search-contact-form></user-profiles-blasts-invite-to-event-swiper-search-contact-form>-->
+                    <!--                      </form>-->
+                    <!--                    </div>-->
+
+                    <user-profiles-create-user-contact-select-contact-type-modal
+                      #createUserContactSelectContactTypeModalComponent></user-profiles-create-user-contact-select-contact-type-modal>
+
+                    <div class="col-12 px-0 d-flex justify-content-between">
+                      <label
+                        class="mt-32px px-0 font-poppins font-weight-500 font-size-18 d-flex align-items-center">
+                        <input type="checkbox" class="w-27 h-27 mr-16px"
+                               (change)="handleSelectAllContacts()">
+                        Select all contacts
+                      </label>
+
+                      <div class="bg-primary mt-32px mr-12px ph-10px py-8px text-white br-50p"
+                           (click)="openContactCreationModal.emit(true)">
+                        <i-feather name="user-plus"></i-feather>
+                      </div>
+                    </div>
+
+                    <div class="row mt-24px" *ngFor="let contact of user_contacts">
+                      <div class=" d-flex align-items-center justify-content-between px-0 ">
+                        <div class="col-8 d-flex align-items-start">
+                          <div>
+                            <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+                              class="cursor-pointer d-flex justify-content-center mt-8px"
+                              [alt]="contact.display_name"
+                              [entityId]="contact.target_account?.user_account_id||'test'"
+                              [entityType]="'USER_PROFILE_PIC'"
+                              [size]="40"
+                              [round]="true"
+                            ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+                          </div>
+                          <div class="row justify-content-lg-start">
+                            <label class="text-align-start ml-16px"> {{contact.display_name}}</label>
+                            <div class="ml-16px text-align-start font-size-18 font-weight-500 font-poppins">
+                              <img src="assets/images/cake.png" height="20" width="20"
+                                   class="mr-4px" *ngIf="contact.target_account?.date_of_birth">
+                              <label class="font-poppins font-weight-400 font-size-16 text-grey-1 mr-8px"
+                                     *ngIf="contact.target_account?.date_of_birth">{{contact.target_account?.date_of_birth|appDateFormat:'MMMM DD'}}</label>
+                              <img src="assets/images/Ellipse.svg" *ngIf="contact.target_account?.city">
+                              <label class="font-poppins font-weight-400 font-size-16 text-grey-1 ml-8px"
+                                     *ngIf="contact.target_account?.city">Lives
+                                in {{contact.target_account?.city}}</label>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div>
+                          <input type="checkbox" class="w-27 h-27"
+                                 (change)="handleRequestItemCheckBoxEvent($event,contact)"
+                                 [checked]="selected_user_contacts.indexOf(contact)!==-1">
+                        </div>
+
+                      </div>
+                    </div>
+
+
+                  </div>
+
+                  <user-profiles-create-blast-list-and-blast-list-items-by-user-contacts
+                    [userContacts]="selected_user_contacts"
+                    (blastListCreated)="blast_list_selected = createBlastListAndBlastListItemsByUserContactsComponent.blastList;
+                    createEventBlastNoTemplateComponent.createEventBlast(createEventBlastNoTemplateComponent.createRequestData(blast_list_selected.blast_list_id, blast_list_selected.description));"
+                    #createBlastListAndBlastListItemsByUserContactsComponent></user-profiles-create-blast-list-and-blast-list-items-by-user-contacts>
+
+                  <div class="row py-10px d-flex justify-content-between position-sticky bottom-0 bg-color-white">
+                    <div class="col-11 d-flex justify-content-end">
+                      <button
+                        class="font-size-18 font-weight-700 text-white btn btn-primary border-none py-16px pl ph-60 rounded-2"
+                        [disabled]="!selected_user_contacts?.length"
+                        [promiseBtn]="createBlastListAndBlastListItemsByUserContactsComponent.create_blast_list_and_blast_list_item_by_user_contacts_subscription$"
+                        (click)="createBlastListAndBlastListItemsByUserContactsComponent.createBlastListAndBlastListItemsByUserContacts(createBlastListAndBlastListItemsByUserContactsComponent.createRequestData(selected_user_contacts))">
+                        Next
+                        <i-feather name="arrow-right"></i-feather>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!--              <user-profiles-add-event-blast-recipient-no-template-->
+              <!--                [blast_list_items]="blast_list_item" [event_blast_id]="event_blast_id"-->
+              <!--                (eventBlastAdded)="slideNext()"-->
+              <!--                #addEventBlastRecipientNoTemplateComponent-->
+              <!--              ></user-profiles-add-event-blast-recipient-no-template>-->
+            </div>
+
+
+          </div>
+
+
+          <!--          CSV upload section-->
+          <div class="row" *ngIf="!user_contacts">
+            <div class="col-12">
+
+              <div class="row d-flex mb-20px pb-20px mt-24px justify-content-center">
+                <div class="col-6">
+                  <div class="row">
+                    <div class="">
+                      <img src="assets/images/no_contacts.svg" height="161" width="161">
+                    </div>
+                  </div>
+
+                  <div class="row mt-12px">
+                    <div class="">
+                      <label class="font-poppins font-weight-500 font-size-16px text-grey-2">No
+                        contacts found</label>
+                    </div>
+                  </div>
+
+                  <div class="row mt-24px">
+                    <div class="col-12">
+                      <button class="btn btn-premium" (click)="uploadFromCsvClicked.emit(true)">
+                        Upload from csv
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!--        Blasts section-->
+        <div *ngIf="selected_option === 'BLASTS'" class="border grey-2">
+          <div class="px-24px mt-24px">
+          </div>
+          <div class="row row-align-center mx-0 border-bottom border-grey-1">
+            <div class="d-flex py-24px ph-24px" (click)="massMessagingCreateNewModalComponent.openModal()">
+              <i-feather name="plus-circle" class="w-27 h-27 text-primary font-poppins"></i-feather>
+              <label class="font-poppins font-size-18 font-weight-500 text-primary ml-12px cursor-pointer">Create
+                new group</label>
+            </div>
+          </div>
+
+          <div class="row ph-24px mt-24px mx-0">
+            <div class="d-flex justify-content-between align-items-center">
+              <label class="font-poppins font-size-16 font-weight-500 text-grey-2">GROUPS</label>
+              <div class="ph-10px py-4px border border-grey-1 br-20px cursor-pointer">
+                <i-feather name="filter" class="mr-12px text-grey-2 font-poppins"></i-feather>
+                <label class="font-weight-500 font-poppins font-size-16 text-grey-2 cursor-pointer"
+                       (click)="massMessagingFilterModelComponent.openModal(filter_type)">Contact
+                  filter</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-20px d-flex justify-content-center">
+            <div class="col-11">
+              <events-select-blast-list-for-share-event
+                (blastListSelected)="blast_list_selected = selectBlastListForShareEventComponent.blast_list_selected; print()"
+                #selectBlastListForShareEventComponent></events-select-blast-list-for-share-event>
+            </div>
+          </div>
+
+          <user-profiles-create-event-blast-and-add-event-blast-recipients
+            [event]="event"
+            [blastList]="blast_list_selected"
+            (evenBlastCreatedRecipientsAdded)="event_blast_id = $event.event_blast_id; slideNext()"
+            #createEventBlastAndAddEventBlastRecipientsComponent></user-profiles-create-event-blast-and-add-event-blast-recipients>
+
+          <div class="row py-10px d-flex justify-content-between position-sticky bottom-0 bg-color-white">
+            <div class="col-12 d-flex justify-content-end pr-32px">
+              <button
+                class="font-size-18 font-weight-700 text-white bg-primary border-none py-16px pl ph-60 rounded-2"
+                (click)="createEventBlastAndAddEventBlastRecipientsComponent.createEventBlastAndAddEventBlastRecipients(createEventBlastAndAddEventBlastRecipientsComponent.createRequestData())">
+                Next
+                <i-feather name="arrow-right"></i-feather>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </swiper-slide>
+
+  <!--  <swiper-slide>-->
+
+
+  <!--    <div class="row rounded-4 mx-0 justify-content-between w-100">-->
+  <!--      <div class="bg-white px-0 rounded-4 ">-->
+
+  <!--        <div class="row mx-0 modal-header modal-header&#45;&#45;sticky">-->
+  <!--          <div class="d-flex bg-primary justify-content-between align-items-center brtl-20px px-24 py-20px">-->
+  <!--            <span class=" font-poppins font-size-18 font-weight-500 text-white">-->
+  <!--              Manage contact</span>-->
+  <!--            <i-feather name="x" class="rounded-5 p-1 text-white cursor-pointer vertical-align-unset"-->
+  <!--                       style="background: rgba(255, 255, 255, 0.3)"-->
+  <!--                       (click)="closeModalSelected.emit(true)"></i-feather>-->
+  <!--          </div>-->
+  <!--        </div>-->
+
+  <!--        <user-profiles-blasts-add-upload-contact-modal-->
+
+  <!--          #massMessagingAddUploadContactModalComponent>-->
+  <!--        </user-profiles-blasts-add-upload-contact-modal>-->
+
+
+  <!--        <div *ngIf="selected_option === 'BLASTS'"-->
+  <!--             class="d-flex align-items-center justify-content-between px-24px py-16px">-->
+  <!--          <div class="d-flex align-items-center justify-content-start">-->
+  <!--            <images-get-image-by-entity-and-type-unique-image-ngx-avatar-->
+  <!--              class="mr-16px"-->
+  <!--              [alt]="blast_list_selected.blast_list_name"-->
+  <!--              [entityId]="blast_list_selected.blast_list_id"-->
+  <!--              [entityType]="'BLAST_PROFILE_PIC'"-->
+  <!--              [size]="70"-->
+  <!--              [round]="true"-->
+  <!--            ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>-->
+  <!--            <div class="font-size-18 font-weight-500 font-poppins">-->
+  <!--              <div class="text-align-start">-->
+  <!--                <label>{{blast_list_selected.blast_list_name}}</label>-->
+  <!--                <i-feather name="edit-2" class="text-primary ml-20px wh-20px"></i-feather>-->
+  <!--              </div>-->
+  <!--              <div>-->
+  <!--                <label-->
+  <!--                  class="font-poppins font-weight-400 font-size-14 text-grey-1">{{blast_list_selected.blast_list_type}}-->
+  <!--                  contact type | {{blast_list_selected.total_blast_list_items}} contacts</label>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--          <div>-->
+  <!--            <img src="assets/images/user-plus-circle.png" width="40" height="40" class="cursor-pointer"-->
+  <!--                 (click)="massMessagingAddUploadContactModalComponent.openModal()">-->
+  <!--          </div>-->
+  <!--        </div>-->
+
+  <!--        <div class="row ph-24px mx-0 border border-bottom grey-2 mb-32px pb-32px">-->
+  <!--          <label *ngIf="selected_option === 'BLASTS'" class="text-align-start font-weight-500 px-0 mt-16px">All-->
+  <!--            Contacts</label>-->
+  <!--          <div class="px-0 border-bottom border-grey-1 py-24px">-->
+  <!--            &lt;!&ndash;            <form class="profile-form-placeholder w-100">&ndash;&gt;-->
+  <!--            &lt;!&ndash;              <user-profiles-blasts-invite-to-event-swiper-search-contact-form></user-profiles-blasts-invite-to-event-swiper-search-contact-form>&ndash;&gt;-->
+  <!--            &lt;!&ndash;            </form>&ndash;&gt;-->
+  <!--          </div>-->
+
+  <!--          <label class="mt-32px px-0 font-poppins font-weight-500 font-size-18 d-flex align-items-center">-->
+  <!--            <input type="checkbox" class="w-27 h-27 mr-16px"-->
+  <!--                   (change)="handleSelectAllContactsFromBlastList()">-->
+  <!--            Select all contacts-->
+  <!--          </label>-->
+
+  <!--          &lt;!&ndash;          <div class="row mt-24px" *ngFor="let blast_item of blastListItems">&ndash;&gt;-->
+  <!--          &lt;!&ndash;            <div class="col-6 d-flex align-items-center justify-content-between px-0 ">&ndash;&gt;-->
+  <!--          &lt;!&ndash;              <div class="row w-100">&ndash;&gt;-->
+  <!--          &lt;!&ndash;                <div class="col-8 d-flex align-items-start">&ndash;&gt;-->
+  <!--          &lt;!&ndash;                  <images-get-image-by-entity-and-type-unique-image-ngx-avatar&ndash;&gt;-->
+  <!--          &lt;!&ndash;                    class="cursor-pointer d-flex justify-content-center mt-8px"&ndash;&gt;-->
+  <!--          &lt;!&ndash;                    [alt]="blast_item.blast_list.blast_list_name"&ndash;&gt;-->
+  <!--          &lt;!&ndash;                    [entityId]="blast_item.user_account?.user_account_id||'test'"&ndash;&gt;-->
+  <!--          &lt;!&ndash;                    [entityType]="'USER_PROFILE_PIC'"&ndash;&gt;-->
+  <!--          &lt;!&ndash;                    [size]="40"&ndash;&gt;-->
+  <!--          &lt;!&ndash;                    [round]="true"&ndash;&gt;-->
+  <!--          &lt;!&ndash;                  ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>&ndash;&gt;-->
+
+  <!--          &lt;!&ndash;                  <div class="row">&ndash;&gt;-->
+  <!--          &lt;!&ndash;                    <div class="">&ndash;&gt;-->
+  <!--          &lt;!&ndash;                      <label class="text-align-start ml-16px"> {{blast_item.display_name}}</label>&ndash;&gt;-->
+  <!--          &lt;!&ndash;                      &lt;!&ndash;                      <label class="font-poppins font-weight-400 font-size-16 text-grey-1 mr-8px"&ndash;&gt;&ndash;&gt;-->
+  <!--          &lt;!&ndash;                      &lt;!&ndash;                             *ngIf="blast_item.user_account.date_of_birth">{{blast_item.user_account?.date_of_birth|appDateFormat:'MMMM DD'}}</label>&ndash;&gt;&ndash;&gt;-->
+  <!--          &lt;!&ndash;                      <img src="assets/images/cake.png" width="20" height="20" class="mr-4px">&ndash;&gt;-->
+  <!--          &lt;!&ndash;                      <label>{{blast_item.user_account?.date_of_birth|appDateFormat:'MMMM DD'}}</label>&ndash;&gt;-->
+  <!--          &lt;!&ndash;                      <img src="assets/images/Ellipse.svg" width="5" height="5">&ndash;&gt;-->
+  <!--          &lt;!&ndash;                      &lt;!&ndash;                      <label class="font-poppins font-weight-400 font-size-16 text-grey-1 ml-8px"&ndash;&gt;&ndash;&gt;-->
+  <!--          &lt;!&ndash;                      &lt;!&ndash;                             *ngIf="blast_item.user_account.city">Lives&ndash;&gt;&ndash;&gt;-->
+  <!--          &lt;!&ndash;                      &lt;!&ndash;                        in {{blast_item.user_account.city}}</label>&ndash;&gt;&ndash;&gt;-->
+  <!--          &lt;!&ndash;                    </div>&ndash;&gt;-->
+  <!--          &lt;!&ndash;                  </div>&ndash;&gt;-->
+
+  <!--          &lt;!&ndash;                </div>&ndash;&gt;-->
+  <!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+
+  <!--          &lt;!&ndash;              <div>&ndash;&gt;-->
+  <!--          &lt;!&ndash;                <input type="checkbox" class="w-27 h-27"&ndash;&gt;-->
+  <!--          &lt;!&ndash;                       (change)="handleBlastListItemCheckBoxEvent($event,blast_item)"&ndash;&gt;-->
+  <!--          &lt;!&ndash;                       [checked]="selected_blast_list_item.indexOf(blast_item)!==-1">&ndash;&gt;-->
+  <!--          &lt;!&ndash;              </div>&ndash;&gt;-->
+
+  <!--          &lt;!&ndash;            </div>&ndash;&gt;-->
+  <!--          &lt;!&ndash;          </div>&ndash;&gt;-->
+
+
+  <!--          <div class="row border border-grey-3 mt-24px bg-white mx-0 pt-16px ph-8px rounded-3">-->
+  <!--            <div class="col-6 ph-8px mb-16px"-->
+  <!--                 *ngFor="let blast_item of blastListItems; let i = index">-->
+  <!--              <div class="border border-grey-1 rounded-2 py-16px">-->
+  <!--                <div class="d-flex ph-16px justify-content-between align-items-center">-->
+  <!--                  <label class="font-weight-500 font-size-18">-->
+  <!--                    {{blast_item.display_name}}-->
+  <!--                  </label>-->
+  <!--                  <input type="checkbox" class="w-27 h-27"-->
+  <!--                         (change)="handleBlastListItemCheckBoxEvent($event,blast_item)"-->
+  <!--                         [checked]="selected_blast_list_item.indexOf(blast_item)!==-1">-->
+  <!--                </div>-->
+  <!--                <div class="text-align-start">-->
+  <!--                  &lt;!&ndash;                  <ng-container&ndash;&gt;-->
+  <!--                  &lt;!&ndash;                    *ngIf="blast_item.blast_list_item_type === 'SMS'; then phone; else email"&ndash;&gt;-->
+  <!--                  &lt;!&ndash;                  ></ng-container>&ndash;&gt;-->
+
+  <!--                  <div class="" *ngIf="blast_item.phone_number; else email">-->
+  <!--                    <label class="font-size-14 text-grey-1 ph-16px">-->
+  <!--                      <i-feather name="smartphone"></i-feather>-->
+  <!--                      {{blast_item.phone_number}}-->
+  <!--                    </label>-->
+  <!--                  </div>-->
+
+  <!--                  <ng-template #email>-->
+
+  <!--                    <label class="font-size-14 text-grey-1 ph-16px">-->
+  <!--                      <i-feather name="mail"></i-feather>-->
+  <!--                      {{blast_item.email_id}}-->
+  <!--                    </label>-->
+  <!--                  </ng-template>-->
+
+  <!--                </div>-->
+  <!--              </div>-->
+  <!--            </div>-->
+  <!--          </div>-->
+
+
+  <!--        </div>-->
+  <!--        <user-profiles-add-event-blast-recipient-no-template-->
+  <!--          [blast_list_items]="selected_blast_list_item" [event_blast_id]="event_blast_id"-->
+  <!--          (eventBlastAdded)="slideNext()"-->
+  <!--          #addEventBlastRecipientNoTemplateComponent-->
+  <!--        ></user-profiles-add-event-blast-recipient-no-template>-->
+
+  <!--        <div class="row ph-24px py-24px position-sticky bottom-0 bg-color-white">-->
+  <!--          &lt;!&ndash;          <div class="">&ndash;&gt;-->
+  <!--          &lt;!&ndash;            <button&ndash;&gt;-->
+  <!--          &lt;!&ndash;              class="font-size-18 font-weight-700 text-primary border-primary bg-white py-16px pl ph-80 rounded-2 border-1px-7F56D9"&ndash;&gt;-->
+  <!--          &lt;!&ndash;              (click)="closeModalSelected.emit(true)">&ndash;&gt;-->
+  <!--          &lt;!&ndash;              Cancel&ndash;&gt;-->
+  <!--          &lt;!&ndash;            </button>&ndash;&gt;-->
+  <!--          &lt;!&ndash;          </div>&ndash;&gt;-->
+  <!--          <div class="d-flex align-items-center justify-content-between">-->
+  <!--            <div class="">-->
+  <!--              <i-feather name="info" class="mr-8px"></i-feather>-->
+  <!--              <label class="font-poppins font-size-16 font-weight-300">Invitation will be sent to selected contacts-->
+  <!--                above</label>-->
+  <!--            </div>-->
+  <!--            <div class="">-->
+  <!--              <button-->
+  <!--                class="font-size-18 btn btn-primary font-weight-700 text-white bg-primary border-none py-16px ph-24px rounded-2"-->
+  <!--                [promiseBtn]="addEventBlastRecipientNoTemplateComponent.add_event_blast_recipients_subscription$"-->
+  <!--                [disabled]="!selected_blast_list_item?.length"-->
+  <!--                (click)="addEventBlastRecipientNoTemplateComponent.addEventBlastRecipients(addEventBlastRecipientNoTemplateComponent.createRequestData())">-->
+  <!--                Next-->
+  <!--                <i-feather name="arrow-right"></i-feather>-->
+  <!--              </button>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+
+
+  <!--    </div>-->
+  <!--  </swiper-slide>-->
+
+  <swiper-slide>
+    <div class="row w-100 px-0">
+      <div class="px-0">
+
+        <div class="row modal-header modal-header--sticky mx-0">
+          <div class="d-flex bg-primary justify-content-between align-items-center brtl-20px py-20px px-24px mx-0">
+            <span class=" font-poppins font-size-18 font-weight-500 text-white">
+              <i-feather name="arrow-left" class="mr-8px w-37 h-37"></i-feather>
+              Add Message
+            </span>
+            <i-feather name="x" class="rounded-5 text-white cursor-pointer vertical-align-unset"
+                       style="background: rgba(255, 255, 255, 0.3)"
+                       (click)="closeModalSelected.emit(true)"></i-feather>
+          </div>
+        </div>
+
+        <!--        <div class="px-24px" *ngIf="event">-->
+        <!--          <img src="assets/images/Frame%20547.png" class="mt-32px mb-16px"><br>-->
+        <!--          <images-get-image-by-entity-and-type-unique-image-ngx-avatar-->
+        <!--            [entityId]="event.event_id" [entityType]="'EVENT_PROFILE_PIC'"-->
+        <!--            [alt]="event.event_title"-->
+        <!--          ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>-->
+        <!--          <label class="font-poppins font-size-24 font-weight-500 mb-32px text-grey-2">{{event.event_title}}</label><br>-->
+
+
+        <!--        </div>-->
+
+        <div class="d-flex align-items-center px-24px mt-32px mb-20px">
+          <i-feather name="mail" class="mr-8px"></i-feather>
+          <label class="mt-3 font-poppins font-weight-700 font-size-18">Email message</label>
+        </div>
+        <div class="px-24px">
+
+          <user-profiles-start-event-blast
+            [event_blast_id]="event_blast_id"
+            (eventBlastStarted)="eventBlastStarted.emit(event_blast_id); "
+            #startEventBlastComponent></user-profiles-start-event-blast>
+        </div>
+        <div class="d-flex align-items-center px-24px mt-32px mb-20px">
+          <i-feather name="message-square" class="mr-8px"></i-feather>
+          <label class="mt-3 font-poppins font-weight-700 font-size-18">Text Message</label>
+        </div>
+        <div class="px-24px mb-32px">
+          <user-profiles-start-event-blast
+            [event_blast_id]="event_blast_id"
+            (eventBlastStarted)="eventBlastStarted.emit(event_blast_id); "
+            #startEventBlastComponent></user-profiles-start-event-blast>
+        </div>
+
+
+        <div class="row ph-54px py-32px position-sticky bottom-0 bg-color-white border-top border-grey-2">
+          <div class="d-flex align-items-end justify-content-end">
+            <button
+              (click)="slideNext()"
+              class="font-size-18 font-weight-700 text-primary bg-white py-12px ph-24px border-none mr-32px">
+              Invite without message
+            </button>
+            <button class="font-size-18 font-weight-700 text-white bg-primary border-none py-12px ph-24px rounded-2"
+                    (click)="slideNext()">
+              Next
+              <i-feather name="arrow-right" class="ml-8px"></i-feather>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </swiper-slide>
+
+  <swiper-slide>
+    <div class="row w-100 px-0">
+      <div class="px-0">
+
+        <div class="row modal-header modal-header--sticky mx-0">
+          <div class="d-flex bg-primary justify-content-between align-items-center brtl-20px py-20px px-24px mx-0">
+            <span class=" font-poppins font-size-18 font-weight-500 text-white">
+              <i-feather name="arrow-left" class="mr-8px w-37 h-37" (click)="slidePrev()"></i-feather>
+              Summary
+            </span>
+            <i-feather name="x" class="rounded-5 text-white cursor-pointer vertical-align-unset"
+                       style="background: rgba(255, 255, 255, 0.3)"
+                       (click)="closeModalSelected.emit(true)"></i-feather>
+          </div>
+        </div>
+
+        <div class="mx-24px py-16px d-flex bg-grey-3 rounded-2 my-32px" *ngIf="event">
+          <div class="px-24px">
+            <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+              [entityId]="event.event_id" [entityType]="'EVENT_PROFILE_PIC'"
+              [alt]="event.event_title"
+              [size]="116"
+            ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+          </div>
+          <!--                  <img src="assets/images/Frame%20547.png" class="mt-32px mb-16px"><br>-->
+          <div>
+            <label
+              class="d-flex justify-content-start font-poppins font-size-24 font-weight-500">{{event.event_title}}</label>
+            <div class="d-flex mt-20px">
+              <label class="font-poppins font-size-16 mr-16px font-weight-400 text-grey-2">
+                <i-feather name="calendar" class="mr-8px"></i-feather>
+                {{event.start_time|appDateTimeToDefaultDateTimeFormat:'MM/dd/yyyy'}}
+              </label>
+              <label class="font-poppins font-size-16 font-weight-400 text-grey-2 border-start border-grey-2 ">
+                <i-feather name="clock" class="ml-16px mr-8px"></i-feather>
+                {{event.start_time|appDateTimeToDefaultDateTimeFormat:'HH:mm a'}}
+                - {{event.end_time|appDateTimeToDefaultDateTimeFormat:'HH:mm a'}}
+              </label>
+            </div>
+            <label
+              class="d-flex justify-content-start font-poppins font-size-16 mr-16px mt-12px font-weight-400 text-grey-2">
+              <i-feather name="map-pin" class="mr-8px"></i-feather>
+              {{event.location_visibility === 'ACTIVITY'}}
+            </label>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center mx-24px mt-32px pt-32px border-top border-grey-2">
+          <i-feather name="mail" class="mr-8px"></i-feather>
+          <label class="mt-3 font-poppins font-weight-500">Email contact details</label>
+        </div>
+        <div class="my-32px">
+          <label class="px-24px font-size-18 d-flex justify-content-start">
+            Total no. of contacts:
+            <span class="font-size-32"></span>
+          </label>
+          <label class="px-24px font-size-18 d-flex justify-content-start">
+            Total credits left:
+            <span class="font-size-32"></span>
+          </label>
+        </div>
+        <div class="d-flex justify-content-start px-24px">
+          <label class="text-primary bg-background-purple p-4">Message:</label>
+        </div>
+        <div class="p-16px mx-24px border border-grey-2 rounded-2 mt-12px">
+          <label class="overflow-wrap">
+            “Hey, As we have decided to hold a party on Christmas, it would not be possible without you.”
+          </label>
+        </div>
+        <div class="d-flex align-items-center mx-24px mt-32px mb-20px pt-32px border-top-dashed border-grey-2">
+          <i-feather name="message-square" class="mr-8px font-weight-700"></i-feather>
+          <label class="mt-3 font-weight-500">Text Contact details</label>
+        </div>
+        <div class="my-32px">
+          <label class="px-24px font-size-18 d-flex justify-content-start">
+            Total no. of contacts:
+            <span class="font-size-32"></span>
+          </label>
+          <label class="px-24px font-size-18 d-flex justify-content-start">
+            Total credits left:
+            <span class="font-size-32"></span>
+          </label>
+        </div>
+
+        <div class="row ph-54px py-32px position-sticky bottom-0 bg-color-white border-top border-grey-2">
+          <div class="d-flex align-items-end justify-content-end">
+            <button
+              (click)="closeModalSelected.emit(true)"
+              class="font-size-18 font-weight-700 text-primary bg-white py-12px ph-24px border-none mr-32px">
+              Cancel
+            </button>
+            <button class="font-size-18 font-weight-700 text-white bg-primary border-none py-12px ph-24px rounded-2"
+                    [promiseBtn]="startEventBlastComponent.start_event_blast_subscription$"
+                    (click)="startEventBlastComponent.startEventBlast(startEventBlastComponent.createRequestData())">
+              Send invitation
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </swiper-slide>
+
+
+
+
+
+</swiper-container>
+
+
+
+
+
+
+
+
+
+
+

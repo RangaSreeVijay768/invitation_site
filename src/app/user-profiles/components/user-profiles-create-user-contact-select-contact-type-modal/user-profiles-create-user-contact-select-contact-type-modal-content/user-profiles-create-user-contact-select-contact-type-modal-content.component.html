@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-12 bg-white">
+    <div class="d-flex bg-primary justify-content-between align-items-center brt-16px px-24 py-20px mb-20px">
+      <span class=" font-poppins font-size-18 font-weight-500 text-white">Add contacts</span>
+      <i-feather name="x" class="rounded-5 p-1 text-white cursor-pointer vertical-align-unset"
+                 (click)="closeModal({status:'CLOSE', data:undefined})"
+                 style="background: rgba(255, 255, 255, 0.3)"></i-feather>
+    </div>
+
+    <user-profiles-create-user-contact-modal
+      #createUserContactModalComponent></user-profiles-create-user-contact-modal>
+
+    <user-profiles-user-contacts-from-csv-swiper-modal
+      #userProfilesUserContactsFromCsvSwiperModalComponent></user-profiles-user-contacts-from-csv-swiper-modal>
+
+    <div class="row d-flex justify-content-center mt-20">
+      <div class="col-11">
+        <label class="font-poppins font-size-18px font-weight-500">EMAIL CONTACTS</label>
+        <div class="row mt-20px pb-20px border-bottom-dashed-1p">
+          <div class="col-10 d-flex justify-content-between">
+            <button class="bg-white border-1px-grey-3 br-5px "
+                    (click)="createUserContactModalComponent.openModal('EMAIL')">
+              <label class="py-12px ph-24px font-size-18px font-weight-500 font-poppins text-primary cursor-pointer">Create
+                contact</label>
+            </button>
+
+            <button class="bg-white border-1px-grey-3 br-5px"
+                    (click)="userProfilesUserContactsFromCsvSwiperModalComponent.openModal('EMAIL')">
+              <label class="py-12px ph-24px font-size-18px font-weight-500 font-poppins text-primary cursor-pointer">Upload
+                CSV</label>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center mt-20px">
+      <div class="col-11 pb-20px border-bottom-dashed-1p">
+        <label class="font-poppins font-size-18px font-weight-500">PHONE CONTACTS</label><br>
+        <label class="font-poppins font-size-14 font-weight-500 mt-8px"><span class="text-green">Download </span>the app
+          to sync contacts for mass messaging</label>
+        <div class="row mt-20px">
+          <div class="col-10 d-flex justify-content-between">
+            <button class="bg-white border-1px-grey-3 br-5px"
+                    (click)="createUserContactModalComponent.openModal('PHONE_NUMBER')">
+              <label class="py-12px ph-24px font-size-18px font-weight-500 font-poppins text-primary cursor-pointer">Create
+                contact</label>
+            </button>
+
+            <button class="bg-white border-1px-grey-3 br-5px"
+                    (click)="userProfilesUserContactsFromCsvSwiperModalComponent.openModal('PHONE_NUMBER')">
+              <label class="py-12px ph-24px font-size-18px font-weight-500 font-poppins text-primary cursor-pointer">Upload
+                CSV</label>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row d-flex justify-content-center mt-20px">
+      <div class="col-11">
+        <label class="font-poppins font-size-18px font-weight-500">WHATSAPP CONTACTS</label><br>
+        <label class="font-poppins font-size-14 font-weight-500 mt-8px"><span class="text-green">Download </span>the app
+          to sync contacts for mass messaging</label>
+        <div class="row mt-20px pb-20px">
+          <div class="col-10 d-flex justify-content-between">
+            <button class="bg-white border-1px-grey-3 br-5px cursor-pointer"
+                    (click)="createUserContactModalComponent.openModal('WHATSAPP_NUMBER')">
+              <label class="py-12px ph-24px font-size-18px font-weight-500 font-poppins text-primary cursor-pointer">Create
+                contact</label>
+            </button>
+
+            <button class="bg-white border-1px-grey-3 br-5px cursor-pointer"
+                    (click)="userProfilesUserContactsFromCsvSwiperModalComponent.openModal('WHATSAPP_NUMBER')">
+              <label class="py-12px ph-24px font-size-18px font-weight-500 font-poppins text-primary cursor-pointer">Upload
+                CSV</label>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

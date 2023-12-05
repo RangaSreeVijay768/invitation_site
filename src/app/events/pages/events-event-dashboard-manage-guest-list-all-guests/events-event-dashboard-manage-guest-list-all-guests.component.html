@@ -1,0 +1,146 @@
+<events-get-event-attendees-by-event-no-template
+        [event]="event_info.event"
+        (eventAttendeesReceived)="event_attendees = getEventAttendeesByEventNoTemplateComponent.event_attendees"
+        #getEventAttendeesByEventNoTemplateComponent></events-get-event-attendees-by-event-no-template>
+
+<div class="row mb-32px">
+    <div class="">
+        <div class="row ph-24px justify-content-between row-align-center">
+            <form class="col-7">
+                <!--        <i-feather name="search" class="font-poppins text-grey-1"></i-feather>-->
+                <!--        <events-event-dashboard-guest-details-all-guests-search-form></events-event-dashboard-guest-details-all-guests-search-form>-->
+            </form>
+            <div class="col-3 px-0">
+                <div class="border border-primary py-12px ph-16px rounded-2  bg-background-purple">
+                    <i-feather name="share-2" class="font-weight-500 font-size-18 text-primary"></i-feather>
+                    <label class="font-weight-500 font-size-18 text-primary ml-13px">Share check in link</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div
+        class=" d-flex justify-content-between align-items-center mt-32px px-24px pt-16px pb-16px border-top border-grey-1">
+    <div class="w-100 d-flex align-items-center">
+        <div class="col-2 p-0 ">
+            <label class="font-weight-500 font-poppins font-size-18">Sort by:</label>
+        </div>
+        <!--            <div class="col-8 ml-20px d-flex justify-content-between py-8px ph-16px border border-grey-1">-->
+        <!--              <label class="font-weight-500 font-size-16 font-poppins text-primary">Upcoming birthdays</label>-->
+        <!--              <i-feather name="chevron-down"></i-feather>-->
+        <!--            </div>-->
+        <div class="col-4 pr-35px">
+            <div class="row row-align-center justify-content-between border border-grey-1 br-5px w-250px">
+                <div ngbDropdown class="pl-0">
+                    <div class="font-color-grey-2 d-flex align-items-center" id="dropdownBasic1"
+                         ngbDropdownToggle>
+                        <div class="col-10 cursor-pointer py-21px ph-16px font-color-9747FF">
+                            <label class="font-weight-500 font-size-18 mb-0 cursor-pointer">{{currentFilter}}</label>
+                        </div>
+                        <div class="col-1 px-0">
+                            <i-feather name="chevron-down" class="cursor-pointer"></i-feather>
+                        </div>
+                    </div>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBas" class="w-100 border-1px-9747FF">
+                        <div *ngFor="let filter of SortFilters" class="px-20px">
+                            <div ngbDropdownItem class="font-weight-500 border-radius-5px border-left-3px-9747FF w-100"
+                                 (click)="changeSortFilter(filter)">
+                                <label class="font-color-grey-2 font-weight-500 font-poppins">{{filter}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-5 d-flex align-items-center justify-content-end">
+        <div class="col-8 px-0">
+            <div class="border border-primary py-12px ph-16px rounded-2 d-flex border-1px-grey-1">
+                <div class="w-60">
+                    <i-feather name="download" class="font-weight-500 font-size-18 text-primary"></i-feather>
+                    <label class="font-weight-500 font-size-18 text-primary ml-13px">Download</label>
+                </div>
+                <div class="divider border-1px-grey-1 mx-5px">
+
+                </div>
+                <div class="w-40">
+                    <i-feather name="printer" class="font-weight-500 font-size-18 text-primary"></i-feather>
+                    <label class="font-weight-500 font-size-18 text-primary ml-13px">Print</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row ph-24px" *ngFor="let event_attendee of getEventAttendeesByEventNoTemplateComponent.event_attendees">
+    <div class="pt-32px border-top border-grey-1">
+        <div class="row justify-content-between ali gn-items-center mb-15px ph-16px py-16px bg-grey-3 rounded-2">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center d-inline-block">
+                    <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+                            [size]="60"
+                            [imageClasses]="['br-30']" [alt]="event_attendee.user_account.display_name"
+                            [entityId]="event_attendee.user_account.user_account_id" [entityType]="'USER_PROFILE_PIC'"
+                            [round]="false"
+                    ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+                    <!--          <img src="assets/party.png" height="60" width="60" class="br-30">-->
+                    <div class="font-size-18 font-weight-500 ml-13px">
+                        {{event_attendee.user_account.display_name}}
+                        <div>
+                            <img src="assets/images/indian%20flag.png" height="20" class="mr-12px">
+                            <img src="assets/images/img.png" height="5" width="5" class="mr-12px">
+                            <label class="font-size-14 text-grey-1 mb-0" *ngIf="event_attendee.invited_by">Invited
+                                by {{event_attendee.invited_by.display_name}} </label>
+                            <label class="font-size-14 text-grey-1 mb-0" *ngIf="!event_attendee.invited_by">No
+                                invites </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <events-check-in-event-attendee [eventAttendee]="event_attendee"
+                                                    (eventAttendeeCheckedIn)="notificationsService.success('Success','Checked in guest')"></events-check-in-event-attendee>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row mx-0" *ngIf="!event_attendees">
+    <div class="col-12 text-align-center px-0">
+        <img src="assets/images/no-promocodes.png" width="202">
+        <br>
+        <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+            No guests for this event
+        </label>
+    </div>
+</div>
+
+
+<!--<div class="row ph-24px">-->
+<!--  <div class="">-->
+<!--    <div class="row justify-content-between align-items-center mb-15px ph-16px py-16px bg-grey-3 rounded-2">-->
+<!--      <div class="col-10 d-flex align-items-center d-inline-block">-->
+<!--        <img src="assets/party.png" height="60" width="60" class="br-30">-->
+<!--        <div class="font-size-18 font-weight-500 ml-13px">-->
+<!--          Scarlet-->
+<!--          <div>-->
+<!--            <img src="assets/images/indian%20flag.png" height="20" class="mr-12px">-->
+<!--            <img src="assets/images/img.png" height="5" width="5" class="mr-12px">-->
+<!--            <label class="font-size-14 text-grey-1 mb-0">Invited-->
+<!--              by Beau williams </label>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-2">-->
+<!--        <i-feather name="check" class="text-green mr-8px"></i-feather>-->
+<!--        <label class="text-green ">checked in</label>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+

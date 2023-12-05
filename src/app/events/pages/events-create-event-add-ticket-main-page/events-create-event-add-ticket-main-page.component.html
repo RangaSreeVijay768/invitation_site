@@ -1,0 +1,30 @@
+<div class="row font-poppins justify-content-center mx-0">
+  <div class="col-9 px-0">
+    <div class="row mt-56px border-bottom border-grey-1 pb-24px mx-0">
+      <div class="d-flex align-items-center px-0">
+        <i-feather name="arrow-left" class="text-primary font-poppins mr-12px wh-48px stroke-primary-1px"></i-feather>
+        <label class="font-poppins font-weight-700 font-size-32">Tickets</label>
+      </div>
+      <div class="d-flex gap-32 px-0 mt-40px">
+        <button class="btn-event"
+                *ngFor="let option of options"
+                (click)="selected_option=option.value"
+                [class.btn-event-active] = "selected_option === option.value"
+                [routerLink]="option.link">{{option.value}}
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="row py-16px justify-content-center box-shadow bottom-0 position-fixed bg-white">
+    <div class="col-9 d-flex justify-content-end align-items-center">
+      <button class="btn btn-primary ml-40px py-20px px-40px font-weight-700 font-size-18" routerLink="/signedin/events/shareevent">
+        Share Event
+      </button>
+    </div>
+  </div>
+
+</div>

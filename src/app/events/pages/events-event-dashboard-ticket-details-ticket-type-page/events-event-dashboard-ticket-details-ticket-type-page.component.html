@@ -1,0 +1,127 @@
+<events-get-event-ticket-infos-by-event-no-template
+        [event]="eventInfo.event" [columnName]="'createdTime'" [columnOrder]="'DESC'"
+        (eventTicketInfosReceived)="event_ticket_infos = $event"
+        #getEventTicketsByEventNoTemplateComponent></events-get-event-ticket-infos-by-event-no-template>
+
+<events-create-event-create-paid-ticket-modal
+        [event]="eventInfo.event"
+        (closeResult)="$event.status==='SUCCESS'?getEventTicketsByEventNoTemplateComponent.getEventTicketInfosByEvent(getEventTicketsByEventNoTemplateComponent.createRequestData(eventInfo.event.event_id)):''; reloadPage()"
+        #paidticket></events-create-event-create-paid-ticket-modal>
+
+<events-create-event-free-ticket-modal
+        [event]="eventInfo.event"
+        (closeResult)="$event.status==='SUCCESS'?getEventTicketsByEventNoTemplateComponent.getEventTicketInfosByEvent(getEventTicketsByEventNoTemplateComponent.createRequestData(eventInfo.event.event_id)):''; reloadPage()"
+        #freeticket></events-create-event-free-ticket-modal>
+
+<div class="row justify-content-center mb-32px">
+    <div class="col-9 d-flex justify-content-between">
+        <div class="pr-20px btn-long d-flex align-items-center" (click)="freeticket.openModal()">
+            <button class="btn btn-long bg-primary text-white py-20px font-poppins font-size-18 font-weight-700">
+                <i-feather name="tag" class="mr-12px"></i-feather>
+                Free ticket
+            </button>
+        </div>
+        <div class="btn-long pl-20px" (click)="paidticket.openModal()">
+            <button class="btn btn-long bg-primary py-20px text-white font-weight-700 font-size-18 font-poppins">
+                <i-feather name="dollar-sign" class="mr-12px"></i-feather>
+                Paid tickets
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row ph-24px mb-40px" *ngFor="let event_ticket_info of event_ticket_infos">
+    <div class="bg-background-purple py-16px ph-16px border-radius-5px text-align-start">
+        <div class="row justify-content-between mx-0">
+            <div class="d-flex border-bottom border-grey-2 px-0 border-bottom-dashed">
+                <div class="">
+                    <label class="font-weight-500 font-size-18 font-poppins text-grey-2">01</label>
+                </div>
+                <div class="col-10 pl-20px">
+                    <label class="font-weight-700 font-size-24 font-poppins">{{event_ticket_info.event_ticket.ticket_type}}</label><br>
+                    <label class="font-poppins font-size-18 font-weight-500 text-grey-2 my-12px"
+                           *ngIf="event_ticket_info.event_ticket.ticket_description">{{event_ticket_info.event_ticket.ticket_description}}</label>
+                    <div class="row row-align-center">
+                        <div class="d-flex align-items-center  mb-20px"
+                             *ngIf="event_ticket_info.event_ticket.ticket_type==='PAID'">
+                            <input type="checkbox" class="w-27 h-27 mr-16px">
+                            <label class="font-weight-500 font-size-18 font-poppins">show available ticket
+                                quantity</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <label class="font-weight-500 font-size-18 font-poppins"
+                           *ngIf="event_ticket_info.event_ticket.ticket_type==='PAID'; else elseBlock">${{event_ticket_info.event_ticket_sale_item.item_current_price|number:'1.2'}}</label>
+                  <ng-template #elseBlock>
+                    <label class="font-weight-500 font-size-18 font-poppins">$0.00</label>
+                  </ng-template>
+                  <br>
+                    <label class="font-weight-500 font-size-18 font-poppins text-grey-2">x{{event_ticket_info.event_ticket.available_quantity}}</label>
+                </div>
+            </div>
+
+        </div>
+        <events-edit-ticket-modal
+                [eventTicket]="event_ticket_info.event_ticket"
+                (closeResult)="$event.status==='SUCCESS'?getEventTicketsByEventNoTemplateComponent.getEventTicketInfosByEvent(getEventTicketsByEventNoTemplateComponent.createRequestData()):''"
+                #editTicketModalComponent></events-edit-ticket-modal>
+
+        <!--        <div class="row">-->
+        <!--            <div class="">-->
+        <!--                <label class="text-grey-2 font-poppins py-20px font-size-18" *ngIf="eventTicket.ticket_type!=='FREE'">Promo-->
+        <!--                    Code:<span-->
+        <!--                            class="font-size-18 font-weight-500 font-poppins text-font-color-1"> AFC23TY</span></label><br>-->
+        <!--                <label class="text-grey-2 font-poppins mb-20px font-size-18">Sale date and time: <span-->
+        <!--                        class="font-size-18 font-weight-500 font-poppins text-font-color-1">22/05/2023, 07:30 am - 26/05/2023, 11:59 pm </span></label>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div class="row" (click)="editTicketModalComponent.openModal()">
+            <div class="col-2 bg-white rounded-2 border border-primary py-10px mx-12px mt-10px">
+                <i-feather name="edit-2" class="text-primary font-weight-500 font-size-18 font-poppins"></i-feather>
+                <label class="text-primary font-weight-500 font-size-18 font-poppins ml-12px"
+                >Edit ticket</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mx-0" *ngIf="!event_ticket_infos">
+    <div class="col-12 text-align-center px-0">
+        <img src="assets/images/no-promocodes.png" width="202">
+        <br>
+        <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+            No tickets for this event
+        </label>
+    </div>
+</div>
+
+<div class="row mb-120px"></div>
+
+
+<div class="row bg-white py-16px box-shadow position-fixed bottom-0 w-100 m-0"
+     *ngIf="eventInfo.event.status==='CREATED'">
+    <div class="col-9 px-0 d-flex justify-content-end">
+
+
+        <button class="btn btn-sm bg-white border border-primary text-primary ml-24px py-12px px-24px font-weight-700 font-size-18"
+                (click)="navigateToEventInvitationPage()"
+        >
+            <div class="justify-content-between">
+                <i-feather name="edit-2" class="mr-12px text-primary"></i-feather>
+                Edit event
+            </div>
+        </button>
+        <div class="ml-32px">
+            <events-publish-event [event]="eventInfo.event" [eventInfo]="eventInfo"
+                                  (eventPublished)="notificationsService.success('Success','Published event');
+                            navigateToEventInvitationPage(eventInfo.event.event_id)"
+            #publishEventComponent>
+            </events-publish-event>
+        </div>
+    </div>
+</div>
+
+
+
+

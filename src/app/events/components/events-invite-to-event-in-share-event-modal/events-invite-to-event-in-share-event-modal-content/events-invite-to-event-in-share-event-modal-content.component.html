@@ -1,0 +1,15 @@
+<div class="overflow-y-scroll">
+    <events-invite-to-event-in-share-event-swiper
+            [event]="event"
+            (eventBlastStarted)="closeModal({data:$event,status:'SUCCESS'})"
+            (openContactCreationModal)="closeModal();createUserContactSelectContactTypeModalComponent.openModal()"
+            (closeModalSelected)="closeModal();"
+            (uploadFromCsvClicked)="closeModal({data:undefined,status:'CSV_UPLOAD'})"
+    ></events-invite-to-event-in-share-event-swiper>
+
+  <user-profiles-create-user-contact-select-contact-type-modal
+    #createUserContactSelectContactTypeModalComponent></user-profiles-create-user-contact-select-contact-type-modal>
+
+    <events-upload-user-contacts-from-csv-swiper-modal
+        #uploadUserContactsFromCsvSwiperModalComponent></events-upload-user-contacts-from-csv-swiper-modal>
+</div>

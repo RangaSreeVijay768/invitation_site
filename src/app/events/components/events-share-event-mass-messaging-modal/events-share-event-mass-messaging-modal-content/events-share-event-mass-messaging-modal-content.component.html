@@ -1,0 +1,164 @@
+<!--<events-get-or-create-event-invitation-codes-by-user-account-and-event-->
+<!--  [event]="event"-->
+<!--  #getOrCreateEventInvitationCodesByUserAccountAndEventComponent></events-get-or-create-event-invitation-codes-by-user-account-and-event>-->
+
+<!--&lt;!&ndash;<div class="row mx-0 justify-content-center">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="px-0 br-30">&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--<div class="row mx-0 bg-white br-30">-->
+<!--  <div class="d-flex justify-content-between align-items-center py-24px bg-white ">-->
+<!--    <span class=" font-poppins font-size-18 font-weight-500">Invite on</span>-->
+<!--    <i-feather name="x" class="rounded-5 w-37 h-37 p-1 cursor-pointer vertical-align-unset"-->
+<!--               (click)="closeModal()"-->
+<!--               style="background: rgba(252, 249, 255, 1);"></i-feather>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--<div class="bg-white box-shadow-purple br-10px">-->
+<!--  <div class="row ml-24px pb-24px mr-24px pt-24px br-10px">-->
+<!--    <div class="py-10px ph-24px border border-1.5 grey-1 rounded-2">-->
+<!--      <div class="row row-align-center justify-content-between">-->
+<!--        <div class="col-9">-->
+<!--          <i-feather name="link" class="font-weight-500 w-27 h-27 mr-12px"></i-feather>-->
+<!--          <label class="font-weight-500 font-size-18 mb-20px">Event link</label><br>-->
+
+<!--          <div class="content">-->
+<!--                                    <span #inputTarget-->
+<!--                                          class="truncate font-weight-500 font-size-18 font-poppins text-grey-1">https://dev.eventreply.com/signedin/events/{{event.event_id}}</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col-3 p-8px bg-background-purple border-radius-5px d-flex justify-content-center align-items-center">-->
+<!--          <i-feather name="copy" class="text-primary"></i-feather>-->
+<!--          <label class="font-weight-700 font-size-18 text-primary ml-8px font-poppins"-->
+<!--                 ngxClipboard-->
+<!--                 [cbContent]="'https://dev.eventreply.com/signedin/events/'+event.event_id"-->
+<!--                 (click)="notificationsService.success('Copied')">Copy</label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <events-invite-to-event-in-share-event-modal-->
+<!--    [event]="event"-->
+<!--    (closeResult)="$event.status==='SUCCESS'?closeModal({status:'SUCCESS',data:$event.data}):''"-->
+<!--    #inviteToEventInShareEventModalComponent></events-invite-to-event-in-share-event-modal>-->
+<!--  <div class="row mt-24px ml-24px pb-24px">-->
+<!--    <div class="col">-->
+<!--      <button-->
+<!--        class="btn-event-rsvp d-flex justify-content-center font-size-18px font-weight-800 letter-spacing&#45;&#45;0352 ph-32px font-color-white drop-shadow-black"-->
+<!--        (click)="inviteToEventInShareEventModalComponent.openModal()">-->
+<!--        <i-feather name="users" class="mr-24px font-color-white"></i-feather>-->
+
+<!--        Mass messaging-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <div class="row ml-24px">-->
+<!--    <div class="col">-->
+<!--      <label class="font-poppins font-size-16px font-weight-500 text-grey-2">-->
+<!--        Send message to your contacts through Email, Whatsapp and-->
+<!--      </label>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<!--  <events-invite-past-attendees-in-share-event-modal-->
+<!--    [event]="event"-->
+<!--    (closeResult)="$event.status==='SUCCESS'?closeModal({status:'SUCCESS',data:$event.data}):''"-->
+<!--    #invitePastAttendeesInShareEventModalComponent></events-invite-past-attendees-in-share-event-modal>-->
+<!--  <div class="row mt-20px ml-24px pb-20px mr-24px">-->
+<!--    <div class="d-flex align-items-center" (click)="invitePastAttendeesInShareEventModalComponent.openModal()">-->
+<!--      <img src="assets/images/share-event.png" width="50" height="50">-->
+<!--      <label class="font-poppins font-weight-500 font-size-18 text-primary pl-16px">Invite past-->
+<!--        attendees</label>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+<!--</div>-->
+
+
+<events-get-or-create-event-invitation-codes-by-user-account-and-event
+  [event]="event"
+  #getOrCreateEventInvitationCodesByUserAccountAndEventComponent></events-get-or-create-event-invitation-codes-by-user-account-and-event>
+
+<div class="row mx-0 justify-content-center">
+  <div class="px-0">
+    <div class="bg-white px-0">
+      <div class="row mx-0">
+        <div class="d-flex justify-content-between align-items-center px-24 py-24px bg-white ">
+          <span class=" font-poppins font-size-18 font-weight-500">Invite on</span>
+          <i-feather name="x" class="rounded-5 w-37 h-37 p-1 cursor-pointer vertical-align-unset"
+                     (click)="closeModal()"
+                     style="background: rgba(252, 249, 255, 1);"></i-feather>
+        </div>
+      </div>
+
+      <events-invite-to-event-in-share-event-modal
+        [event]="event"
+        (closeResult)="$event.status==='SUCCESS'?closeModal({status:'SUCCESS',data:$event.data}):''"
+        #inviteToEventInShareEventModalComponent></events-invite-to-event-in-share-event-modal>
+      <div class="row pt-8px ml-24px pb-24px" *ngIf="event.created_by.display_name === loggedAccount.display_name">
+        <div class="px-0">
+          <button
+            class="btn-event-rsvp d-flex justify-content-center font-size-18px font-weight-800 letter-spacing--0352 ph-32px font-color-white drop-shadow-black"
+            (click)="inviteToEventInShareEventModalComponent.openModal()">
+            <i-feather name="send" class="mr-24px font-color-white"></i-feather>
+            Invite contacts
+          </button>
+        </div>
+      </div>
+
+      <div class="row ml-24px mb-24px">
+        <div class="px-0">
+          <label class="font-poppins font-size-16px font-weight-500 text-grey-2">
+            <i-feather name="info" class="mr-8px"></i-feather>
+            Send message to your contacts through Email, Whatsapp and text
+          </label>
+        </div>
+      </div>
+
+<!--      <events-invite-past-attendees-in-share-event-modal-->
+<!--        [event]="event"-->
+<!--        (closeResult)="$event.status==='SUCCESS'?closeModal({status:'SUCCESS',data:$event.data}):''"-->
+<!--        #invitePastAttendeesInShareEventModalComponent></events-invite-past-attendees-in-share-event-modal>-->
+<!--      <div class="row mt-20px pv-24px mx-24px border-top-dashed border-grey-1">-->
+<!--        <div class="d-flex align-items-center px-0" (click)="invitePastAttendeesInShareEventModalComponent.openModal()">-->
+<!--          <img src="assets/images/share-event.png" width="50" height="50">-->
+<!--          <label class="font-poppins font-weight-500 font-size-18 text-primary pl-16px">Invite past-->
+<!--            attendees</label>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+      <div class="row pt-24px ml-24px pb-24px mr-24px border-top-dashed border-grey-1">
+        <div class="py-10px ph-24px border border-1.5 grey-1 rounded-2">
+          <div class="row row-align-center justify-content-between">
+            <div class="col-9">
+              <i-feather name="link" class="font-weight-500 w-27 h-27 mr-12px"></i-feather>
+              <label class="font-weight-500 font-size-18 mb-20px">Event link</label><br>
+
+              <div class="content">
+                                    <span #inputTarget
+                                          class="truncate font-weight-500 font-size-18 font-poppins text-grey-1">https://dev.eventreply.com/signedin/events/{{event.event_id}}</span>
+              </div>
+            </div>
+            <div
+              class="col-3 p-8px bg-background-purple border-radius-5px d-flex justify-content-center align-items-center">
+              <i-feather name="copy" class="text-primary"></i-feather>
+              <label class="font-weight-700 font-size-18 text-primary ml-8px font-poppins"
+                     ngxClipboard
+                     [cbContent]="'https://dev.eventreply.com/signedin/events/'+event.event_id"
+                     (click)="notificationsService.success('Copied')">Copy</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

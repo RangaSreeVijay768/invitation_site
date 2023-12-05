@@ -1,0 +1,81 @@
+<events-get-all-event-infos-no-template
+  [count]="numberOfItems" [columnName]="'createdTime'" [columnOrder]="'DESC'"
+  (eventInfosReceived)="addItems($event)"
+  #getAllEventInfosNoTemplateComponent #component>
+</events-get-all-event-infos-no-template>
+
+<div infiniteScroll [infiniteScrollDisabled]="disableScroll" [infiniteScrollDistance]="100">
+  <div class="row mt-32px mx-0">
+    <div class="col-6 mt-24px cursor-pointer filter-dropshadow" [class.pr-10px]="i%2===0"
+         [class.pl-0]="i%2===0" [class.pl-10px]="i%2!=0" [class.pr-0]="i%2!=0"
+         *ngFor="let eventInfo of items; let i = index">
+      <events-share-event-modal
+        [event]="eventInfo.event"
+        #shareEventModalComponent>
+      </events-share-event-modal>
+      <div class="row br-10px bg-white p-16px mx-0"
+           routerLink="/signedin/events/{{eventInfo.event.event_id}}/details">
+        <div class="col-5 pl-0  d-flex justify-content-center w-212px h-171px pr-24px">
+          <images-get-image-by-entity-id-and-image-type
+            [entityId]="eventInfo.event.event_id"
+            [entityType]="'EVENT_PROFILE_PIC'"
+            #imageComponent
+          >
+          </images-get-image-by-entity-id-and-image-type>
+          <div *ngIf="imageComponent.image" class="border-radius-5px overflow-hidden w-212px h-171px ">
+            <img class="w-100 h-100 border-radius-5px" src="{{imageComponent.image.uploaded_file.file_link}}">
+          </div>
+          <div *ngIf="!imageComponent.image"
+               class=" d-flex justify-content-center align-items-center border-radius-5px overflow-hidden w-212px h-171px">
+            <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+              class="cursor-pointer border-radius-5px overflow-hidden"
+              [alt]="eventInfo.event.event_title"
+              [entityId]="eventInfo.event.event_id"
+              [entityType]="'EVENT_PROFILE_PIC'"
+              [size]="150"
+              [round]="false"
+            ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+          </div>
+
+        </div>
+        <div class="col-7 px-0 w-50">
+          <label
+            class="mb-0 font-weight-700 font-size-18 text-font-color-1 font-poppins">{{eventInfo.event.event_title}}</label>
+          <br>
+          <label
+            class="d-inline-block mb-0 mt-16px pr-12px mr-12px border-end border-grey-2 font-size-16 text-grey-2 font-poppins">25th
+            Dec</label>
+          <label class="d-inline-block mb-0 font-size-16 text-grey-2 font-poppins">07:30 PM - 11:30PM</label>
+          <br>
+          <label
+            class="d-inline-block mb-0 mt-16px font-size-16 text-grey-2 font-poppins">{{eventInfo.event.location_visibility === 'ACTIVE'}}</label>
+          <br>
+          <label
+            class="d-inline-block mb-0 mt-16px font-weight-500 font-size-16 text-green font-poppins">Free</label>
+          <label
+            class="btn p-0 d-inline-block mb-0 ml-32px font-poppins font-weight-500 font-size-16 text-grey-2"
+            (click)="shareEventModalComponent.openModal()" coreClickStopPropogation>
+            <i-feather name="Share2" class="d-inline-block text-grey-2" style="width: 20px"></i-feather>
+            Share
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--  <div class="mt-32px text-align-end">-->
+  <!--    <button class="font-poppins font-weight-400 font-size-18 rounded-1 py-12px ph-24px border-none text-white bg-primary"-->
+  <!--            (click)="onScroll()">-->
+  <!--      Load more ...-->
+  <!--    </button>-->
+  <!--  </div>-->
+  <div class="row mx-0 mt-56px">
+    <div class="col-12 px-0 text-center">
+      <button class="btn btn-color-primary font-poppins font-weight-700 font-size-24 pv-24px ph-138px"
+              [routerLink]="'/signedin/events/allevents'"
+              [promiseBtn]="component.get_all_event_infos_subscription$">
+        See more events
+      </button>
+    </div>
+  </div>
+
+</div>

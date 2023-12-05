@@ -1,0 +1,122 @@
+<events-get-all-events-no-template
+  [count]="numberOfItems"
+  (eventsReceived)="addItems($event);"
+  #getAllEventsNoTemplateComponent #component>
+</events-get-all-events-no-template>
+
+
+<div class="row mx-0" *ngIf="!items">
+  <div class="col-12 text-align-center px-0">
+    <img src="assets/images/no-promocodes.png" width="202">
+    <br>
+    <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+      No events present in this category!
+    </label>
+  </div>
+</div>
+
+<div infiniteScroll [infiniteScrollDisabled]="disableScroll" [infiniteScrollDistance]="100"
+     [infiniteScrollThrottle]="scrollThrottle" (scrolled)="print($event);onScroll()"
+     [alwaysCallback]="true" >
+  <div class="row pt-56px pb-100px justify-content-center mx-0">
+    <div class="col-9 px-0">
+      <div class="row mt-32px mx-0">
+
+        <div class="col-6 mt-24px cursor-pointer" [class.pr-10px]="i%2===0"
+             [class.pl-0]="i%2===0" [class.pl-10px]="i%2!=0" [class.pr-0]="i%2!=0"
+             *ngFor="let event of items; let i = index">
+          <events-share-event-modal
+            [event]="event"
+            #shareEventModalComponent>
+          </events-share-event-modal>
+
+          <div>
+
+            <div class="shadow row br-10px bg-white p-16px mx-0"
+                 routerLink="/signedin/events/{{event.event_id}}/details">
+
+              <div class="col-5 pl-0  d-flex justify-content-center w-212px h-171px pr-24px">
+                <images-get-image-by-entity-id-and-image-type
+                  [entityId]="event.event_id"
+                  [entityType]="'EVENT_PROFILE_PIC'"
+                  #imageComponent
+                >
+                </images-get-image-by-entity-id-and-image-type>
+                <div *ngIf="imageComponent.image" class="border-radius-5px overflow-hidden w-212px h-171px ">
+                  <img class="w-100 h-100 border-radius-5px" src="{{imageComponent.image.uploaded_file.file_link}}">
+                </div>
+                <div *ngIf="!imageComponent.image" class=" d-flex justify-content-center align-items-center border-radius-5px overflow-hidden w-212px h-171px">
+                  <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+                    class="cursor-pointer border-radius-5px"
+                    [alt]="event.event_title"
+                    [entityId]="event.event_id"
+                    [entityType]="'EVENT_PROFILE_PIC'"
+                    [size]="150"
+                    [round]="false"
+                  ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+                </div>
+
+              </div>
+
+<!--              <div class="col-5 pl-0 pr-0 ">-->
+<!--                <images-get-image-by-entity-id-and-image-type-->
+<!--                  [entityId]="event.event_id"-->
+<!--                  [entityType]="'EVENT_PROFILE_PIC'"-->
+<!--                  #imageComponent-->
+<!--                >-->
+<!--                </images-get-image-by-entity-id-and-image-type>-->
+<!--                <div *ngIf="imageComponent.image">-->
+<!--                  <img class="w-100 h-100" src="{{imageComponent.image.uploaded_file.file_link}}">-->
+<!--                </div>-->
+<!--                <div *ngIf="!imageComponent.image">-->
+<!--                  <images-get-image-by-entity-and-type-unique-image-ngx-avatar-->
+<!--                    class="cursor-pointer"-->
+<!--                    [alt]="event.event_title"-->
+<!--                    [entityId]="event.event_id"-->
+<!--                    [entityType]="'EVENT_PROFILE_PIC'"-->
+<!--                    [size]="150"-->
+<!--                    [round]="false"-->
+<!--                  ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>-->
+<!--                </div>-->
+<!--              </div>-->
+              <div class="col-7 pl-0 pr-0 w-50">
+                <label
+                  class="mb-0 font-weight-700 font-size-18 text-font-color-1 font-poppins">{{event.event_title}}</label>
+                <br>
+                <label
+                  class="d-inline-block mb-0 mt-16px pr-12px mr-12px border-end border-grey-2 font-size-16 text-grey-2 font-poppins">
+                  {{event.start_time|appDateTimeToDefaultDateTimeFormat:'MM/dd/yyyy'}}
+                </label>
+                <label class="d-inline-block mb-0 font-size-16 text-grey-2 font-poppins"
+                       *ngIf="event.start_time">
+                  {{event.start_time|appDateTimeToTimeFormat}} <span
+                  *ngIf="event.end_time">To {{event.end_time|appDateTimeToTimeFormat}}</span></label>
+                <br>
+                <label class="d-inline-block mb-0 mt-16px font-size-16 text-grey-2 font-poppins">112, bulved
+                  street</label>
+                <br>
+                <label
+                  class="d-inline-block mb-0 mt-16px font-weight-500 font-size-16 text-green font-poppins">Free</label>
+                <label
+                  class="btn p-0 d-inline-block mb-0 ml-32px font-poppins font-weight-500 font-size-16 text-grey-2"
+                  (click)="shareEventModalComponent.openModal()" coreClickStopPropogation>
+                  <i-feather name="Share2" class="d-inline-block text-grey-2" style="width: 20px"></i-feather>
+                  Share
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="mt-32px text-align-center">
+        <button
+          class="font-poppins font-weight-400 font-size-18 rounded-1 py-12px ph-24px border-none text-white bg-background-purple font-color-9747FF"
+          (click)="onScroll()">
+          Load more events
+          <i-feather name="chevron-down" class="mr-12px font-color-9747FF vertical-align-middle"></i-feather>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div *ngIf="graph_duration_ranges?.length" class="d-inline-block b-1px-light-grey br-5px mt-20px font-small">
+  <label class="mb-0 mt-0 pl-2 pr-2 pb-1 pt-1 text-grey-2" *ngFor="let range of graph_duration_ranges" [ngClass]="labelClasses"
+         [class.active]="selected_range.display_value===range.display_value"
+         (click)="selectGraphRange(range)">{{range.display_value}}</label>
+</div>
+
+<!--<div class="row">-->
+<!--  <div class="col">-->
+<!--    <div ngbDropdown class="d-inline-block">-->
+<!--      <button type="button" class="b-1px-light-grey br-5px bg-white pt-2 pb-3 pl-4 pr-4 "  ngbDropdownToggle>-->
+<!--        Select an option-->
+<!--      </button>-->
+<!--      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">-->
+<!--        <button ngbDropdownItem *ngFor="let range of graph_duration_ranges">{{range.display_value}}</button>-->
+
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

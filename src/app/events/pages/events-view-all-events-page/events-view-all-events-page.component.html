@@ -1,0 +1,202 @@
+<div class="row pt-56px mb-40px justify-content-center mx-0">
+
+
+  <div class="col-9 px-0">
+    <label class="font-inter font-weight-700 font-size-24 text-font-color-1 ">
+      Events near Seattle, US
+    </label>
+  </div>
+</div>
+
+<!--    search filters-->
+
+
+<!--    events-->
+<!--<div class="row pt-56px pb-100px justify-content-center mx-0">-->
+<!--  <div class="col-9 px-0">-->
+<!--    <div class="row mt-32px mx-0">-->
+<!--      <div class="col-6 mt-24px cursor-pointer" [class.pr-10px]="i%2===0"-->
+<!--           [class.pl-0]="i%2===0" [class.pl-10px]="i%2!=0" [class.pr-0]="i%2!=0"-->
+<!--           *ngFor="let event of getAllEventsNoTemplateComponent.events; let i = index">-->
+<!--        <div class="shadow row br-10px bg-white p-16px mx-0" routerLink="/signedin/events/eventdetails/{{event.event_id}}">-->
+<!--          <div class="col-5 pl-0 pr-0">-->
+<!--            <images-get-image-by-entity-id-and-image-type-->
+<!--              [entityId]="event.event_id"-->
+<!--              [entityType]="'EVENT_PROFILE_PIC'"-->
+<!--              #imageComponent-->
+<!--              >-->
+<!--            </images-get-image-by-entity-id-and-image-type>-->
+<!--            <div *ngIf="imageComponent.image">-->
+<!--              <img class="w-100" src="{{imageComponent.image.uploaded_file.file_link}}">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-7 pl-24px pr-0">-->
+<!--            <label-->
+<!--              class="mb-0 font-weight-700 font-size-18 text-font-color-1 font-poppins">{{event.event_title}}</label>-->
+<!--            <br>-->
+<!--            <label-->
+<!--              class="d-inline-block mb-0 mt-16px pr-12px mr-12px border-end border-grey-2 font-size-16 text-grey-2 font-poppins">25-->
+<!--              Dec</label>-->
+<!--            <label class="d-inline-block mb-0 font-size-16 text-grey-2 font-poppins">07:30 PM - 11:30PM</label>-->
+<!--            <br>-->
+<!--            <label class="d-inline-block mb-0 mt-16px font-size-16 text-grey-2 font-poppins">112, bulved-->
+<!--              street</label>-->
+<!--            <br>-->
+<!--            <label-->
+<!--              class="d-inline-block mb-0 mt-16px font-weight-500 font-size-16 text-green font-poppins">Free</label>-->
+<!--            <label-->
+<!--              class="btn p-0 d-inline-block mb-0 ml-32px font-poppins font-weight-500 font-size-16 text-primary">-->
+<!--              <i-feather name="Share2" class="d-inline-block text-primary" style="width: 20px"></i-feather>-->
+<!--              Share-->
+<!--            </label>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--&lt;!&ndash;<<<<<<< HEAD&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="col-6 pl-10px pr-0 mt-24px cursor-pointer" [routerLink]="'/signedin/events/eventdetails'">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="row br-10px bg-white p-16px mx-0">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-5 pl-0 pr-0">&ndash;&gt;-->
+<!--&lt;!&ndash;            <img width="196" src="/assets/images/remove/dummy-event-image.png">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-7 pl-24px pr-0">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="font-weight-700 mb-0 font-size-18 text-font-color-1 font-poppins">Christmas Party</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="d-inline-block mb-0 mt-16px pr-12px mr-12px border-end border-grey-2 font-size-16 text-grey-2 font-poppins">25&ndash;&gt;-->
+<!--&lt;!&ndash;              Dec</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="d-inline-block mb-0 font-size-16 text-grey-2 font-poppins">07:30 PM - 11:30PM</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="d-inline-block mb-0 mt-16px font-size-16 text-grey-2 font-poppins">112, bulved&ndash;&gt;-->
+<!--&lt;!&ndash;              street</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="d-inline-block mb-0 mt-16px font-weight-500 font-size-16 text-green font-poppins">Free</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="btn p-0 d-inline-block mb-0 ml-32px font-poppins font-weight-500 font-size-16 text-primary">&ndash;&gt;-->
+<!--&lt;!&ndash;              <i-feather name="Share2" class="d-inline-block text-primary" style="width: 20px"></i-feather>&ndash;&gt;-->
+<!--&lt;!&ndash;              Share&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="col-6 pr-10px pl-0 mt-24px cursor-pointer" [routerLink]="'/signedin/events/eventdetails'">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="row br-10px bg-white p-16px mx-0">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-5 pl-0 pr-0">&ndash;&gt;-->
+<!--&lt;!&ndash;            <img width="196" src="/assets/images/remove/dummy-event-image.png">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-7 pl-24px pr-0">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="mb-0 font-weight-700 font-size-18 text-font-color-1 font-poppins">Christmas Party</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="d-inline-block mb-0 mt-16px pr-12px mr-12px border-end border-grey-2 font-size-16 text-grey-2 font-poppins">25&ndash;&gt;-->
+<!--&lt;!&ndash;              Dec</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="d-inline-block mb-0 font-size-16 text-grey-2 font-poppins">07:30 PM - 11:30PM</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="d-inline-block mb-0 mt-16px font-size-16 text-grey-2 font-poppins">112, bulved&ndash;&gt;-->
+<!--&lt;!&ndash;              street</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="d-inline-block mb-0 mt-16px font-weight-500 font-size-16 text-red font-poppins">Paid</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="btn p-0 d-inline-block mb-0 ml-32px font-poppins font-weight-500 font-size-16 text-primary">&ndash;&gt;-->
+<!--&lt;!&ndash;              <i-feather name="Share2" class="d-inline-block text-primary" style="width: 20px"></i-feather>&ndash;&gt;-->
+<!--&lt;!&ndash;              Share&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="col-6 pl-10px pr-0 mt-24px cursor-pointer" [routerLink]="'/signedin/events/eventdetails'">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="row br-10px bg-white p-16px mx-0">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-5 pl-0 pr-0">&ndash;&gt;-->
+<!--&lt;!&ndash;            <img width="196" src="/assets/images/remove/dummy-event-image.png">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-7 pl-24px pr-0">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="font-weight-700 mb-0 font-size-18 text-font-color-1 font-poppins">Christmas Party</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="d-inline-block mb-0 mt-16px pr-12px mr-12px border-end border-grey-2 font-size-16 text-grey-2 font-poppins">25&ndash;&gt;-->
+<!--&lt;!&ndash;              Dec</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="d-inline-block mb-0 font-size-16 text-grey-2 font-poppins">07:30 PM - 11:30PM</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="d-inline-block mb-0 mt-16px font-size-16 text-grey-2 font-poppins">112, bulved&ndash;&gt;-->
+<!--&lt;!&ndash;              street</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="d-inline-block mb-0 mt-16px font-weight-500 font-size-16 text-red font-poppins">Paid</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="btn p-0 d-inline-block mb-0 ml-32px font-poppins font-weight-500 font-size-16 text-primary">&ndash;&gt;-->
+<!--&lt;!&ndash;              <i-feather name="Share2" class="d-inline-block text-primary" style="width: 20px"></i-feather>&ndash;&gt;-->
+<!--&lt;!&ndash;              Share&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="col-6 pr-10px pl-0 mt-24px cursor-pointer" [routerLink]="'/signedin/events/eventdetails'">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="row br-10px bg-white p-16px mx-0">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-5 pl-0 pr-0">&ndash;&gt;-->
+<!--&lt;!&ndash;            <img width="196" src="/assets/images/remove/dummy-event-image.png">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-7 pl-24px pr-0">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="mb-0 font-weight-700 font-size-18 text-font-color-1 font-poppins">Christmas Party</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="d-inline-block mb-0 mt-16px pr-12px mr-12px border-end border-grey-2 font-size-16 text-grey-2 font-poppins">25&ndash;&gt;-->
+<!--&lt;!&ndash;              Dec</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="d-inline-block mb-0 font-size-16 text-grey-2 font-poppins">07:30 PM - 11:30PM</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="d-inline-block mb-0 mt-16px font-size-16 text-grey-2 font-poppins">112, bulved&ndash;&gt;-->
+<!--&lt;!&ndash;              street</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="d-inline-block mb-0 mt-16px font-weight-500 font-size-16 text-red font-poppins">Paid</label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label&ndash;&gt;-->
+<!--&lt;!&ndash;              class="btn p-0 d-inline-block mb-0 ml-32px font-poppins font-weight-500 font-size-16 text-primary">&ndash;&gt;-->
+<!--&lt;!&ndash;              <i-feather name="Share2" class="d-inline-block text-primary" style="width: 20px"></i-feather>&ndash;&gt;-->
+<!--&lt;!&ndash;              Share&ndash;&gt;-->
+<!--&lt;!&ndash;            </label>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;      <a routerLink="'/signedin/events/eventdetails'">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="col-6 pl-10px pr-0 mt-24px cursor-pointer">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="row br-10px bg-white p-16px mx-0">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-5 pl-0 pr-0">&ndash;&gt;-->
+<!--&lt;!&ndash;              <img width="196" src="/assets/images/remove/dummy-event-image.png">&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="col-7 pl-24px pr-0">&ndash;&gt;-->
+<!--&lt;!&ndash;              <label class="font-weight-700 mb-0 font-size-18 text-font-color-1 font-poppins">Christmas Party</label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <br>&ndash;&gt;-->
+<!--&lt;!&ndash;              <label&ndash;&gt;-->
+<!--&lt;!&ndash;                class="d-inline-block mb-0 mt-16px pr-12px mr-12px border-end border-grey-2 font-size-16 text-grey-2 font-poppins">25&ndash;&gt;-->
+<!--&lt;!&ndash;                Dec</label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <label class="d-inline-block mb-0 font-size-16 text-grey-2 font-poppins">07:30 PM - 11:30PM</label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <br>&ndash;&gt;-->
+<!--&lt;!&ndash;              <label class="d-inline-block mb-0 mt-16px font-size-16 text-grey-2 font-poppins">112, bulved&ndash;&gt;-->
+<!--&lt;!&ndash;                street</label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <br>&ndash;&gt;-->
+<!--&lt;!&ndash;              <label&ndash;&gt;-->
+<!--&lt;!&ndash;                class="d-inline-block mb-0 mt-16px font-weight-500 font-size-16 text-green font-poppins">Free</label>&ndash;&gt;-->
+<!--&lt;!&ndash;              <label&ndash;&gt;-->
+<!--&lt;!&ndash;                class="btn p-0 d-inline-block mb-0 ml-32px font-poppins font-weight-500 font-size-16 text-primary">&ndash;&gt;-->
+<!--&lt;!&ndash;                <i-feather name="Share2" class="d-inline-block text-primary" style="width: 20px"></i-feather>&ndash;&gt;-->
+<!--&lt;!&ndash;                Share&ndash;&gt;-->
+<!--&lt;!&ndash;              </label>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      </a>&ndash;&gt;-->
+<!--&lt;!&ndash;=======&ndash;&gt;-->
+<!--&lt;!&ndash;&gt;>>>>>> cf5db1b2fa18ac8f40d663c9155c62b8c7143629&ndash;&gt;-->
+<!--    </div>-->
+
+<!--  </div>-->
+<!--</div>-->
+<events-get-all-events-filter (eventsFilterRecieved)="scrollingComponent.refreshData($event.event_category)"
+></events-get-all-events-filter>
+<events-get-all-events-scrolling [numberOfItems]="3"
+  #scrollingComponent></events-get-all-events-scrolling>
+
+<events-bottom-nav-footer></events-bottom-nav-footer>
+

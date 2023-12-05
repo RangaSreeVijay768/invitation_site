@@ -1,0 +1,19 @@
+<images-attach-image-no-template [entityId]="entityId" [entityType]="entityType"
+                                 (imageAttached)="imageAttached.emit($event)"
+></images-attach-image-no-template>
+
+
+<images-crop-image-modal-no-template (closeResult)="$event.status==='SUCCESS'?uploadCroppedImage($event.data):''"
+                                     [aspectRatio]="1"
+                                     #cropImageModal></images-crop-image-modal-no-template>
+
+<div class="row overflow-hidden">
+  <div class="col-12 file-image overflow-hidden">
+    <label for="file-upload-{{current_time_stamp}}"
+           class="img-upload-text cursor-pointer m-0 overflow-hidden border-radius-5px d-flex justify-content-center align-items-center"><img
+      src="/assets/images/image-upload-icon.svg" alt="click here" class="" *ngIf="!uploaded_file">
+      <img src="{{uploaded_file.file_link}}" alt="click here" class="img-fluid" *ngIf="uploaded_file"></label>
+    <input class="ml-16px custom-file-input image-upload" type="file" (change)="cropImageModal.openModal($event)" ng2FileSelect [uploader]="uploader"
+           id="file-upload-{{current_time_stamp}}">
+  </div>
+</div>

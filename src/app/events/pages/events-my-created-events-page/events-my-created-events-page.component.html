@@ -1,0 +1,18 @@
+<div >
+  <div class="d-flex justify-content-between container mx-auto">
+    <div class="btn-grp d-flex align-items-center gap-56">
+      <label class="btn-event"
+              *ngFor="let option of options"
+              (click)="selected_option=option.value"
+              routerLinkActive="btn-event-active"
+              [routerLink]="option.link">{{option.value}}
+      </label>
+    </div>
+<!--    <ngb-pagination-->
+<!--      [(page)]="page"-->
+<!--      [pageSize]="pageSize"-->
+<!--      [collectionSize]="collectionSize"></ngb-pagination>-->
+  </div>
+  <hr>
+  <router-outlet></router-outlet>
+</div>

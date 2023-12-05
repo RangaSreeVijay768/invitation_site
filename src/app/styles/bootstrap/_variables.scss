@@ -1,0 +1,48 @@
+$theme-colors: (
+  "primary": #7F56D8,
+  "background-purple": #FCF9FF,
+  "grey-1": #C0C0C0,
+  "grey-2": #8D8D8D,
+  "grey-3": #F2F2F2,
+  "font-color-1": #373737,
+  "green": #198731,
+  "red": #C11313,
+  "orange": #FFA439,
+  "dark-grey": #8D8080,
+);
+
+$accordion-padding-y:                     30px;
+$accordion-padding-x:                     30px;
+//$accordion-transition:                    $btn-transition, border-radius .15s ease;
+//$accordion-button-active-bg:              tint-color($component-active-bg, 90%);
+//$accordion-button-active-color:           shade-color($primary, 10%);
+//
+//$accordion-button-focus-border-color:     $input-focus-border-color;
+$accordion-button-focus-box-shadow:       0;
+
+$accordion-icon-width:                    1.25rem;
+//$accordion-icon-color:                    $accordion-color;
+//$accordion-icon-active-color:             $accordion-button-active-color;
+$accordion-icon-transition:               transform .2s ease-in-out;
+$accordion-icon-transform:                rotate(-180deg);
+
+$accordion-button-icon:         url("data:image/svg+xml,%3Csvg width='33' height='33' viewBox='0 0 33 33' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2.75 16.5001C2.75 15.7407 3.36561 15.125 4.125 15.125H28.875C29.6344 15.125 30.25 15.7407 30.25 16.5001C30.25 17.2595 29.6344 17.875 28.875 17.875H4.125C3.36561 17.875 2.75 17.2595 2.75 16.5001Z' fill='%23373737'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16.5 2.75C17.2594 2.75 17.8749 3.36562 17.8749 4.125V28.875C17.8749 29.6344 17.2594 30.25 16.5 30.25C15.7406 30.25 15.125 29.6344 15.125 28.875V4.125C15.125 3.36562 15.7406 2.75 16.5 2.75Z' fill='%23373737'/%3E%3C/svg%3E%0A");
+$accordion-button-active-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='33' height='33' viewBox='0 0 33 33' fill='none'%3E%3Cpath d='M24.75 17.873H8.25C7.88533 17.873 7.53559 17.7282 7.27773 17.4703C7.01987 17.2125 6.875 16.8627 6.875 16.498C6.875 16.1334 7.01987 15.7836 7.27773 15.5258C7.53559 15.2679 7.88533 15.123 8.25 15.123H24.75C25.1147 15.123 25.4644 15.2679 25.7223 15.5258C25.9801 15.7836 26.125 16.1334 26.125 16.498C26.125 16.8627 25.9801 17.2125 25.7223 17.4703C25.4644 17.7282 25.1147 17.873 24.75 17.873Z' fill='black'/%3E%3C/svg%3E");
+
+
+$spacer: 1rem;
+$spacers: (
+        0: 0,
+        1: $spacer * .125,
+        2: $spacer * .250 ,
+        3: $spacer * .375,
+        4: $spacer * .500,
+        5: $spacer * .625,
+        6: $spacer * .750,
+        7: $spacer * .875,
+        8: $spacer * 1,
+        9: $spacer * 1.125
+);
+
+// this should be below everything
+@import "node_modules/bootstrap/scss/bootstrap";

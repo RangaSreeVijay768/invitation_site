@@ -1,0 +1,40 @@
+<!--<events-create-order-item-payment-for-event-no-template-->
+<!--  [noOfTickets]="no_of_tickets"-->
+<!--  [amount]="amount"-->
+<!--  (orderItemCreated)="paymentFormModalComponent.openModal($event)"-->
+<!--  #orderItemPaymentForEventNoTemplateComponent-->
+<!--&gt;</events-create-order-item-payment-for-event-no-template>-->
+
+<!--<events-stripe-payment-form-modal-->
+<!--  [eventTicket]="selectedEventTicket"-->
+<!--  #paymentFormModalComponent-->
+<!--  (closeResult)="$event.status==='SUCCESS'?closeModal({status:'SUCCESS',data:$event.data}):''"-->
+<!--&gt;</events-stripe-payment-form-modal>-->
+
+<div class="row mx-0 justify-content-center overflow-y-scroll">
+  <div class="px-0 border-bottom border-grey-2 pb-32px">
+    <div class="bg-white px-0 rounded-4">
+      <div class="row mx-0 mt-32px">
+        <div class="row mx-0 ph-24px">
+          <basic-user-info-before-login-form></basic-user-info-before-login-form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mx-0 mt-32px mb-32px">
+    <div class="col-10">
+      <div class="row justify-content-between">
+        <button
+          class="col-4 border border-primary rounded-2 py-16px bg-white font-weight-700 font-poppins font-size-18 text-primary"
+          (click)="closeModal()">
+          Cancel
+        </button>
+        <button class="col-6 btn-color-primary rounded-2 py-16px font-weight-700 font-poppins font-size-18"
+                >
+          Purchase ticket
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

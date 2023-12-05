@@ -1,0 +1,37 @@
+{
+  "extends": "../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      [
+        "app",
+        "users",
+        "basic",
+        "admin",
+        "core",
+        "signedin",
+        "userPayments",
+        "categories",
+        "events"
+      ],
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      [
+        "app",
+        "users",
+        "basic",
+        "admin",
+        "core",
+        "signedin",
+        "user-payments",
+        "categories",
+        "events"
+      ],
+      "kebab-case"
+    ]
+  }
+}

@@ -1,0 +1,110 @@
+<user-profiles-blasts-invite-to-event-modal
+        [blastList]="blastList"
+        (closeResult)="$event.status==='SUCCESS'?notificationsService.success('Success','Succesfully created blast'):''"
+        #massMessagingInviteEventModalComponent>
+</user-profiles-blasts-invite-to-event-modal>
+
+<blasts-get-blast-list-items-by-blast-list-no-template
+        [blastList]="blastList" [columnName]="'createdTime'" [columnOrder]="'DESC'"
+        (blastListsItemsReceived)="blastListItems = items.blastListItems"
+        #items></blasts-get-blast-list-items-by-blast-list-no-template>
+
+<blasts-get-blast-list-items-by-blast-list-no-template
+        [blastList]="blastList"
+        (blastListsItemsReceived)="blastListItems = getBlastListItemsByBlastListNoTemplateComponent.blastListItems"
+        #getBlastListItemsByBlastListNoTemplateComponent></blasts-get-blast-list-items-by-blast-list-no-template>
+
+<user-profiles-invite-to-event-slider #inviteToEventSliderComponent></user-profiles-invite-to-event-slider>
+
+<div class="py-20px rounded-2 mb-20px">
+    <div class="bg-white box-shadow-purple ph-16px py-16px rounded-3">
+        <div class="d-flex align-items-center justify-content-between d-inline-block border-bottom border-grey-1 py-20px">
+            <div class="d-flex align-items-center justify-content-center">
+                <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+                        class="mr-16px"
+                        [alt]="blastList.blast_list_name"
+                        [entityId]="blastList.blast_list_id"
+                        [entityType]="'BLAST_PROFILE_PIC'"
+                        [size]="70"
+                        [round]="true"
+                ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+                <div class="font-size-18 font-weight-500 font-poppins">
+                  <div>
+                    <label>{{blastList.blast_list_name}}</label>
+                    <user-profiles-edit-group-modal #editGroupModalComponent></user-profiles-edit-group-modal>
+                    <i-feather name="edit-2" class="text-primary ml-20px wh-20px"
+                               (click)="editGroupModalComponent.openModal()"></i-feather>
+                  </div>
+                  <div>
+                        <label class="font-poppins font-weight-400 font-size-14 text-grey-1">{{blastList.blast_list_type}}
+                            contact type | {{blastList.total_blast_list_items}} contacts</label>
+                    </div>
+                </div>
+            </div>
+            <blasts-get-blast-lists-by-user-account-no-template
+                    [blastListCreationType]="['MANUAL','AUTO_PAST_ATTENDEE']"
+                    [userAccount]="loggedAccount" [columnName]="'createdTime'" [columnOrder]="'DESC'"
+                    #component></blasts-get-blast-lists-by-user-account-no-template>
+
+            <blasts-copy-blast-list-no-template
+                    (blastListCopied)="notificationsService.success('Success','Blast list copied');
+        component.getBlastListsByUserAccount(component.createRequestData())"
+                    [blastList]="blastList" [appendCopyTag]="true" [copyBlastListItems]="true"
+                    #copyBlastList></blasts-copy-blast-list-no-template>
+            <div class="btn border border-grey-1 py-8px ph-8px font-poppins font-weight-500 font-size-16 text-grey-2"
+                 (click)="copyBlastList.copyBlastList(copyBlastList.createRequestData())"
+                 [promiseBtn]="copyBlastList.copy_blast_list_subscription$"
+            >
+                <i-feather name="copy" class="text-primary"></i-feather>
+                Duplicate group
+            </div>
+        </div>
+        <div class="row">
+            <div class="d-flex align-items-center justify-content-between mt-16px">
+                <div class="">
+                    <button class="btn btn-color-primary" (click)="massMessagingInviteEventModalComponent.openModal()">
+                        <!--                  (click)="massMessagingInviteEventModalComponent.openModal()">-->
+                        <i-feather name="send" class="text-white"></i-feather>
+                        Invite to Event
+                    </button>
+                </div>
+                <user-profiles-blasts-add-upload-contact-modal
+                        [blastList]="blastList"
+                        (closeResult)="$event.status==='SUCCESS'?items.getBlastListItemsByBlastList(items.createRequestData()):''"
+
+                        #massMessagingAddUploadContactModalComponent>
+                </user-profiles-blasts-add-upload-contact-modal>
+                <div class="col-6 d-flex align-items-center justify-content-end">
+                    <div class="mr-16px">
+                        <button class="btn bg-background-purple py-8px font-poppins font-weight-500 font-size-16 text-primary">
+                            Download CSV
+                            <i-feather name="download"></i-feather>
+                        </button>
+                    </div>
+                    <div>
+                        <img src="assets/images/user-plus-circle.png" width="40" height="40" class="cursor-pointer"
+                             (click)="massMessagingAddUploadContactModalComponent.openModal()">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center pt-16px">
+        <div class="col-6 btn-border-bottom text-align-center cursor-pointer pb-12px"
+             routerLinkActive="btn-border-bottom-active"
+             routerLink="/signedin/userprofiles/blasts/{{blastList.blast_list_id}}/contacts">
+            Contacts
+        </div>
+        <div class="col-6 btn-border-bottom text-align-center cursor-pointer pb-12px"
+             routerLinkActive="btn-border-bottom-active"
+             routerLink="/signedin/userprofiles/blasts/{{blastList.blast_list_id}}/blasts">
+            Blasts
+        </div>
+    </div>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</div>

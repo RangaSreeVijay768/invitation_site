@@ -1,0 +1,22 @@
+<div class="ng-autocomplete">
+    <ng-autocomplete
+            [data]="data"
+            [searchKeyword]="model.keyword"
+            [placeholder]="model.placeholder"
+            [minQueryLength]="3" [debounceTime]="500"
+            [customFilter]="model.defaultMatchingFunction"
+            [selectedValueRender]="selectedValueRender"
+            (selected)='selectEvent($event)'
+            (inputChanged)='onChangeSearch($event)'
+            [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate">
+    </ng-autocomplete>
+
+    <ng-template #itemTemplate let-item>
+        <a innerHTML="{{item.plan_routine_name}} | {{item.plan.plan_name}}"></a>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+        <div [innerHTML]="notFound"></div>
+    </ng-template>
+</div>

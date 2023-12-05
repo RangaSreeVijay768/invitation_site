@@ -1,0 +1,87 @@
+<form [formGroup]="formGroup" #createForm="ngForm" (ngSubmit)="updateUserAccount(createRequestData())">
+
+  <div class="row mt-32px mx-0">
+    <div class="d-flex flex-column justify-content-center px-0 py-0 bio-box">
+      <!--      <label-->
+      <!--        class="font-weight-500 font-size-18 text-transform-none font-color-9747FF mb-16px bio-label"-->
+      <!--        *ngIf="showBioLabel"-->
+      <!--        (click)="showBioLabel=!showBioLabel;"-->
+      <!--      >Add bio</label>-->
+      <div
+        class="w-100 d-flex flex-row justify-content-stretch position-relative bio-text-area">
+        <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                           class="pl-0 pr-65px w-100 mt--20px"
+                                           [model]="formModelMap['bio']"></dynamic-ng-bootstrap-form-control>
+        <i-feather name="edit-3" class="font-color-9747FF position-absolute right-0"></i-feather>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row mt-32px mx-0">
+    <div class="d-flex align-items-center px-0">
+      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">EMAIL</label>
+    </div>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['email']"></dynamic-ng-bootstrap-form-control>
+  <div class="row mt-32px mx-0">
+    <div class="d-flex align-items-center px-0">
+      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">FIRST AND LAST
+        NAME</label>
+    </div>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['name']"></dynamic-ng-bootstrap-form-control>
+
+
+  <div class="row mt-32px mx-0">
+    <div class="d-flex align-items-center px-0">
+      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">Phone/Whatsapp
+        number</label>
+    </div>
+  </div>
+  <div class="row mx-0 border border-grey-1 rounded-2 mt-20px">
+    <div class="col-12 d-flex align-items-center rounded-2 px-0 bg-background-purple">
+      <div class="w-100">
+        <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                           [model]="formModelMap['mob_num']"></dynamic-ng-bootstrap-form-control>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-32px mx-0">
+    <div class="d-flex align-items-center px-0">
+      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">Enter your
+        birthday</label>
+    </div>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['b_day']"></dynamic-ng-bootstrap-form-control>
+
+  <div class="row mt-32px mx-0">
+    <div class="d-flex align-items-center px-0">
+      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">Enter your
+        location</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                         [model]="formModelMap['country']"></dynamic-ng-bootstrap-form-control>
+    </div>
+
+<!--            <div class="col-6">-->
+<!--                <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"-->
+<!--                                                   [model]="formModelMap['city']"></dynamic-ng-bootstrap-form-control>-->
+<!--            </div>-->
+  </div>
+
+  <div class="row mt-32px mx-0">
+    <div class="d-flex align-items-center px-0">
+      <label class="font-weight-500 font-size-18 text-transform-none font-color-1 mb-0">ADD INSTAGRAM</label>
+    </div>
+  </div>
+  <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                     [model]="formModelMap['instagram']"></dynamic-ng-bootstrap-form-control>
+</form>

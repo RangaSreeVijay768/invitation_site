@@ -1,0 +1,25 @@
+<div class="row font-poppins justify-content-center mt-56px">
+  <div class="col-9">
+    <label class="font-weight-700 font-size-32 text-black">
+      My Events
+    </label>
+
+    <!-- Event-Tab-Selector-->
+    <div class="row mt-56px">
+      <div class="d-flex gap-32">
+        <button class="btn-event-tab"
+                *ngFor="let option of options"
+                [routerLinkActive]="'btn-event-tab-active'"
+                [routerLink]="option.link">{{option.value}}
+        </button>
+      </div>
+    </div>
+
+    <!--Event-Tab-Contents-->
+    <div class="bg-white-transparent rounded px-24 pt-32 mt-40px">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+<!--Title-->
+
+</div>

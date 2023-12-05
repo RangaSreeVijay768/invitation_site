@@ -1,0 +1,75 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "base-component": {
+      "description": "Generate Base Component",
+      "factory": "./base-component/index#baseComponent",
+      "schema": "./base-component/schema.json"
+    },
+    "base-and-no-template-component": {
+      "description": "Generate Base And No Template Component",
+      "factory": "./base-and-no-template-component/index#baseAndNoTemplateComponent",
+      "schema": "./base-and-no-template-component/schema.json"
+    },
+    "paginated-and-no-template-component": {
+      "description": "Generate Paginated And No Template Component",
+      "factory": "./paginated-and-no-template-component/index#paginatedAndNoTemplateComponent",
+      "schema": "./paginated-and-no-template-component/schema.json"
+    },
+    "base-datatable-and-no-template-component": {
+      "description": "Generate Base, Datatable and No template Component",
+      "factory": "./base-datatable-and-no-template-component/index#baseDatatableAndNoTemplateComponent",
+      "schema": "./base-datatable-and-no-template-component/schema.json"
+    },
+    "auto-complete-form-control-component": {
+      "description": "Generate Auto complete control Component",
+      "factory": "./auto-complete-form-control-component/index#autoCompleteFormComponent",
+      "schema": "./auto-complete-form-control-component/schema.json"
+    },
+    "form-component": {
+      "description": "Generate Form Component",
+      "factory": "./form-component/index#formComponent",
+      "schema": "./form-component/schema.json"
+    },
+    "tag-form-component": {
+      "description": "Generate Tag Form Component",
+      "factory": "./tag-form-component/index#tagFormComponent",
+      "schema": "./tag-form-component/schema.json"
+    },
+    "tagged-form-control-component": {
+      "description": "Generate Tagged Form control Component",
+      "factory": "./tagged-form-control-component/index#taggedFormComponent",
+      "schema": "./tagged-form-control-component/schema.json"
+    },
+    "page-component": {
+      "description": "Generate Page Component",
+      "factory": "./page-component/index#pageComponent",
+      "schema": "./page-component/schema.json"
+    },
+    "create-form-and-modal-component": {
+      "description": "Generate Create form and modal",
+      "factory": "./create-form-and-modal-component/index#createFormAndModalComponent",
+      "schema": "./create-form-and-modal-component/schema.json"
+    },
+    "modal-component": {
+      "description": "Generate Modal component",
+      "factory": "./modal-component/index#modalComponent",
+      "schema": "./modal-component/schema.json"
+    },
+    "modal-content-component": {
+      "description": "Generate Modal Content component",
+      "factory": "./modal-content-component/index#modalContentComponent",
+      "schema": "./modal-content-component/schema.json"
+    },
+    "default-module": {
+      "description": "Generate Default module",
+      "factory": "./default-module/index#defaultModule",
+      "schema": "./default-module/schema.json"
+    },
+    "default-rest-service": {
+      "description": "Generate Default Rest service",
+      "factory": "./default-rest-service/index#defaultRestService",
+      "schema": "./default-rest-service/schema.json"
+    }
+  }
+}

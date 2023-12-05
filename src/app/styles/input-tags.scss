@@ -1,0 +1,70 @@
+@import "core-variables";
+
+// Tag input form
+
+tag-input-form{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: left;
+}
+
+.ng2-tag-input .ng2-tags-container{
+  background: $primary-white-light-b;
+  border: 1px solid $primary-grey-c;
+}
+
+.ng2-tag-input__text-input{
+  width:100% !important;
+  line-height: 1.5 !important;
+  background-color: $primary-white-light-2 !important;
+  background-clip: padding-box !important;
+  border: 1px solid $primary-grey-c !important;
+  //border-radius: 0.1rem !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+}
+
+tag{
+  padding: 0px !important;
+  height: 1.875rem !important;
+  line-height: unset !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: 0 0 0.125rem 0 $primary-grey-b;
+  margin: 0.3rem 0.3rem 0.3rem 0.3rem !important;
+}
+
+.tag-input{
+  height: 1.875rem;
+  width: 100%;
+}
+
+.tag-input-title{
+  padding: 0.35rem 0.5rem
+}
+
+.tag-input-close{
+  padding: 0rem 0.5rem;
+}
+
+.ng2-tag-input{
+  padding-top: 2.25rem !important;
+}
+
+.single-tag > tag-input > .ng2-tag-input{
+  padding: 0 !important;
+}
+
+.ng2-tags-container > .progress-bar{
+  display: none;
+}
+
+.ng2-dropdown-menu{
+  margin:0.5rem !important;
+}
+
+.ng2-menu-item{
+  height: 46px !important;
+  padding: 0px !important;
+}

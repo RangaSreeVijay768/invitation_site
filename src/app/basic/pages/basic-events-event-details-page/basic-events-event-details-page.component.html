@@ -1,0 +1,373 @@
+<basic-set-event-meta-data-no-template
+  [eventInfo]="event_info"
+></basic-set-event-meta-data-no-template>
+
+<events-get-event-invites-by-event-no-template
+  [event]="event" [count]="5"
+  (eventInvitesReceived)="event_invites =$event"
+  #getEventInvitesByEventNoTemplateComponent></events-get-event-invites-by-event-no-template>
+
+
+<events-share-event-modal
+  [event]="event"
+  #shareEventModalComponent>
+</events-share-event-modal>
+
+<basic-verify-user-when-user-comes-from-link-modal
+  [event]="event_info.event"
+  #eventsEventDetailsTicketTypeModalComponent></basic-verify-user-when-user-comes-from-link-modal>
+
+<events-set-event-meta-data-no-template
+  [eventInfo]="event_info"
+  *ngIf="event_info"></events-set-event-meta-data-no-template>
+
+<nav class="bg-white box-shadow position-sticky fixed-top">
+  <div class="row mx-5 justify-content-center row-align-center p-5">
+    <div class="col-2 px-0 mr-auto ">
+      <img src="./assets/images/event-reply%20logo.png" alt="Event reply logo">
+    </div>
+
+    <div class="col-5 px-0 text-align-end ">
+      <button class="btn btn-outline-primary font-size-18 font-poppins font-weight-700 py-12px ph-24px mr-32px"
+              routerLink="/basic/login"
+      >
+        Log In
+      </button>
+      <button class="btn btn-primary font-poppins font-weight-700 font-size-18 py-12px ph-24px"
+              routerLink="/basic/signup"
+      >
+        Sign up
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<div class="row bg-default justify-content-center">
+  <div class="col-9 br-5px bg-white py-12px mt-56px mb-40px">
+    <div class="row">
+      <div class="col-9">
+        <label class="font-weight-700 font-size-32 font-poppins">{{event.event_title}}</label>
+        <div class="row row-align-center">
+          <div>
+            <i-feather name="help-circle" class="mr-10px text-primary"></i-feather>
+            <label
+              class="mr-20px text-primary font-weight-500 font-poppins">{{event.invitation_policy|eventsInvitationPolicyToHumanReadable}}</label>
+            <img src="assets/images/img.png" width="8" height="8" class="mr-20px">
+            <label
+              class="text-green font-weight-500 font-poppins">{{event_info.event_tickets|eventsEventTicketsToHumanReadable}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <events-view-user-profile-details-modal-no-template
+      [event]="event" [userAccount]="event.created_by"
+
+      #userprofile></events-view-user-profile-details-modal-no-template>
+
+
+    <div class="row p-0">
+      <div class="col-12 mt-24px d-flex align-items-center d-inline-block">
+        <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+          (click)="userprofile.openModal()" class="cursor-pointer"
+          [alt]="event.created_by.display_name"
+          [entityId]="event.created_by.user_account_id"
+          [entityType]="'USER_PROFILE_PIC'"
+          [size]="60"
+          [round]="false"
+        ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+        <label class="ml-20px mb-0 mr-24px font-poppins">
+          <span class="text-grey-2"> Created/hosted by </span>
+          <br>
+          {{event.created_by.display_name}}
+        </label>
+        <!--        <button class="btn btn-color-primary mr-24px font-poppins">Follow</button>-->
+        <user-profiles-user-follow
+          [followerAccount]="loggedAccount"
+          [userAccount]="event.created_by"
+          [cssClasses]="'btn btn-color-primary mr-24px font-poppins'"
+        >
+        </user-profiles-user-follow>
+        <div class="row" *ngIf="event_invites?.length">
+          <div class="col-12 d-flex ml-20px border-start border-2 border-grey-2">
+            <div class="ml-32px">
+              <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+                (click)="userprofile.openModal()" class="cursor-pointer"
+                [alt]="event_invites[0].invited_by.display_name"
+                [entityId]="event_invites[0].invited_by.user_account_id"
+                [entityType]="'USER_PROFILE_PIC'"
+                [size]="60"
+                [round]="false"
+              ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+            </div>
+            <label class="ml-20px mb-0 mr-24px font-poppins"><span
+              class="text-grey-2"> Created/hosted by </span><br>
+              {{event_invites[0].invited_by.display_name}}
+            </label>
+            <!--        <button class="btn btn-color-primary mr-24px font-poppins">Follow</button>-->
+            <user-profiles-user-follow
+              [followerAccount]="event_invites[0].invited_by"
+              [userAccount]="loggedAccount"
+              [cssClasses]="'btn btn-color-primary mr-24px font-poppins'"
+            >
+            </user-profiles-user-follow>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row bg-default justify-content-center">
+  <div class="col-9 px-0">
+    <div class="row">
+      <div class="col-7 mb-40px">
+        <images-get-image-by-entity-id-and-image-type
+          [entityId]="event.event_id"
+          [entityType]="'EVENT_PROFILE_PIC'"
+          #imageComponent
+        ></images-get-image-by-entity-id-and-image-type>
+        <div class="mb-32px" *ngIf="imageComponent.image">
+          <img class="w-100 h-100" src="{{imageComponent.image.uploaded_file.file_link}}">
+        </div>
+        <label class="font-size-18 font-weight-700 mb-15px font-poppins">Description/details about
+          event</label><br>
+        <label class="mb-32px text-font-color-1 font-size-18 font-poppins">{{event.event_description}}</label>
+        <div *ngIf="event_info.event_location">
+          <div class="d-flex d-inline-block">
+            <i-feather name="map-pin" class="mr-12px text-primary"></i-feather>
+            <label class="font-size-18 font-weight-700 font-poppins">Location</label>
+          </div>
+          <br>
+          <label class="pr-12px mb-32px text-font-color-1 font-size-18 font-poppins">
+            {{event_info.event_location|eventsEventLocationToHumanReadable:event_info.event.location_visibility}}
+          </label><br>
+        </div>
+        <div class="d-flex d-inline-block">
+          <i-feather name="calendar" class="mr-12px text-primary"></i-feather>
+          <label class="font-weight-700 font-size-18 font-poppins">Date and Time</label>
+        </div>
+        <br>
+        <label
+          class="text-font-color-1 font-size-18 font-poppins">{{event.start_time|appDateTimeToDefaultDateTimeFormat:'dd MMMM HH:mm a'}}
+          <span
+            class="text-grey-2"> To </span>{{event.end_time|appDateTimeToDefaultDateTimeFormat:'dd MMMM HH:mm a'}}
+        </label>
+      </div>
+      <div class="col-5 mx-0 mb-24px">
+        <i-feather name="users" class="text-primary"></i-feather>
+        <label class="font-size-18 font-weight-700 ml-12px mb-15px font-poppins">Invited</label>
+
+        <div class="bg-white py-15px ph-30px box-shadow br-5px">
+          <div class="row justify-content-between align-items-center mb-15px"
+               *ngFor="let eventInvite of event_invites">
+            <div class="col-10 d-flex align-items-center d-inline-block">
+              <events-view-event-invitee-details-modal
+                [event]="event" [eventInvite]="eventInvite"
+              ></events-view-event-invitee-details-modal>
+              <div class="font-size-18 font-weight-500 ml-13px">
+                {{eventInvite.display_name || eventInvite.whatsapp_number}}
+                <div>
+                  <img src="assets/images/indian%20flag.png" height="20" class="mr-12px">
+                  <img src="assets/images/img.png" height="5" width="5" class="mr-12px">
+                  <label class="font-size-14 text-grey-1 mb-0">Invited
+                    by {{event.created_by.display_name}} </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-2" *ngIf="eventInvite.user_account?.instagram_profile_url">
+              <a href="{{eventInvite.user_account.instagram_profile_url}}" target="_blank">
+                <i-feather name="instagram" class="d-flex align-items-center w-40px "></i-feather>
+              </a>
+
+            </div>
+          </div>
+          <div class="row mx-0" *ngIf="!event_invites">
+            <div class="col-12 text-align-center px-0">
+              <img src="assets/images/no-promocodes.png" width="202">
+              <br>
+              <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+                No invitees for this event
+              </label>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <!--                        <events-all-invited-people-modal-->
+            <!--                                *ngIf="eventInvites"-->
+            <!--                                [eventInvites]="eventInvites"-->
+            <!--                                [event]="event"-->
+            <!--                        ></events-all-invited-people-modal>-->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row pb-100px"></div>
+
+<div class="row pb-100px"></div>
+
+
+<div class="row py-16px justify-content-center bg-white position-fixed" style="bottom: 0px;width: 100%;z-index: 1000">
+  <div class="col-9 justify-content-between align-items-center">
+
+    <!--                If user is not going to the event-->
+    <div class="row ">
+      <!--                    Both free and paid tickets-->
+      <div class="col-12 justify-content-between align-items-center"
+           *ngIf="(event_info.event_tickets|eventsFilterEventTicketsByTicketType:'FREE')?.length && (event_info.event_tickets|eventsFilterEventTicketsByTicketType:'PAID')?.length">
+
+
+        <div class="row row-align-center">
+          <div class="col-6 align-items-center px-0">
+            <span class="font-weight-400 font-poppins font-size-16">Ticket price</span>
+            <div class="d-flex">
+              <label class=" font-weight-400 font-size-16 font-poppins">Type
+                1: <span
+                  class="font-weight-700 font-size-24 mr-16px">FREE</span></label>
+              <label class=" font-weight-400 font-size-16 font-poppins">Type
+                2: <span
+                  class="font-weight-700 font-size-24 mr-16px">${{event_info.event_tickets|eventsEventTicketsTypesToMinPrice}}
+                  -${{event_info.event_tickets|eventsEventTicketsTypeToMaxPrice}}</span></label>
+            </div>
+
+          </div>
+
+          <div class="col-6 d-flex justify-content-end">
+            <button
+              class="btn btn-sm btn-outline-primary d-flex align-items-center py-20px ph-40px font-weight-700 font-size-18"
+            >
+              <i-feather name="Share2"></i-feather>
+              Share Event
+            </button>
+            <button class="btn btn-sm btn-primary ml-40px py-20px px-40px font-weight-700 font-size-18"
+                    (click)="eventsEventDetailsTicketTypeModalComponent.openModal()">
+              {{event_info.event_tickets|eventsEventTicketsToButtonText}}
+            </button>
+          </div>
+        </div>
+      </div>
+      <!--                    Only free tickets-->
+
+      <div class="col-12 justify-content-between align-items-center"
+           *ngIf="(event_info.event_tickets|eventsFilterEventTicketsByTicketType:'FREE')?.length && !(event_info.event_tickets|eventsFilterEventTicketsByTicketType:'PAID')?.length">
+        <div class="row">
+          <div class="col-4">
+            <span class="font-weight-400 font-poppins font-size-16">Ticket price</span>
+            <div class="row row-align-center">
+              <div class="d-flex align-items-center">
+                <label class=" font-weight-400 font-size-16 font-poppins"><span
+                  class="font-weight-700 font-size-24 mr-16px">FREE</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <div class="d-flex justify-content-end px-0">
+                <button
+                  class="btn btn-sm btn-outline-primary d-flex align-items-center py-20px ph-40px font-weight-700 font-size-18"
+                  (click)="shareEventModalComponent.openModal()">
+                  <i-feather name="Share2"></i-feather>
+                  Share Event
+                </button>
+                <button class="btn btn-sm btn-primary ml-40px py-20px px-40px font-weight-700 font-size-18"
+                        (click)="eventsEventDetailsTicketTypeModalComponent.openModal()"
+                >
+                  Rsvp to see who is going
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--                    Only Paid tickets-->
+      <div class="col-12 justify-content-between align-items-center"
+           *ngIf="!(event_info.event_tickets|eventsFilterEventTicketsByTicketType:'FREE')?.length && (event_info.event_tickets|eventsFilterEventTicketsByTicketType:'PAID')?.length">
+
+
+        <div class="row">
+          <div class="col-4">
+            <span class="font-weight-400 font-poppins font-size-16">Ticket price</span>
+            <div class="row row-align-center">
+              <div class="d-flex align-items-center">
+                <label class=" font-weight-400 font-size-16 font-poppins"><span
+                  class="font-weight-700 font-size-24 mr-16px">${{event_info.event_tickets|eventsEventTicketsTypesToMinPrice}}
+                  -${{event_info.event_tickets|eventsEventTicketsTypeToMaxPrice}}</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <div class="d-flex justify-content-end px-0">
+                <button
+                  class="btn btn-sm btn-outline-primary d-flex align-items-center py-20px ph-40px font-weight-700 font-size-18"
+                  (click)="shareEventModalComponent.openModal()">
+                  <i-feather name="Share2"></i-feather>
+                  Share Event
+                </button>
+                <button class="btn btn-sm btn-primary ml-40px py-20px px-40px font-weight-700 font-size-18"
+                        (click)="eventsEventDetailsTicketTypeModalComponent.openModal()">
+                  Purchase ticket
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--            <div class="col-6">-->
+      <!--                <div class="row">-->
+      <!--                    <div class="col-12">-->
+      <!--                        <div class="d-flex">-->
+      <!--                            <button-->
+      <!--                                    class="btn btn-sm btn-outline-primary d-flex align-items-center py-20px px-40px font-weight-700 font-size-18"-->
+      <!--                                    (click)="shareEventModalComponent.openModal()">-->
+      <!--                                <i-feather name="Share2"></i-feather>  Share Event-->
+      <!--                            </button>-->
+
+      <!--                            <div *ngFor="let eventTicket of eventTickets">-->
+      <!--                              <label>{{eventTicket.ticket_type}}</label>-->
+
+      <!--&lt;!&ndash;                                <events-event-details-ticket-type-modal&ndash;&gt;-->
+      <!--&lt;!&ndash;                                        [event]="event"&ndash;&gt;-->
+      <!--&lt;!&ndash;                                        #eventsEventDetailsTicketTypeModalComponent></events-event-details-ticket-type-modal>&ndash;&gt;-->
+
+      <!--                                <events-rsvp-free-modal-->
+      <!--                                        (closeResult)="$event.status==='SUCCESS'?notificationsService.success('Success','RSVP successful'):''"-->
+      <!--                                        [eventTicket]="(event_info.event_tickets|eventsFilterEventTicketsByTicketType:'FREE')[0]"-->
+      <!--                                        #eventsRsvpFreeModalComponent></events-rsvp-free-modal>-->
+
+      <!--                                <div *ngIf="eventTicket.ticket_type==='FREE'">-->
+      <!--                                    <button class="btn btn-sm btn-primary ml-40px py-20px px-40px font-weight-700 font-size-18"-->
+      <!--                                            (click)="eventsRsvpFreeModalComponent.openModal()">-->
+      <!--                                        Rsvp to see who is going-->
+      <!--                                    </button>-->
+      <!--                                </div>-->
+      <!--                                <div *ngIf="eventTicket.ticket_type==='PAID'">-->
+      <!--                                    <button class="btn btn-sm btn-primary ml-40px py-20px px-40px font-weight-700 font-size-18"-->
+      <!--                                            (click)="eventsEventDetailsTicketTypeModalComponent.openModal()">-->
+      <!--                                        See all tickets-->
+      <!--                                    </button>-->
+      <!--                                </div>-->
+      <!--                            </div>-->
+
+      <!--                        </div>-->
+      <!--                        <div class="d-flex"-->
+      <!--                             *ngIf="(event_info.event_tickets|eventsFilterEventTicketsByTicketType:'FREE')?.length || (event_info.event_tickets|eventsFilterEventTicketsByTicketType:'PAID')?.length">-->
+      <!--                            <events-event-details-ticket-type-modal-->
+      <!--                                    [event]="event"-->
+      <!--                                    (closeResult)="$event.status==='SUCCESS'?hardReloadPage():''"></events-event-details-ticket-type-modal>-->
+      <!--                        </div>-->
+      <!--                    </div>-->
+      <!--                </div>-->
+      <!--            </div>-->
+
+
+    </div>
+  </div>
+</div>

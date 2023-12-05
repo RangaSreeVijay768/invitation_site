@@ -1,0 +1,76 @@
+<events-share-event-mass-messaging-modal
+    #shareEventModalComponent>
+</events-share-event-mass-messaging-modal>
+<div class="row mt-32px mx-0">
+    <div class="col-6 mt-24px cursor-pointer filter-dropshadow" [class.pr-10px]="i%2===0"
+         [class.pl-0]="i%2===0" [class.pl-10px]="i%2!=0" [class.pr-0]="i%2!=0"
+         *ngFor="let eventInfo of event_infos; let i = index">
+        <div class="row br-10px bg-white p-16px mx-0"
+             routerLink="/signedin/events/{{eventInfo.event.event_id}}/details">
+
+            <div class="col-5 pl-0  d-flex justify-content-center w-212px h-171px pr-24px">
+                <div
+                        class=" d-flex justify-content-center align-items-center border-radius-5px overflow-hidden w-212px h-171px">
+                    <images-get-image-by-entity-and-type-unique-image-ngx-avatar
+                            class="cursor-pointer border-radius-5px img-fit-cover overflow-hidden"
+                            [alt]="eventInfo.event.event_title"
+                            [entityId]="eventInfo.event.event_id"
+                            [entityType]="'EVENT_PROFILE_PIC'"
+                            [size]="190"
+                            [round]="false"
+                    ></images-get-image-by-entity-and-type-unique-image-ngx-avatar>
+                </div>
+
+            </div>
+            <div class="col-7 px-0 w-50">
+                <label
+                        class="mb-0 font-weight-700 font-size-18 text-font-color-1 font-poppins">{{eventInfo.event.event_title}}</label>
+                <br>
+                <label
+                        class="d-inline-block mb-0 mt-16px pr-12px mr-12px border-end border-grey-2 font-size-16 text-grey-2 font-poppins">
+                  {{eventInfo.event.start_time|appDateTimeToDefaultDateTimeFormat:'MM/dd/yyyy'}}
+                </label>
+                <label class="d-inline-block mb-0 font-size-16 text-grey-2 font-poppins"
+                       *ngIf="eventInfo.event.start_time">
+                    {{eventInfo.event.start_time|appDateTimeToTimeFormat}} <span
+                        *ngIf="eventInfo.event.end_time">To {{eventInfo.event.end_time|appDateTimeToTimeFormat}}</span></label>
+                <br>
+                <label class="d-inline-block mb-0 mt-16px font-size-16 text-grey-2 font-poppins"
+                       *ngIf="eventInfo.event_location">{{eventInfo.event_location|eventsEventLocationToHumanReadable:eventInfo.event.location_visibility}}</label>
+                <br>
+                <div class="row row-align-center">
+                    <div class="col-6">
+                        <label
+                                class="d-inline-block mb-0 font-weight-500 font-size-16 text-green font-poppins">Free</label>
+                    </div>
+                    <div class="col-6">
+                        <label
+                                class="btn p-0 d-inline-block mb-0 font-poppins font-weight-500 font-size-16 text-grey-2"
+                                (click)="shareEventModalComponent.openModal(eventInfo.event)"
+                                coreClickStopPropogation>
+                            <i-feather name="Share2" class="d-inline-block text-grey-2"
+                                       style="width: 20px"></i-feather>
+                            Share
+                        </label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--  <div class="mt-32px text-align-end">-->
+<!--    <button class="font-poppins font-weight-400 font-size-18 rounded-1 py-12px ph-24px border-none text-white bg-primary"-->
+<!--            (click)="onScroll()">-->
+<!--      Load more ...-->
+<!--    </button>-->
+<!--  </div>-->
+<div class="row mx-0 mt-56px">
+    <div class="col-12 px-0 text-center">
+        <button class="btn btn-color-primary font-poppins font-weight-700 font-size-24 pv-24px ph-138px"
+                [routerLink]="'/signedin/events/allevents'">
+            See more events
+        </button>
+    </div>
+</div>

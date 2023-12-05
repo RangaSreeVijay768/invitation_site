@@ -1,0 +1,218 @@
+<images-get-image-by-entity-id-and-image-type
+        [entityId]="loggedAccount.user_account_id"
+        [entityType]="'EVENT_PROFILE_PIC'"
+        #imageComponent></images-get-image-by-entity-id-and-image-type>
+
+<div class="row mt-56px justify-content-center mb-168px mx-0">
+    <div class="col-9">
+        <label class="font-poppins font-weight-700 font-size-32 mb-40px">Update event</label><br>
+        <div class="row">
+            <div class="d-flex">
+                <div class="row">
+                    <div class="col-7 pr-20px">
+                        <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder">
+                            <div class="row mx-0">
+                                <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">EVENT
+                                    TITLE
+                                    <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span></label>
+                            </div>
+                            <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                                               [model]="formModelMap['event_title']"></dynamic-ng-bootstrap-form-control>
+                        </form>
+
+                        <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder">
+                            <div class="row mt-32px mx-0">
+                                <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">ORGANIZER/HOST
+                                    NAME
+                                    <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span>
+                                </label>
+                            </div>
+                            <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                                               [model]="formModelMap['organizer_or_host_name']"></dynamic-ng-bootstrap-form-control>
+                        </form>
+
+                        <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder">
+                            <div class="row mt-32px mx-0">
+                                <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">LOCATION
+                                    <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span>
+                                </label>
+
+                                <div class="d-flex align-items-center justify-content-between px-0 mt-20px">
+                                    <div class="d-flex align-items-center ">
+                                        <input type="radio" name="x" class="specifyColor wh-33px font-poppins mr-12px"
+                                               (click)="location_type = 'in'">
+                                        <label class="font-weight-700 font-poppins font-size-18 mr-56px">In
+                                            person</label>
+                                        <input type="radio" name="x" class="specifyColor wh-33px font-poppins mr-12px"
+                                               (click)="location_type = 'out'">
+                                        <label class="font-weight-700 font-poppins font-size-18">Online</label>
+                                    </div>
+
+                                    <div class="d-flex align-items-center">
+                                        <input type="checkbox" name="x"
+                                               class="specifyColor w-27 h-27 font-poppins mr-12px">
+                                        <label class="font-poppins font-size-18">Location TBD</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="px-0" *ngIf="location_type === 'in' ">
+                                    <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                                                       [model]="formModelMap['location']"></dynamic-ng-bootstrap-form-control>
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <div class="d-flex align-items-center mt-32px">
+                            <input type="checkbox" class="specifyColor w-27 h-27 font-poppins mr-16px">
+                            <label class="font-poppins font-size-18 font-weight-500">Hide location prior to guest
+                                RSVP</label>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between px-0 mt-32px">
+                            <label class="font-poppins font-weight-500 font-size-18">Date and Time
+                                <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span>
+                            </label>
+
+                            <div class="d-flex align-items-center">
+                                <input type="checkbox" name="x" class="specifyColor w-27 h-27 font-poppins mr-12px">
+                                <label class="font-poppins font-size-18">Date TBD</label>
+                            </div>
+                        </div>
+
+
+                        <div class="row mt-20px">
+                            <div class="d-flex align-items-center gap-16px">
+                                <div class="col-5">
+                                    <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                                                       [model]="formModelMap['start_date']"></dynamic-ng-bootstrap-form-control>
+                                </div>
+                                <label class="col-1 font-poppins font-weight-500 font-size-18">To</label>
+                                <div class="col-5">
+                                    <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                                                       [model]="formModelMap['end_date']"></dynamic-ng-bootstrap-form-control>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="d-flex align-items-start gap-80px">
+                                <div class="ml-0">
+                                    <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                                                       [model]="formModelMap['start_time']"></dynamic-ng-bootstrap-form-control>
+                                </div>
+                                <div class="">
+                                    <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                                                       [model]="formModelMap['end_time']"></dynamic-ng-bootstrap-form-control>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder resize-none">
+                            <div class="row mx-0 mt-32px">
+                                <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">
+                                    ADD DESCRIPTION
+                                    <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span></label>
+                            </div>
+                            <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                                               [model]="formModelMap['event_description']"></dynamic-ng-bootstrap-form-control>
+                        </form>
+
+                        <div class="d-flex align-items-center mt-32px">
+                            <!--            <input type="checkbox" class="formCheckbox specifyColor w-27 h-27 font-poppins mr-16px">-->
+
+                            <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                                               [model]="formModelMap['hide_guest_list']"></dynamic-ng-bootstrap-form-control>
+                            <label class="font-poppins font-size-18 font-weight-500">HIDE GUEST LIST</label>
+                        </div>
+                    </div>
+                    <div class="col-5 pl-16px">
+
+                        <label class="font-poppins font-weight-500 font-size-18">UPLOAD IMAGE</label>
+                        <!--                          <images-upload-file-update-event-->
+                        <!--                            (fileUploaded)="uploaded_file=$event" [autoUploadFile]="true"-->
+                        <!--                            [entityType]="'EVENT_PROFILE_PIC'" [entityId]="event.event_id"-->
+                        <!--                          ></images-upload-file-update-event>-->
+                        <!--            [entityId]="event.event_id"-->
+
+                        <images-get-image-by-entity-id-and-image-type
+                                [entityId]="event.event_id"
+                                [entityType]="'EVENT_PROFILE_PIC'"
+                                #imageComponent
+                        >
+                        </images-get-image-by-entity-id-and-image-type>
+                        <div *ngIf="imageComponent.image" class="col-12">
+                            <!--                <img class="w-100" src="{{imageComponent.image.uploaded_file.file_link}}">-->
+                            <div class="ratio ratio-1x1">
+                                <img class="w-100 img-fit-cover" src="{{imageComponent.image.uploaded_file.file_link}}">
+                            </div>
+                        </div>
+
+                        <div *ngIf="!imageComponent.image"
+                             class="d-flex justify-content-center align-items-center border-radius-5px overflow-hidden w-212px h-171px">
+                            <images-upload-file-update-event
+                                    (fileUploaded)="uploaded_file=$event" [autoUploadFile]="true" [autoAttachFile]="true"
+                                    [entityType]="'EVENT_PROFILE_PIC'" [entityId]="event.event_id"
+                            ></images-upload-file-update-event>
+                        </div>
+
+                        <div class="mt-32px">
+                            <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">VISIBILITY
+                                <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span>
+                            </label><br>
+                            <label class="font-poppins text-grey-2 font-size-16">Who can see the event</label>
+                        </div>
+                        <div class="border border-2 border-grey-1 rounded-2 py-20px ph-16px bg-white mt-20px"
+                             (click)="event_visibility='EVERYONE'; "
+                             [class.b-1px-primary]="event_visibility==='EVERYONE'">
+                            <label class="font-poppins font-weight-500 font-size-18">Public</label>
+                        </div>
+
+                        <div ngbDropdown>
+                            <div
+                                    class="d-flex justify-content-between align-items-center border border-2 border-grey-1 py-20px rounded-2 ph-16px bg-white mt-20px list"
+
+                                    id="dropdownBasic" ngbDropdownToggle>
+                                <label class="font-poppins font-weight-500 font-size-18 text-grey-1">
+                                    <span class="text-black">Private</span>
+                                    <br>
+                                    <span class="font-size-16 font-weight-400">{{display_message}}</span>
+                                </label>
+                                <i-feather name="chevron-down" class="font-poppins"></i-feather>
+                            </div>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic" id="options" class="w-100">
+                                <div *ngFor="let option of options" class="px-26px">
+                                    <div ngbDropdownItem
+                                         class="font-weight-500 border-radius-5px border-left-3px-9747FF w-100"
+                                         id="option"
+                                         on-click="changeMessage(option);">
+                  <span>
+                    {{option}}
+                  </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--          <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder resize-none">-->
+                        <!--            <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"-->
+                        <!--                                               [model]="formModelMap['guest_list_visibility']"></dynamic-ng-bootstrap-form-control>-->
+                        <!--          </form>-->
+
+                        <form [formGroup]="formGroup" #createForm="ngForm" class="profile-form-placeholder resize-none">
+                            <div class="row mx-0 mt-32px">
+                                <label class="px-0 font-poppins font-weight-500 font-size-18 text-transform-none text-font-color-1 mb-0">Event
+                                    Category
+                                    <span class="font-poppins font-weight-500 font-size-18 text-transform-none text-red">*</span></label>
+                            </div>
+                            <dynamic-ng-bootstrap-form-control [group]="formGroup" [layout]="formLayout"
+                                                               [model]="formModelMap['event_category']"></dynamic-ng-bootstrap-form-control>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

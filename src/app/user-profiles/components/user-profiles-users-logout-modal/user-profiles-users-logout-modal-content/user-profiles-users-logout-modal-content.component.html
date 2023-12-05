@@ -1,0 +1,29 @@
+<users-sign-out-no-template
+  (userLoggedOut)="navigateToLoginPage()"
+  #signOutNoTemplateComponent></users-sign-out-no-template>
+
+
+<div class="row justify-content-center mt-40px mx-0">
+  <div class="col-10 bg-white rounded-4">
+    <label class="font-weight-500 font-size-32 font-poppins">Are you sure to want to logout?</label>
+    <div class="row justify-content-center mt-56px">
+      <div class="col-6">
+        <button class="btn w-100 py-12px btn-color-primary font-poppins font-size-18 font-weight-500"
+                (click)="signOutNoTemplateComponent.logOut()"
+        >Logout</button>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-32px mb-40px">
+      <div class="col-6">
+        <button class="btn w-100 py-10px btn-outline-primary border border-3 border-primary font-poppins font-size-18 font-weight-500"
+                (click)="closeModal()"
+        >Cancel</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+

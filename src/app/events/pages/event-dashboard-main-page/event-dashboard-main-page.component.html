@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+  <div class="col-9 mt-56px px-0">
+    <div class="d-inline-block">
+      <label class="tab-button" routerLinkActive="active"
+             (click)="selected_option=options[0].value"
+             routerLink="/signedin/events/eventdashboard/{{eventInfo.event.event_id}}/creatordashboard">Dashboard</label>
+    </div>
+    <div class="d-inline-block">
+      <label class="tab-button" routerLinkActive="active"
+             (click)="selected_option=options[1].value"
+             routerLink="/signedin/events/eventdashboard/{{eventInfo.event.event_id}}/eventdetails">Event
+        details</label>
+    </div>
+    <div class="d-inline-block">
+      <label class="tab-button" routerLinkActive="active"
+             (click)="selected_option=options[2].value"
+             routerLink="/signedin/events/eventdashboard/{{eventInfo.event.event_id}}/ticketdetails/tickettype">Ticket
+        details</label>
+    </div>
+    <div class="d-inline-block">
+      <label class="tab-button" routerLinkActive="active"
+             (click)="selected_option=options[3].value"
+             routerLink="/signedin/events/eventdashboard/{{eventInfo.event.event_id}}/guestdetails/allguests">Guest
+        details</label>
+    </div>
+
+    <div class="d-inline-block">
+      <label class="tab-button" routerLinkActive="active"
+             (click)="selected_option=options[4].value"
+             routerLink="/signedin/events/eventdashboard/{{eventInfo.event.event_id}}/manageguest/allguests">Manage
+        guest list</label>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

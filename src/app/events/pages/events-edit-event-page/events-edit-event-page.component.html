@@ -1,0 +1,22 @@
+<events-edit-event-form
+        [event]="userEventInfo.event_info.event"
+        (eventUpdated)="notificationsService.success('Event updated');navigateToEventDashboardPage(userEventInfo.event_info.event.event_id)"
+        #editEventFormComponent></events-edit-event-form>
+
+<div
+        class="row py-16px justify-content-center box-shadow-purple mx-0 position-fixed bottom-0 bg-color-white z-index-2 w-100 bg-color-white">
+    <div class="col-9 d-flex justify-content-end align-items-center">
+        <button
+                class="btn btn-outline-primary border-2 d-flex align-items-center py-16px px-40px font-weight-700 font-size-18"
+                (click)="goBack()"
+        >
+            Cancel
+        </button>
+        <button class="btn btn-primary ml-40px py-16px px-40px font-weight-700 font-size-18 cursor-pointer"
+                [promiseBtn]="editEventFormComponent.update_event_subscription$"
+                (click)="editEventFormComponent.updateEvent(editEventFormComponent.createRequestData())"
+        >
+            Update event
+        </button>
+    </div>
+</div>

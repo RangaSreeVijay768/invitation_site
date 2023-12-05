@@ -1,0 +1,274 @@
+<!--<events-get-event-tickets-by-event-no-template-->
+<!--  [event]="eventInfo.event"-->
+<!--  (eventTicketsReceived)="eventTickets = getEventTicketsByEventNoTemplateComponent.eventTickets"-->
+<!--  #getEventTicketsByEventNoTemplateComponent></events-get-event-tickets-by-event-no-template>-->
+
+<events-get-event-promo-codes-by-event-no-template
+  [event]="eventInfo.event"
+  (eventPromoCodesReceived)="event_promo_codes = getEventPromoCodesByEventNoTemplateComponent.eventPromoCodes"
+  #getEventPromoCodesByEventNoTemplateComponent></events-get-event-promo-codes-by-event-no-template>
+
+
+<!--<events-event-dashboard-promocodes-create-code-form-->
+<!--#promocodesCreateCodeFormComponent></events-event-dashboard-promocodes-create-code-form>-->
+
+<div class="row">
+  <div class="col-12 bg-white">
+    <!--    <div class="row ml-24px">-->
+    <!--      <div class="col-3 mb-24px py-4px d-flex justify-content-center align-items-center bg-background-purple">-->
+    <!--        <img src="assets/images/payout.png" width="24" height="24">-->
+    <!--        <label class="ml-8px text-grey-2 font-size-16 font-poppins">Recent purchases</label>-->
+    <!--      </div>-->
+    <!--    </div>-->
+
+    <!--                (click)="promocodesCreateCodeFormComponent.createPromoCode(promocodesCreateCodeFormComponent.createRequestData())">-->
+    <div class="row mr-24px text-align-end pb-32px"
+         *ngIf="event_promo_codes"
+    >
+      <div class="px-0">
+        <!--                <button class="btn bg-primary text-white py-12px px-24px font-poppins font-size-18 font-weight-700"-->
+        <!--                  <i-feather name="tag" class="mr-12px"></i-feather>-->
+        <!--                  Create a code-->
+        <!--                </button>-->
+        <!--                <events-event-dashboard-promocodes-create-code-modal></events-event-dashboard-promocodes-create-code-modal>-->
+        <events-event-dashboard-promocodes-create-code-modal
+          [event]="eventInfo.event"
+          (closeResult)="$event.status==='SUCCESS'?getEventPromoCodesByEventNoTemplateComponent.getEventPromoCodesByEvent(getEventPromoCodesByEventNoTemplateComponent.createRequestData()):''; reloadPage()"
+          #createCode
+        ></events-event-dashboard-promocodes-create-code-modal>
+      </div>
+    </div>
+
+    <div class="" *ngIf="event_promo_codes">
+      <div class="row row-align-center pb-24px ph-16px">
+        <div class="col-4">
+          <div class="row row-align-center justify-content-between border border-2 border-grey-1 br-5px w-250px">
+            <div ngbDropdown class="pl-0">
+              <div class="font-color-grey-2 d-flex align-items-center" id="dropdownBasic1" ngbDropdownToggle>
+                <div class="col-10 cursor-pointer py-12px ph-16px font-color-9747FF">
+                  <label class="d-flex text-align-start font-weight-500 font-size-18 mb-0 cursor-pointer">qwertyui</label>
+                </div>
+                <div class="col-2 px-0 d-flex justify-content-end">
+                  <i-feather name="chevron-down" class="cursor-pointer"></i-feather>
+                </div>
+              </div>
+              <div ngbDropdownMenu aria-labelledby="dropdownBas" class="w-100 border-1px-9747FF">
+                <div class="px-20px">
+                  <div ngbDropdownItem class="font-weight-500 border-radius-5px border-left-3px-9747FF w-100">
+                    <label class="font-color-grey-2 font-weight-500 font-poppins">Edit</label>
+                  </div>
+                  <div ngbDropdownItem class="font-weight-500 border-radius-5px border-left-3px-9747FF w-100">
+                    <label class="font-color-grey-2 font-weight-500 font-poppins">Add to ticket</label>
+                  </div>
+                  <div ngbDropdownItem class="font-weight-500 border-radius-5px border-left-3px-9747FF w-100">
+                    <label class="font-color-grey-2 font-weight-500 font-poppins">Share promo code url</label>
+                  </div>
+                  <div ngbDropdownItem class="font-weight-500 border-radius-5px border-left-3px-9747FF w-100">
+                    <label class="font-color-grey-2 font-weight-500 font-poppins">Delete</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="row">
+            <div class="col-8 d-flex align-items-center py-12px border border-2 border-grey-1 br-5px">
+              <i-feather name="search" class="mr-12px"></i-feather>
+              <input class="w-100">
+            </div>
+            <div class="col-4 px-0 d-flex justify-content-end">
+              <events-event-dashboard-promocodes-create-code-modal
+                [event]="eventInfo.event"
+
+                (closeResult)="$event.status==='SUCCESS'?getEventPromoCodesByEventNoTemplateComponent.getEventPromoCodesByEvent(getEventPromoCodesByEventNoTemplateComponent.createRequestData()):''; reloadPage()"
+                #createCode
+              ></events-event-dashboard-promocodes-create-code-modal>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-12px ph-16px">
+        <div class="d-flex justify-content-between bg-grey-3 py-17px">
+          <div class="col-5">
+            <div class="row">
+              <div class="col-6">
+                <i-feather name="edit-2" class="text-primary mr-8px"></i-feather>
+                <label class="font-size-18 font-weight-500 font-poppins text-grey-2">NAME</label>
+              </div>
+              <div class="col-6 px-0">
+                <i-feather name="chevron-left" class="text-primary"></i-feather>
+                <i-feather name="chevron-right" class="text-primary"></i-feather>
+                <label class="font-size-18 font-weight-500 font-poppins text-grey-2">CODE TYPE</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-4 px-0">
+                <i-feather name="percent" class="text-primary mr-8px"></i-feather>
+                <label class="font-size-18 font-weight-500 font-poppins text-grey-2">DISCOUNT</label>
+              </div>
+              <div class="col-3 px-0">
+                <i-feather name="pie-chart" class="text-primary mr-8px"></i-feather>
+                <label class="font-size-18 font-weight-500 font-poppins text-grey-2">USAGE</label>
+              </div>
+              <div class="col-5 px-0">
+                <i-feather name="tag" class="text-primary mr-8px"></i-feather>
+                <label class="font-size-18 font-weight-500 font-poppins text-grey-2">STATUS</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row mr-24px row-align-center border-bottom border-grey-1 ml-24px mr-24px pb-56px mb-56px"
+         *ngFor="let eventPromoCode of getEventPromoCodesByEventNoTemplateComponent.eventPromoCodes">
+      <div class="d-flex justify-content-between py-20px ph-16px">
+        <div class="col-5">
+          <div class="row">
+            <div class="col-6 text-align-start">
+              <label
+                class="font-size-18 font-weight-500 font-poppins ">{{eventPromoCode.promo_code.promo_code_name}}</label>
+            </div>
+            <div class="col-6">
+              <label
+                class="font-size-18 font-weight-500 font-poppins">{{eventPromoCode.promo_code.promo_code_type|eventsEventPromoCodeTypeToHumanReadable}}</label>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="col-4 ">
+              <label
+                class="font-size-18 font-weight-500 font-poppins"
+                *ngIf="eventPromoCode.promo_code.discount_percentage">{{eventPromoCode.promo_code.discount_percentage}}
+                %</label>
+              <label
+                class="font-size-18 font-weight-500 font-poppins"
+                *ngIf="eventPromoCode.promo_code.flat_discount">${{eventPromoCode.promo_code.flat_discount}}</label>
+            </div>
+            <div class="col-3 ">
+              <label class="font-size-18 font-weight-500 font-poppins">{{eventPromoCode.promo_code.available_quantity}}
+                /{{eventPromoCode.promo_code.total_quantity}}</label>
+            </div>
+            <div class="col-5 ">
+              <label
+                class="font-size-18 font-weight-500 font-poppins">{{eventPromoCode.promo_code.status|appEnumToHumanReadable}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--    <div class="row row-align-center border-bottom border-grey-1 ml-24px mr-24px ">-->
+    <!--      <div class="d-flex justify-content-between py-20px ph-16px">-->
+    <!--        <div class="col-5">-->
+    <!--          <div class="row">-->
+    <!--            <div class="col-6">-->
+    <!--              <label class="font-size-18 font-weight-500 font-poppins text-primary">45387007652</label>-->
+    <!--            </div>-->
+    <!--            <div class="col-6">-->
+    <!--              <label class="font-size-18 font-weight-500 font-poppins">Scarlet Johnson</label>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--        <div class="col-6">-->
+    <!--          <div class="row">-->
+    <!--            <div class="col-4 text-align-center">-->
+    <!--              <label class="font-size-18 font-weight-500 font-poppins">03</label>-->
+    <!--            </div>-->
+    <!--            <div class="col-3 text-align-center">-->
+    <!--              <label class="font-size-18 font-weight-500 font-poppins">$56</label>-->
+    <!--            </div>-->
+    <!--            <div class="col-5 text-align-center">-->
+    <!--              <label class="font-size-18 font-weight-500 font-poppins">13.05.2023</label>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+  </div>
+</div>
+
+<div class="row mx-0" *ngIf="!event_promo_codes">
+  <div class="col-12 text-align-center px-0">
+    <img src="assets/images/no-promocodes.png" width="202">
+    <br>
+    <label class="font-size-18 text-font-color-1 font-weight-700 mb-56px mt-16px">
+      No promocodes for this event
+    </label>
+    <br>
+    <div class="pb-56px mb-56px">
+      <events-event-dashboard-promocodes-create-code-modal
+        [event]="eventInfo.event"
+
+        (closeResult)="$event.status==='SUCCESS'?getEventPromoCodesByEventNoTemplateComponent.getEventPromoCodesByEvent(getEventPromoCodesByEventNoTemplateComponent.createRequestData()):''; reloadPage()"
+        #createCode
+      ></events-event-dashboard-promocodes-create-code-modal>
+    </div>
+  </div>
+</div>
+
+
+<!--<div class="row ph-24px">-->
+<!--  <div class="border border-primary">-->
+<!--    <div class="row py-16px ph-24px">-->
+<!--      <div class="col-9 d-flex justify-content-between">-->
+<!--        <div>-->
+<!--          <i-feather name="edit-3" class="text-primary mr-8px"></i-feather>-->
+<!--          <label class="font-size-18 font-weight-500 font-poppins text-grey-2">NAME</label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <i-feather name="chevron-left" class="text-primary mr-8px"></i-feather>-->
+<!--          <i-feather name="chevron-right" class="text-primary mr-8px"></i-feather>-->
+<!--          <label class="font-size-18 font-weight-500 font-poppins text-grey-2">CODE TYPE</label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <i-feather name="percent" class="text-primary mr-8px"></i-feather>-->
+<!--          <label class="font-size-18 font-weight-500 font-poppins text-grey-2">DISCOUNT</label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <i-feather name="pie-chart" class="text-primary mr-8px"></i-feather>-->
+<!--          <label class="font-size-18 font-weight-500 font-poppins text-grey-2">USAGE</label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <i-feather name="clipboard" class="text-primary mr-8px"></i-feather>-->
+<!--          <label class="font-size-18 font-weight-500 font-poppins text-grey-2">STATUS</label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="row ph-24px">-->
+<!--  <div class="border border-primary">-->
+<!--    <div class="row py-16px ph-24px">-->
+<!--      <div class="d-flex justify-content-between">-->
+<!--        <div>-->
+<!--          <label class="font-size-18 font-weight-500 font-poppins text-grey-2 mr-20px">First code</label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Activates discount</label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <label class="font-size-18 font-weight-500 font-poppins text-grey-2">05%</label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <label class="font-size-18 font-weight-500 font-poppins text-grey-2">10/35</label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <label class="font-size-18 font-weight-500 font-poppins text-grey-2">Active</label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <label class="font-size-18 font-weight-500 font-poppins text-grey-2 mr-20px">Add ticket</label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <label class="font-size-18 font-weight-500 font-poppins text-grey-2 mr-20px">First code</label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
